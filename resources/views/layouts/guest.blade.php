@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> Catsol </title>
+  <title> 5DDST! @yield('title') </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
@@ -42,7 +42,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4 m-4">
                 <div class="card-body shadow mt-4">
-                    <div class="text-center"><img src="images/favicon.png" alt="" ></div>
+                    <div class="text-center"><img src="images/favicon.png" alt="" width="120" ></div>
                     {{$slot}}
                 </div>
             </div>

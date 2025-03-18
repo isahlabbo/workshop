@@ -38,21 +38,27 @@ class RegisterAllWorkshopCommand extends Command
      */
     public function handle()
     {
-        foreach($this->getData() as $category){
-            $workshopCategory = Programme::firstOrCreate(['name'=>$category['name'],'icon'=>$category['icon']]);
-            foreach($category['workshops'] as $workshop){
-                $newWorkshop = $workshopCategory->workshops()->firstOrCreate([
+        foreach($this->getData() as $programme){
+            $newProgramme = Programme::firstOrCreate([
+                'name'=>$programme['name'],
+                'icon'=>$programme['icon']
+                ]);
+            foreach($programme['workshops'] as $workshop){
+                $newWorkshop = $newProgramme->workshops()->firstOrCreate([
                     'title'=>$workshop['title'],
                     'icon'=>$workshop['icon'],
                     'description'=>$workshop['description']
-                    ]);
-                foreach($newWorkshop['topics'] as $topic){
-                    $newTopic = $newWorkshop->topics()->firstOrCreate([
-                        'title'=>$topic['title'],
-                        'day'=>$topic['day']
-                    ]);
-                    foreach($newTopic['subTopics'] as $subTopic){
-                        $newTopic->subTopics()->firstOrCreate(['title'=>$subTopic]);
+                ]);
+                if(isset($workshop['topics'])){
+                    foreach($workshop['topics'] as $topic){
+                
+                        $newTopic = $newWorkshop->topics()->firstOrCreate([
+                            'title'=>$topic['title'],
+                            'day'=>$topic['day']
+                        ]);
+                        foreach($topic['subTopics'] as $subTopic){
+                            $newTopic->subTopics()->firstOrCreate(['title'=>$subTopic]);
+                        }
                     }
                 }
             }

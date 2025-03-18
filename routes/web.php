@@ -23,13 +23,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     
-    Route::name('business.')
-    ->prefix('/business')
+    Route::name('workshop.')
+    ->prefix('/workshop')
     ->group(function (){
-        Route::get('/', 'BusinessController@index')->name('index');    
-        Route::post('/register', 'BusinessController@register')->name('register');    
-        Route::post('/{BusinessId}/update', 'BusinessController@update')->name('update');    
-        Route::get('/{BusinessId}/delete', 'BusinessController@delete')->name('delete');        
+        Route::get('/', 'WorkshopController@index')->name('index');    
+        Route::get('/{workshopId}/view', 'WorkshopController@view')->name('view');    
+        Route::post('/register', 'WorkshopController@register')->name('register');    
+        Route::post('/{WorkshopId}/update', 'WorkshopController@update')->name('update');    
+        Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
     });
 
     

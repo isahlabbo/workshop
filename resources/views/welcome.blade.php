@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5-Day Digital Skills Workshop</title>
+    <title>5-DDST ! Welcome</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
@@ -50,14 +50,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto"> 
-            @foreach(App\Models\Category::all() as $category)
+            @foreach(App\Models\Programme::all() as $programme)
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
-                    <span><i class="{{$category->icon}}"></i></span> <span><b>{{$category->name}}</b></span>
+                    <span><i class="{{$programme->icon}}"></i></span> <span><b>{{$programme->name}}</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown">
-                @foreach($category->workshops as $currentWorkshop)
+                @foreach($programme->workshops as $currentWorkshop)
                     <a class="nav-link" style="color: rgb(0, 150, 215);" href="{{route('workshop.view',[$currentWorkshop->id])}}"><span><i class="{{$currentWorkshop->icon}}"></i></span> {{$currentWorkshop->title}}</a>
                     @endforeach
                 </div>
@@ -75,7 +75,7 @@
         <div class="contaivner">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="{{asset('images/w2.png')}}" width="100%" height="500" alt="">
+                    <img src="{{asset('images\w2.png')}}" width="100%" height="500" alt="">
                 </div>
                 <div class="col-md-5" style="text-align: left; position: absolute; top: 150px; padding: 50px;">
                     <h1 style="color:white;"><b>Strengthen Your CV in Only 5 Days Through our Comprehensive Computer Training Workshops</b></h1>
@@ -87,17 +87,17 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            @foreach(App\Models\Category::all() as $category)
+            @foreach(App\Models\programme::all() as $programme)
             <div  class="mb-5">
-                <h3 class="text-center" style="color: rgb(0,0,64);">{{$category->name}}</h3>
+                <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}}</h3>
                 <div class="row">
-                    @foreach($category->workshops as $workshop)
+                    @foreach($programme->workshops as $workshop)
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body text-center">
                                 <i style="color: rgb(0, 150, 215) !important;"class="{{$workshop->icon}} fa-3x mb-3"></i>
                                 <h5 class="card-title" style="color: rgb(0,0,64);">{{$workshop->title}}</h5>
-                                <p class="card-text">{{$workshop->description}} <a href="{{route('workshop.view',[$workshop->id])}}">view details information here</a></p>
+                                <p class="card-text">{{$workshop->description}} <a href="{{route('workshop.view',[$workshop->id])}}">view details information and apply here</a></p>
                             </div>
                         </div>
                     </div>
