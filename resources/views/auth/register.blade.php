@@ -54,10 +54,11 @@
                     {{ __('Already registered?') }}
                 </a><br>
 
+                
+                <a href="{{url('/')}}" class="btn btn-primary">Home</a>
                 <x-jet-button class="btn btn-primary">
                     {{ __('Register') }}
                 </x-jet-button>
-                <a href="{{url('/')}}" class="btn btn-primary">Home</a>
             </div>
         </form>
     </x-jet-authentication-card>

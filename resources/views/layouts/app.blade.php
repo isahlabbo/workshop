@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto"> 
             
-            
+            @if(Auth::user()->role == 'admin')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
@@ -63,10 +63,28 @@
                   @endforeach
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
-            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
-            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a></li>
-            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a></li>
+            @endif
+
+            @if(Auth::user()->role == 'student')
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-receipt"></i></span><b> Receipt</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-graduation-cap"></i></span> <span><b>Certificates</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                  @foreach(Auth::user()->certificates as $certificate)
+                    <a class="nav-link"  href="{{route('workshop.view',[$certificate->id])}}"><span></span> {{$programme->workshop->title}}</a>
+                  @endforeach
+                </div>
+            </li>
+            @endif
             <li><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-out-alt"></i></span><b>Signout</b></a></li>
             <form action="{{route('logout')}}" method="post" id="logout-form">@csrf</form>
             </ul>
@@ -83,8 +101,8 @@
 
     
 
-    
-
+    @yield('scripts')
+      
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
