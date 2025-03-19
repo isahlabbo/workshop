@@ -31,6 +31,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::post('/register', 'WorkshopController@register')->name('register');    
         Route::post('/{WorkshopId}/update', 'WorkshopController@update')->name('update');    
         Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
+
+        Route::name('payment.')
+            ->prefix('/payment')
+            ->group(function (){
+                Route::post('/', 'PaymentController@authorizePayment')->name('authorize');    
+                Route::get('/collback', 'PaymentController@callback')->name('callback');    
+                        
+        });
     });
 
     Route::name('programme.')

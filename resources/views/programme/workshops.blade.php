@@ -6,7 +6,7 @@
 
 @section('content')
     
-        <p> You have just a step to register for one of our workshop pls fill the form below</p>
+        <p> You can also search other types of workshops by selecting the type and wait for some seconds</p>
         <div class="application">
             <form id="verifyProgramme" action="{{route('programme.verify')}}" method="post">
                 @csrf
@@ -19,7 +19,7 @@
             </form>
         </div>
     <div class="section">
-    <h5 class="text text-primary text-center mt-4">{{$programme->name}} Workshops</h5>
+    <h5 class="text text-primary text-center m-4">{{$programme->name}} Workshops</h5>
     <div class="workshops">
     <div class="row">
                     @foreach($programme->workshops as $workshop)
