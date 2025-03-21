@@ -6,7 +6,20 @@
 
 @section('content')
     @if(Auth::user()->role == 'admin')
-        Dashboard
+        @foreach(App\Models\Programme::all() as $programme)
+            <div class="card-body shadow mb-4">
+            <div class="row">
+            @foreach($programme->workshops as $workshop)
+            <div class="col-md-3">
+                <div class="card-body" style="border-width: 0px 0px 0px 4px; border-style: solid; border-color: blue;">
+                    <p><i class="{{$workshop->icon}}"></i> <br>{{$workshop->title}}</p>
+                    <p style="color: darkblue;">{{count($workshop->applications)}} Applications @if(count($workshop->applications)>0)<br><a href="">Create Schedule and Allocate all Registered Participants</a>@endif</p>
+                </div>
+            </div>
+            @endforeach
+            </div>
+            </div>
+        @endforeach
     @elseif(Auth::user()->role == 'facilitator')
 
     @else
@@ -28,9 +41,9 @@
         <p><i class="{{$application->workshop->icon}}"></i> {{$application->workshop->title}}</p>
        <div class="row">
        <div class="col-md-6">
-        <table>
+        <table class="table table-sm table-striped">
             <tr>
-                <td width="250">Payment Status:</td>
+                <td >Payment Status:</td>
                 <td>{{$application->payment->status ?? 'Pending'}}</td>
             </tr>
             <tr>
