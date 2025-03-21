@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplicationsTable extends Migration
+class CreateSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('centre_id');
             $table->foreignId('workshop_id');
-            $table->foreignId('schedule_id')->nullable();
-            $table->string('language');
-            $table->string('method');
-            $table->string('schedule');
-            $table->string('status')->default('pending');
+            $table->string('time');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->date('assessment_date');
+            $table->date('certificate_distribution_date');
+            $table->string('status')->default('open');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ class CreateApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('schedules');
     }
 }

@@ -13,7 +13,6 @@
                 <th>AMOUNT</th>
                 <th>STATUS</th>
                 <th>ATTEMPTS</th>
-               
             </tr>
             
         </thead>
