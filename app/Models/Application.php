@@ -12,6 +12,11 @@ class Application extends BaseModel
         return $this->belongsTo(User::class);
     }
 
+    public function workshop()
+    {
+        return $this->belongsTo(Workshop::class);
+    }
+
     public function payment()
     {
         return $this->hasOne(Payment::class);
