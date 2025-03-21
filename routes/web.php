@@ -36,7 +36,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::name('payment.')
         ->prefix('/payment')
         ->group(function (){
-            Route::post('/', 'PaymentController@authorizePayment')->name('authorize');    
+            Route::get('/', 'PaymentController@index')->name('index');    
+            Route::post('/authorize', 'PaymentController@authorizePayment')->name('authorize');    
             Route::get('/{applicationId}/collback', 'PaymentController@callback')->name('callback');    
                     
     });

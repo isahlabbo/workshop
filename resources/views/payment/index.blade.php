@@ -10,6 +10,8 @@
                 <th>NAME</th>
                 <th>EMAIL</th>
                 <th>WORKSHOP</th>
+                <th>AMOUNT</th>
+                <th>STATUS</th>
                 <th>ATTEMPTS</th>
                
             </tr>
@@ -22,6 +24,8 @@
                     <td>{{$payment->application->user->name}}</td>
                     <td>{{$payment->application->user->email}}</a></td>
                     <td>{{$payment->application->workshop->title}}</a></td>
+                    <td>{{number_format($payment->amount, 2)}}</a></td>
+                    <td>{{$payment->status}}</a></td>
                     <td>{{count($payment->paymentAttempts)}}</td>
                    
                 </tr>
