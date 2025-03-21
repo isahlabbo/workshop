@@ -22,6 +22,11 @@ class Workshop extends BaseModel
        return $this->hasMany(WorkshopFee::class);
     }
 
+    public function applications()
+    {
+       return $this->hasMany(Application::class);
+    }
+
     public function totalFees()
     {
         $total = 0;

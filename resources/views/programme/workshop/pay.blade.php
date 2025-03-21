@@ -9,40 +9,43 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('workshop.payment.authorize')}}" method="post">
+                <form action="{{route('payment.authorize')}}" method="post">
                     @csrf
-                    
-                    <input type="hidden" disabled name="amount" value="{{$workshop->totalFees()}}" class="form-control">
+                    <p>Note: that this registration require to make the payment of {{number_format($workshop->totalFees(),2)}} and transaction chages of less than 2%, and this Payment can be done online using Card, USSD, NQR, Bank Transfer and more.. </p>
+                    <input type="hidden" name="amount" value="{{200 ?? $workshop->totalFees()}}">
+                    <input type="hidden" name="title" value="{{$workshop->title}}">
+                    <input type="hidden" name="phone" value="08162463010">
+                    <input type="hidden" name="workshopId" value="{{$workshop->id}}">
                     
                     <div class="form-group">
                         <label for="workshop">Mode of Workshop</label>
-                        <select name="workshop" id="" class="form-control">
+                        <select name="method" id="workshop" class="form-control">
                             <option value="">Select Method</option>
-                            <option value="">Online</option>
-                            <option value="">Physical</option>
-                            <option value="">Blended (Online & Phisical)</option>
+                            <option value="online">Online</option>
+                            <option value="physical">Physical</option>
+                            <option value="blended">Blended (Online & Phisical)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="workshop">Preferred Language</label>
-                        <select name="workshop" id="" class="form-control">
+                        <label for="language">Preferred Language</label>
+                        <select name="language" id="language" class="form-control">
                             <option value="">Select Language</option>
-                            <option value="">English</option>
-                            <option value="">Hausa</option>
-                            <option value="">Combine (English & Hausa)</option>
+                            <option value="english">English</option>
+                            <option value="hausa">Hausa</option>
+                            <option value="combine">Combine (English & Hausa)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="workshop">Schedule</label>
-                        <select name="workshop" id="" class="form-control">
+                        <label for="schedule">Schedule</label>
+                        <select name="schedule" id="language" class="form-control">
                             <option value="">Select Schedule</option>
-                            <option value="">Morning</option>
-                            <option value="">Afternoon</option>
-                            <option value="">Evening</option>
-                            <option value="">Night</option>
-                            <option value="">Weekend</option>
+                            <option value="morning">Morning</option>
+                            <option value="afternoon">Afternoon</option>
+                            <option value="evening">Evening</option>
+                            <option value="night">Night</option>
+                            <option value="weekend">Weekend</option>
                         </select>
                     </div>
                     <button class="btn btn-info"><i class="fas fa-wallet"></i> Pay Now</button>

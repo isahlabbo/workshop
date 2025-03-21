@@ -64,7 +64,7 @@
                 </div>
             </li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
+            <li><a class="nav-link" href="{{route('application.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a></li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a></li>
             @endif
