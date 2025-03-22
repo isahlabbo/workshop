@@ -1,30 +1,38 @@
 
-<div class="modal fade" id="edit_{{$production->id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit_{{$centre->id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                <b>EDIT {{strtoupper($production->name)}}</b></h5>
+                <b>EDIT {{strtoupper($centre->name)}}</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('production.update',[$production->id])}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('centre.update',[$centre->id])}}" method="post">
                     @csrf
                     <div class="form-group">
-                        <input type="text" class="input-group form-control" placeholder="NAME" value="{{$production->name}}" name="name">
+                    <label for="">Centre Name</label>
+                        <input type="text" class="input-group form-control" placeholder="Name" value="{{$centre->name}}" name="name">
                     </div>
-                    <br>
+
                 
                     <div class="form-group">
-                        <input type="text" class="input-group form-control" placeholder="QUANTITY" value="{{$production->quantity}}" name="quantity">
+                    <label for="">Centre Address</label>
+                        <input type="text" class="input-group form-control" placeholder="Address" value="{{$centre->address}}" name="address">
                     </div>
-                    <br>
+
                     <div class="form-group">
-                        <input type="text" class="input-group form-control" placeholder="PPRICE" value="{{$production->price}}" name="price">
+                        <label for="">Centre Capacity</label>
+                        <input type="text" class="input-group form-control" placeholder="Capacity" value="{{$centre->capacity}}" name="capacity">
                     </div>
-                    <br>
+
+                    <div class="form-group">
+                        <label for="">Centre Contact</label>
+                        <input type="text" class="input-group form-control" placeholder="Contact" value="{{$centre->contact}}" name="contact">
+                    </div>
+
                     <button class="btn btn-primary">UPDATE</button>
                 </form>
             </div>

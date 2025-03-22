@@ -51,6 +51,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                     
     });
 
+    Route::name('centre.')
+        ->prefix('/centre')
+        ->group(function (){
+            Route::get('/', 'CentreController@index')->name('index');    
+            Route::post('/register', 'CentreController@register')->name('register');    
+            Route::post('/{centreId}/update', 'CentreController@update')->name('update');    
+            Route::get('/{centreId}/delete', 'CentreController@delete')->name('delete');    
+    });
+
     Route::name('application.')
     ->prefix('/application')
     ->group(function (){
