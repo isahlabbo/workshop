@@ -49,20 +49,34 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto"> 
-            @foreach(App\Models\Programme::all() as $programme)
+            <ul class="navbar-nav ml-auto">
+            <li><a class="nav-link" href="" style="color: rgb(0, 150, 215);"><span><i class="fas fa-users"></i></span><b> Who We Are</b></a></li> 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
-                    <span><i class="{{$programme->icon}}"></i></span> <span><b>{{$programme->name}}</b></span>
+                    <span><i class="fas fa-book"></i></span> <span><b>Management</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown">
-                @foreach($programme->workshops as $currentWorkshop)
-                    <a class="nav-link" style="color: rgb(0, 150, 215);" href="{{route('workshop.view',[$currentWorkshop->id])}}"><span><i class="{{$currentWorkshop->icon}}"></i></span> {{$currentWorkshop->title}}</a>
-                    @endforeach
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                 
+                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Coordinator</a>
+                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Assessor</a>
+                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Facilitators</a>
+                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Internal Quality Assurance</a>
+                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> External Quality Assuarance</a>
+                  
                 </div>
             </li>
-            @endforeach
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-book"></i></span> <span><b>Programmes</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                  @foreach(App\Models\Programme::all() as $programme)
+                    <a class="nav-link"  href="#programme_{{$programme->id}}"><span><i class="{{$programme->icon}}"></i></span> {{$programme->name}}</a>
+                  @endforeach
+                </div>
+            </li>
             <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
             <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
             </ul>
@@ -88,7 +102,7 @@
     <section id="services" class="services">
         <div class="container">
             @foreach(App\Models\programme::all() as $programme)
-            <div  class="mb-5">
+            <div  class="mb-5" id="programme_{{$programme->id}}">
                 <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}}</h3>
                 <div class="row">
                     @foreach($programme->workshops as $workshop)
