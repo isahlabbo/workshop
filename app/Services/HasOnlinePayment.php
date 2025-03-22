@@ -1,5 +1,9 @@
 <?php
 namespace App\Services;
+use Illuminate\Http\Request;
+use App\Models\Application;
+use EdwardMuss\Rave\Facades\Rave as Flutterwave;
+use Auth;
 
 trait HasOnlinePayment{
     
@@ -8,9 +12,9 @@ trait HasOnlinePayment{
         // initialize the application
         $application = Auth::user()->applications()->firstOrCreate([
             'workshop_id'=>$request->workshopId,
-            'language'=>$request->language,
-            'method'=>$request->method,
-            'schedule'=>$request->schedule,
+            'prefer_language'=>$request->language,
+            'prefer_method'=>$request->method,
+            'prefer_schedule'=>$request->schedule,
         ]);
 
         //This generates a payment reference

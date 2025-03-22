@@ -28,7 +28,8 @@ class CreateFeesTable extends Migration
             ['item'=>'Portal','amount'=>500],
             ['item'=>'Certificate Processing','amount'=>3000],
             ['item'=>'Maintenance','amount'=>1200],
-            ['item'=>'Resources','amount'=>2000],
+            ['item'=>'Materials','amount'=>2000],
+            ['item'=>'Use of Resouces','amount'=>1800],
         ];
 
         foreach($fees as $fee){

@@ -79,8 +79,8 @@
                     <span><i class="fas fa-graduation-cap"></i></span> <span><b>Certificates</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                  @foreach(Auth::user()->certificates as $certificate)
-                    <a class="nav-link"  href="{{route('workshop.view',[$certificate->id])}}"><span></span> {{$programme->workshop->title}}</a>
+                  @foreach(Auth::user()->applications as $application)
+                    <a class="nav-link"  href="#"><span><i class="fas fa-graduation-cap"></i></span> {{$application->workshop->title}}</a>
                   @endforeach
                 </div>
             </li>
@@ -96,6 +96,7 @@
     <section class="dashboard">
         <div class="container">
            @yield('content')
+           @include('sweetalert::alert')
         </div>
     </section>
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Services\HasOnlinePayment as PayOnline;
 use EdwardMuss\Rave\Facades\Rave as Flutterwave;
 use Auth;

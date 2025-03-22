@@ -42,6 +42,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                     
     });
 
+    Route::name('schedule.')
+        ->prefix('/schedule')
+        ->group(function (){
+            Route::get('/', 'ScheduleController@index')->name('index');    
+            Route::post('/{workshopId}/register', 'ScheduleController@register')->name('register');    
+            Route::get('/{workshopId}/create', 'ScheduleController@create')->name('create');    
+                    
+    });
+
     Route::name('application.')
     ->prefix('/application')
     ->group(function (){

@@ -18,9 +18,9 @@ class CreateApplicationsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('workshop_id');
             $table->foreignId('schedule_id')->nullable();
-            $table->string('language');
-            $table->string('method');
-            $table->string('schedule');
+            $table->string('prefer_language');
+            $table->string('prefer_method');
+            $table->string('prefer_schedule');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

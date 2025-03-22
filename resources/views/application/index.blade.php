@@ -24,9 +24,9 @@
                     <td>{{$application->user->name}}</td>
                     <td>{{$application->user->email}}</a></td>
                     <td>{{$application->workshop->title}}</a></td>
-                    <td>{{$application->method}}</td>
-                    <td>{{$application->language}}</td>
-                    <td>{{$application->schedule}}</td>
+                    <td>{{$application->prefer_method}}</td>
+                    <td>{{$application->prefer_language}}</td>
+                    <td>{{$application->prefer_schedule}}</td>
                     <td>{{$application->payment->status}}</td>
                    
                 </tr>

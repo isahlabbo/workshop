@@ -13,7 +13,7 @@
             <div class="col-md-3">
                 <div class="card-body" style="border-width: 0px 0px 0px 4px; border-style: solid; border-color: blue;">
                     <p><i class="{{$workshop->icon}}"></i> <br>{{$workshop->title}}</p>
-                    <p style="color: darkblue;">{{count($workshop->applications)}} Applications @if(count($workshop->applications)>0)<br><a href="">Create Schedule and Allocate all Registered Participants</a>@endif</p>
+                    <p style="color: darkblue;">{{count($workshop->applications)}} Applications @if(count($workshop->applications)>0)<br><a href="{{route('schedule.create',[$workshop->id])}}">Create Schedule and Allocate all Registered Participants</a>@endif</p>
                 </div>
             </div>
             @endforeach
@@ -60,23 +60,23 @@
             </tr>
             <tr>
                 <td>Time:</td>
-                <td>{{$application->schedule->time ?? 'Pending'}}</td>
+                <td>{{date('h:i:a', strtotime($application->schedule->time)) ?? 'Pending'}}</td>
             </tr>
             <tr>
                 <td>Start Date:</td>
-                <td>{{$application->schedule->start_date ?? 'Pending'}}</td>
+                <td>{{date('d M, Y', strtotime($application->schedule->start_date)) ?? 'Pending'}}</td>
             </tr>
             <tr>
                 <td>End Data:</td>
-                <td>{{$application->schedule->end_date ?? 'Pending'}}</td>
+                <td>{{date('d M, Y', strtotime($application->schedule->end_date)) ?? 'Pending'}}</td>
             </tr>
             <tr>
                 <td>Assessment Date:</td>
-                <td>{{$application->schedule->assessment_date ?? 'Pending'}}</td>
+                <td>{{date('d M, Y', strtotime($application->schedule->assessment_date)) ?? 'Pending'}}</td>
             </tr>
             <tr>
                 <td>Certificate Collection:</td>
-                <td>{{$application->schedule->certificate_distribution_date ?? 'Pending'}}</td>
+                <td>{{date('d M, Y', strtotime($application->schedule->certificate_distribution_date)) ?? 'Pending'}}</td>
             </tr>
         </table>
         </div>
