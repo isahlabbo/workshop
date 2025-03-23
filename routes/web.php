@@ -33,6 +33,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
     });
 
+    Route::name('facilitator.')
+    ->prefix('/facilitator')
+    ->group(function (){
+        Route::get('/', 'FacilitatorController@index')->name('index');    
+        Route::post('/register', 'FacilitatorController@register')->name('register');    
+        Route::post('/{facilitatorId}/update', 'FacilitatorController@update')->name('update');    
+        Route::get('/{facilitatorId}/delete', 'FacilitatorController@delete')->name('delete');    
+                
+});
+
     Route::name('payment.')
         ->prefix('/payment')
         ->group(function (){
