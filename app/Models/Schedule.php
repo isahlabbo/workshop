@@ -21,4 +21,17 @@ class Schedule extends BaseModel
     {
         return $this->hasMany(Application::class);
     }
+
+    public function topicAllocations()
+    {
+        return $this->hasMany(TopicAllocation::class);
+    }
+    public function facilitator(Topic $topic)
+    {
+        $allocation = $this->topicAllocations()->where('topic_id', $topic->id)->first();
+        if($allocation){
+            return $allocation->user;
+        }
+       
+    }
 }

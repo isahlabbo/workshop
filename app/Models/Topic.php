@@ -11,4 +11,10 @@ class Topic extends BaseModel
     {
         return $this->hasMany(SubTopic::class);
     }
+
+    public function topicAllocations()
+    {
+        return $this->hasMany(TopicAllocation::class);
+    }
+    
 }

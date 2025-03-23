@@ -66,8 +66,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Certificate::class);
     }
+
     public function applications()
     {
         return $this->hasMany(Application::class);
+    }
+
+    public function topicAllocations()
+    {
+        return $this->hasMany(TopicAllocation::class);
     }
 }

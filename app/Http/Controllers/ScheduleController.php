@@ -9,6 +9,11 @@ use App\Models\Schedule;
 
 class ScheduleController extends Controller
 {
+    public function index()
+    {
+        return view('schedule.index');
+    }
+
     public function create($workshopId)
     {
         return view('schedule.create',['workshop'=>Workshop::find($workshopId)]);

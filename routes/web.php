@@ -58,7 +58,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             Route::get('/', 'ScheduleController@index')->name('index');    
             Route::post('/{workshopId}/register', 'ScheduleController@register')->name('register');    
             Route::get('/{workshopId}/create', 'ScheduleController@create')->name('create');    
-                    
+            Route::get('/{workshopId}/delete', 'ScheduleController@delete')->name('delete');    
+           
+        Route::name('allocation.')
+            ->prefix('/{scheduleId}/allocation')
+            ->group(function (){
+                Route::get('/', 'AllocationController@index')->name('index');    
+                Route::post('/{workshopId}/register', 'AllocationController@register')->name('register');    
+                   
+                        
+        });            
     });
 
     Route::name('centre.')
