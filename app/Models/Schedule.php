@@ -26,6 +26,9 @@ class Schedule extends BaseModel
     {
         return $this->hasMany(TopicAllocation::class);
     }
+
+    
+
     public function facilitator(Topic $topic)
     {
         $allocation = $this->topicAllocations()->where('topic_id', $topic->id)->first();

@@ -16,5 +16,10 @@ class Topic extends BaseModel
     {
         return $this->hasMany(TopicAllocation::class);
     }
+
+    public function workshop()
+    {
+        return $this->belongsTo(Workshop::class);
+    }
     
 }

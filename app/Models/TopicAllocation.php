@@ -17,6 +17,11 @@ class TopicAllocation extends BaseModel
         return $this->belongsTo(Schedule::class);
     }
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     public function topic()
     {
         return $this->belongsTo(Topic::class);

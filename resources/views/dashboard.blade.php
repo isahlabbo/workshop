@@ -12,7 +12,7 @@
             @foreach($programme->workshops as $workshop)
             <div class="col-md-3">
                 <div class="card-body" style="border-width: 0px 0px 0px 4px; border-style: solid; border-color: blue;">
-                    <p><i class="{{$workshop->icon}}"></i> <br>{{$workshop->title}}</p>
+                    <p><i class="{{$workshop->icon}}"></i> <br> {{$workshop->title}}</p>
                     <p style="color: darkblue;">{{count($workshop->applications)}} Applications @if(count($workshop->applications)>0)<br><a href="{{route('schedule.create',[$workshop->id])}}">Create Schedule and Allocate all Registered Participants</a>@endif</p>
                 </div>
             </div>
@@ -21,7 +21,48 @@
             </div>
         @endforeach
     @elseif(Auth::user()->role == 'facilitator')
-
+    
+            <div class="card-body shadow mb-4">
+            <div class="row">
+            @foreach(Auth::user()->topicAllocations as $topicAllocation)
+            <div class="col-md-6">
+                <div class="card-body" style="border-width: 0px 0px 0px 4px; border-style: solid; border-color: blue;">
+                    <p class="text text-primary"><i class="{{$topicAllocation->topic->workshop->icon}}"></i> <br>You have Workshop Presentation on {{$topicAllocation->topic->workshop->title}}</p>
+                    <p><b>Topic:</b> {{$topicAllocation->topic->title}}</p>
+                    <p><b>Content to be Cover:</b>
+                    @foreach($topicAllocation->topic->subTopics as $subTopic)
+                    <li>{{$subTopic->title}}</li>
+                    @endforeach
+                    </p>
+                    <p><b>Centre</b>
+                    <table>
+                    <tr>
+                        <td>Name: </td>
+                        <td>{{$topicAllocation->schedule->centre->name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address: </td>
+                        <td>{{$topicAllocation->schedule->centre->address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Capacity: </td>
+                        <td>{{$topicAllocation->schedule->centre->capacity}}</td>
+                    </tr>
+                    <tr>
+                        <td>Participants: </td>
+                        <td>{{count($topicAllocation->schedule->applications)}}</td>
+                    </tr>
+                    </table>
+                    </p>
+                    @if(count($topicAllocation->questions) <1)
+                        <div class="alert alert-danger">Pls upload assessment <a href="{{route('schedule.allocation.question.index',[$topicAllocation->id])}}">question of your topic</a></div>
+                    @endif
+                </div>
+            </div>
+            @endforeach
+            </div>
+            </div>
+       
     @else
         <p> You have just a step to register for one of our workshop pls fill the form below</p>
         <div class="application">

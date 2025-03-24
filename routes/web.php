@@ -61,12 +61,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             Route::get('/{workshopId}/delete', 'ScheduleController@delete')->name('delete');    
            
         Route::name('allocation.')
-            ->prefix('/{scheduleId}/allocation')
+            ->prefix('/allocation')
             ->group(function (){
-                Route::get('/', 'AllocationController@index')->name('index');    
+                Route::get('{scheduleId}/', 'AllocationController@index')->name('index');    
                 Route::post('/{workshopId}/register', 'AllocationController@register')->name('register');    
-                   
-                        
+               
+                Route::name('question.')
+                ->prefix('/question')
+                ->group(function (){
+                    Route::get('/{allocationId}', 'QuestionController@index')->name('index');    
+                    Route::post('/{allocationId}/register', 'QuestionController@register')->name('register');    
+                       
+                            
+            });         
         });            
     });
 

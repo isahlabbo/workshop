@@ -87,6 +87,11 @@
                 </div>
             </li>
             @endif
+
+            @if(Auth::user()->role == 'facilitator')
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
+            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
+            @endif
             <li><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-out-alt"></i></span><b>Signout</b></a></li>
             <form action="{{route('logout')}}" method="post" id="logout-form">@csrf</form>
             </ul>
