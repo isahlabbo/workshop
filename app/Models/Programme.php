@@ -11,4 +11,9 @@ class Programme extends BaseModel
     {
         return $this->hasMany(Workshop::class);
     }
+
+    public function bootcamps()
+    {
+        return $this->hasMany(Bootcamp::class);
+    }
 }

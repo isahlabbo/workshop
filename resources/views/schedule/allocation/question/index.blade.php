@@ -10,6 +10,7 @@
             <th>QUESTION</th>
             <th>OPTIONS</th>
             <th>ANSWER</th>
+            <th></th>
         </thead>
         <tbody>
         @foreach($allocation->questions as $question)
@@ -28,11 +29,20 @@
             @endif
             @endforeach
             </td>
+            <td>
+            <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit_{{$question->id}}">Edit</button>
+            <a href="{{route('schedule.allocation.question.delete',[$question->id])}}" onclick="return confirm('Are you sure, you want to delete this question');">
+            <button class="btn btn-sm btn-danger">Delete</button>
+            </a>
+            </td>
         </tr>
+        @include('schedule.allocation.question.edit')
         @endforeach
         </tbody>
    </table>
+   @if(count($question->options) < 10)
    <p>
+        <p class="text text-primary"><b>Please submit a question</b></p>
         <form enctype="multipart/form-data" action="{{route('schedule.allocation.question.register',[$allocation->id])}}" method="post">
             @csrf
             <div class="form-group">
@@ -62,4 +72,7 @@
             <button class="btn btn-primary">Add Question</button>
         </form>
         </p>
+    @else
+        <div class="alert alert-success">Thanks, for given all Questiond</div>
+    @endif    
     @endsection

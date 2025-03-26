@@ -69,10 +69,21 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
-                    <span><i class="fas fa-book"></i></span> <span><b>Programmes</b></span>
+                    <span><i class="fas fa-book"></i></span> <span><b>Bootcamps</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                  @foreach(App\Models\Programme::all() as $programme)
+                  @foreach(App\Models\Programme::where('type', 'bootcamp')->get() as $programme)
+                    <a class="nav-link"  href="#programme_{{$programme->id}}"><span><i class="{{$programme->icon}}"></i></span> {{$programme->name}}</a>
+                  @endforeach
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-book"></i></span> <span><b>Workshops</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                  @foreach(App\Models\Programme::where('type', 'workshop')->get() as $programme)
                     <a class="nav-link"  href="#programme_{{$programme->id}}"><span><i class="{{$programme->icon}}"></i></span> {{$programme->name}}</a>
                   @endforeach
                 </div>
@@ -105,6 +116,7 @@
             <div  class="mb-5" id="programme_{{$programme->id}}">
                 <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}}</h3>
                 <div class="row">
+                @if($programme->type == 'workshop')
                     @foreach($programme->workshops as $workshop)
                     <div class="col-md-4">
                         <div class="card">
@@ -116,6 +128,19 @@
                         </div>
                     </div>
                     @endforeach
+                @else
+                @foreach($programme->bootcamps as $bootcamp)
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i style="color: rgb(0, 150, 215) !important;"class="{{$bootcamp->icon}} fa-3x mb-3"></i>
+                                <h5 class="card-title" style="color: rgb(0,0,64);">{{$bootcamp->title}}</h5>
+                                <p class="card-text">{{$bootcamp->description}} <a href="">view details information and apply here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                @endif    
                 </div>
             </div>
             @endforeach

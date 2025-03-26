@@ -41,7 +41,8 @@ class RegisterAllWorkshopCommand extends Command
         foreach($this->getData() as $programme){
             $newProgramme = Programme::firstOrCreate([
                 'name'=>$programme['name'],
-                'icon'=>$programme['icon']
+                'icon'=>$programme['icon'],
+                'type'=>'workshop'
                 ]);
             foreach($programme['workshops'] as $workshop){
                 $newWorkshop = $newProgramme->workshops()->firstOrCreate([

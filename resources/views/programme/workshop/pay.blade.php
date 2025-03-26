@@ -12,7 +12,7 @@
                 <form action="{{route('payment.authorize')}}" method="post">
                     @csrf
                     <p>Note: that this registration require to make the payment of {{number_format($workshop->totalFees(),2)}} and transaction chages of less than 2%, and this Payment can be done online using Card, USSD, NQR, Bank Transfer and more.. </p>
-                    <input type="hidden" name="amount" value="{{200 ?? $workshop->totalFees()}}">
+                    <input type="hidden" name="amount" value="{{$workshop->totalFees()}}">
                     <input type="hidden" name="title" value="{{$workshop->title}}">
                     <input type="hidden" name="phone" value="08162463010">
                     <input type="hidden" name="workshopId" value="{{$workshop->id}}">

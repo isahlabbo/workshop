@@ -54,7 +54,7 @@
                     </tr>
                     </table>
                     </p>
-                    @if(count($topicAllocation->questions) <1)
+                    @if(count($topicAllocation->questions) < 5)
                         <div class="alert alert-danger">Pls upload assessment <a href="{{route('schedule.allocation.question.index',[$topicAllocation->id])}}">question of your topic</a></div>
                     @endif
                 </div>

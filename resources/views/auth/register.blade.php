@@ -18,6 +18,11 @@
             </div>
 
             <div class="mb-2">
+                <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
+                <x-jet-input id="phone" class="form-control" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
+            </div>
+
+            <div class="mb-2">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="form-control" type="email" name="email" :value="old('email')" required />
             </div>

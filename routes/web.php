@@ -71,8 +71,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                 ->group(function (){
                     Route::get('/{allocationId}', 'QuestionController@index')->name('index');    
                     Route::post('/{allocationId}/register', 'QuestionController@register')->name('register');    
-                       
-                            
+                    Route::post('/{questionId}/update', 'QuestionController@update')->name('update');    
+                    Route::get('/{questionId}/delete', 'QuestionController@delete')->name('delete');             
             });         
         });            
     });
