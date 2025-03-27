@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/workshop/view', function () {
+    return view('workshop');
+})->name('workshops');
+
+Route::get('/view/bootcamps', function () {
+    return view('bootcamp');
+})->name('bootcamps');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

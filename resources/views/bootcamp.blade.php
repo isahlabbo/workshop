@@ -75,60 +75,14 @@
         </div>
     </nav>
     
-    
-    <!-- Welcome Section -->
-    <section class="welcome1">
-        <div class="contaivner">
-            <div class="row">
-                <div class="col-md-12">
-                    <img src="{{asset('images\w2.png')}}" width="100%" height="500" alt="">
-                </div>
-                <div class="col-md-5" style="text-align: left; position: absolute; top: 150px; padding: 50px;">
-                    <h1 style="color:white;"><b>Promote your Digital Skill Proficiency with our Comprehensive Bootcamps and Workshops</b></h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="container my-5">
-        <div class="row text-center">
-            <div class="col-md-6">
-                <div class="card p-4 shadow">
-                    <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
-                    <h3>Bootcamp</h3>
-                    <p>A bootcamp is an intensive, structured training program that spans several weeks or months, designed to take participants from beginner to proficient in a specific field, such as coding, cybersecurity, or data science. It follows a well-organized curriculum with hands-on projects, mentorship, and career-oriented learning, making it ideal for individuals looking for deep expertise and job-ready skills. If you are committed to long-term learning and career advancement, a bootcamp is the right choice.</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-4 shadow">
-                    <i class="fas fa-chalkboard-teacher fa-3x text-success mb-3"></i>
-                    <h3>Workshop</h3>
-                    <p>A workshop is a short-term, interactive training session lasting a few hours to a few days, focusing on specific skills or concepts. It is designed to provide quick, practical knowledge through demonstrations, discussions, and hands-on activities. Workshops are ideal for professionals and learners who want to enhance their skills, gain new insights, or stay updated on industry trends without committing to a long program. If you prefer a quick learning experience with immediate application, a workshop is the best option.</p>
-                    <a href="#" class="btn btn-success">Apply Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
+        
             @foreach(App\Models\programme::all() as $programme)
             <div  class="mb-5" id="programme_{{$programme->id}}">
-                <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}}</h3>
+                <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}} Bootcamps</h3>
                 <div class="row">
-                @if($programme->type == 'workshop')
-                    @foreach($programme->workshops as $workshop)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i style="color: rgb(0, 150, 215) !important;"class="{{$workshop->icon}} fa-3x mb-3"></i>
-                                <h5 class="card-title" style="color: rgb(0,0,64);">{{$workshop->title}}</h5>
-                                <p class="card-text">{{$workshop->description}} <a href="{{route('workshop.view',[$workshop->id])}}">view details information and apply here</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                @else
                 @foreach($programme->bootcamps as $bootcamp)
                     <div class="col-md-4">
                         <div class="card">
@@ -140,45 +94,14 @@
                         </div>
                     </div>
                     @endforeach
-                @endif    
+                   
                 </div>
             </div>
             @endforeach
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials bg-light">
-        <div class="container">
-            <h2 class="text-center">Testimonials</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <p class="card-text">"The Digital Literacy Workshop helped me improve my computer skills significantly. I can now navigate the internet and use Microsoft Office with confidence."</p>
-                            <p class="text-muted">- Jamila Sani, Student</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <p class="card-text">"The Cyber Security Training Workshop was an eye-opener. I learned how to protect my data and the importance of cybersecurity in today's digital age."</p>
-                            <p class="text-muted">- Salihu Muhammed, IT Professional</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <p class="card-text">"Thanks to the Data Management and Analysis Workshop, I can now make data-driven decisions that have improved our operational efficiency."</p>
-                            <p class="text-muted">- Adamu Muhammad, Business Manager</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <!-- Footer Section -->
     <footer class="footer bg-dark text-white">
