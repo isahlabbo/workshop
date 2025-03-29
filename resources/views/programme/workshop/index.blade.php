@@ -24,7 +24,7 @@
                         <td></td>
                         <td>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit_{{$workshop->id}}">Edit</button>
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                           <a href="{{route('workshop.delete',[$workshop->id])}}" onclick="return confirm('Are you sure, you want to delete this workshop?')"><button class="btn btn-danger btn-sm">Delete</button></a>
                         </td>
                     </tr>
                     @include('programme.workshop.edit')

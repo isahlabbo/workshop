@@ -19,6 +19,12 @@ class WorkshopController extends Controller
 
     public function update(Request $request, $workshopId)
     {
+        $request->validate([
+            'icon'=>'required',
+            'title'=>'required',
+            'description'=>'required',
+            'programme'=>'required',
+        ]);
         $workshop = Workshop::find($workshopId);
         $workshop->update([
             'title'=>$request->title,
@@ -44,5 +50,13 @@ class WorkshopController extends Controller
             'description'=>$request->description,
         ]);
         return redirect()->route('workshop.index')->withToastSuccess('Workshop Registered');
+    }
+
+    public function delete($workshopId)
+    {
+        
+        $workshop = Workshop::find($workshopId);
+        $workshop->delete();
+        return redirect()->route('workshop.index')->withToastSuccess('Workshop Deleted');
     }
 }
