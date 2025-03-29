@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5-DDST ! @yield('title')</title>
+    <title>DISBAW ! @yield('title')</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
@@ -58,9 +58,10 @@
                     <span><i class="fas fa-book"></i></span> <span><b>Programmes</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                  @foreach(App\Models\Programme::all() as $programme)
-                    <a class="nav-link"  href="{{route('workshop.view',[$programme->id])}}"><span><i class="{{$programme->icon}}"></i></span> {{$programme->name}}</a>
-                  @endforeach
+                  
+                <a class="nav-link"  href="{{route('workshop.index')}}"><span><i class="fas fa-chalkboard-teacher"></i></span> Workshops</a>
+                <a class="nav-link"  href="{{route('bootcamp.index')}}"><span><i class="fas fa-laptop-code"></i></span> Bootcamps</a>
+                 
                 </div>
             </li>
             <li><a class="nav-link" href="{{route('payment.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>

@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> 5DDST! @yield('title') </title>
+  <title>DISBAW! @yield('title') </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />

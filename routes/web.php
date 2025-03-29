@@ -41,6 +41,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
     });
 
+    Route::name('bootcamp.')
+    ->prefix('/bootcamp')
+    ->group(function (){
+        Route::get('/', 'BootcampController@index')->name('index');    
+        Route::get('/{bootcampId}/view', 'BootcampController@view')->name('view');    
+        Route::post('/register', 'BootcampController@register')->name('register');    
+        Route::post('/{bootcampId}/update', 'BootcampController@update')->name('update');    
+        Route::get('/{bootcampId}/delete', 'BootcampController@delete')->name('delete');        
+    });
+
     Route::name('facilitator.')
     ->prefix('/facilitator')
     ->group(function (){

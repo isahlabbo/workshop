@@ -6,20 +6,19 @@
 
 @section('content')
     @if(Auth::user()->role == 'admin')
-        @foreach(App\Models\Programme::all() as $programme)
-            <div class="card-body shadow mb-4">
-            <div class="row">
-            @foreach($programme->workshops as $workshop)
-            <div class="col-md-3">
-                <div class="card-body" style="border-width: 0px 0px 0px 4px; border-style: solid; border-color: blue;">
-                    <p><i class="{{$workshop->icon}}"></i> <br> {{$workshop->title}}</p>
-                    <p style="color: darkblue;">{{count($workshop->applications)}} Applications @if(count($workshop->applications)>0)<br><a href="{{route('schedule.create',[$workshop->id])}}">Create Schedule and Allocate all Registered Participants</a>@endif</p>
-                </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card-body shadow">
+                <h4>Bootcamps</h4>
             </div>
-            @endforeach
+        </div>
+
+        <div class="col-md-6">
+            <div class="card-body shadow">
+                <h4>Workshops</h4>
             </div>
-            </div>
-        @endforeach
+        </div>
+    </div>
     @elseif(Auth::user()->role == 'facilitator')
     
             <div class="card-body shadow mb-4">

@@ -37,6 +37,71 @@
         .testimonials .card {
             margin: 20px 0;
         }
+
+        /* Add the CSS animations here */
+	 @keyframes fadeIn {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+	.fade-in {
+		opacity: 0; /* Initial state */
+		transition: opacity 2s ease-in-out;
+	}
+	.fade-in.in-view {
+		opacity: 1; /* Final state */
+	}
+	@keyframes slideInLeft {
+		from { transform: translateX(-100%); }
+		to { transform: translateX(0); }
+	}
+	.slide-in-left {
+		opacity: 0;
+		transform: translateX(-100%);
+		transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+	}
+	.slide-in-left.in-view {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	@keyframes zoomIn {
+		from { transform: scale(0); }
+		to { transform: scale(1); }
+	}
+	.zoom-in {
+		opacity: 0;
+		transform: scale(0);
+		transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	}
+	.zoom-in.in-view {
+		opacity: 1;
+		transform: scale(1);
+	}
+	@keyframes bounce {
+		0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+		40% { transform: translateY(-30px); }
+		60% { transform: translateY(-15px); }
+	}
+	.bounce {
+		opacity: 0;
+		transition: opacity 2s;
+	}
+	.bounce.in-view {
+		opacity: 1;
+		animation: bounce 2s infinite;
+	}
+	@keyframes flip {
+		from { transform: rotateY(0); }
+		to { transform: rotateY(360deg); }
+	}
+	.flip {
+		opacity: 0;
+		transform: rotateY(0);
+		transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+	}
+	.flip.in-view {
+		opacity: 1;
+		transform: rotateY(360deg);
+	}
     </style>
 </head>
 
@@ -90,60 +155,73 @@
         </div>
     </section>
     <section class="container my-5">
-        <div class="row text-center">
+        <div class="row text-justify">
             <div class="col-md-6">
-                <div class="card p-4 shadow">
-                    <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
-                    <h3>Bootcamp</h3>
-                    <p>A bootcamp is an intensive, structured training program that spans several weeks or months, designed to take participants from beginner to proficient in a specific field, such as coding, cybersecurity, or data science. It follows a well-organized curriculum with hands-on projects, mentorship, and career-oriented learning, making it ideal for individuals looking for deep expertise and job-ready skills. If you are committed to long-term learning and career advancement, a bootcamp is the right choice.</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
+                <div class="card-body p-4 ">
+                <img src="{{asset('images/bootcamp.png')}}" alt="" class="img img-responsive">
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card p-4 shadow">
-                    <i class="fas fa-chalkboard-teacher fa-3x text-success mb-3"></i>
-                    <h3>Workshop</h3>
-                    <p>A workshop is a short-term, interactive training session lasting a few hours to a few days, focusing on specific skills or concepts. It is designed to provide quick, practical knowledge through demonstrations, discussions, and hands-on activities. Workshops are ideal for professionals and learners who want to enhance their skills, gain new insights, or stay updated on industry trends without committing to a long program. If you prefer a quick learning experience with immediate application, a workshop is the best option.</p>
-                    <a href="#" class="btn btn-success">Apply Now</a>
+                <div class="card-body p-4">
+                    <i class="fas fa-laptop-code fa-3x mb-3" style="color: lightpink ;"></i>
+                    <h3>Bootcamp</h3>
+                    <p>Our bootcamp is an intensive, online or physical training program that spans several weeks or months, designed to take participants from beginner to proficient in a specific field, such as coding, cybersecurity, or data science. It follows a well-organized curriculum with hands-on projects, mentorship, and career-oriented learning, making it ideal for individuals looking for deep expertise and job-ready skills. If you are committed to long-term learning and career advancement, a bootcamp is the right choice.</p>
+                    <a href="{{route('bootcamps')}}" class="btn btn-primary">View Bootcamps</a>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+
+    <section style="background-color: rgb(186,223,245)">
+        <div  class="container my-5">
+            <div class="row text-justify">
+                
+                <div class="col-md-6">
+                    <div class="card-body p-4 ">
+                        <i class="fas fa-chalkboard-teacher fa-3x text-secondary mb-3"></i>
+                        <h3>Workshop</h3>
+                        <p>A workshop is a short-term, online or physical interactive training session lasting a few hours to a few days, focusing on specific skills or concepts. It is designed to provide quick, practical knowledge through demonstrations, discussions, and hands-on activities. Workshops are ideal for professionals and learners who want to enhance their skills, gain new insights, or stay updated on industry trends without committing to a long program. If you prefer a quick learning experience with immediate application, a workshop is the best option.</p>
+                        <a href="{{route('workshops')}}" class="btn btn-secondary">View Workshops</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body p-4">
+                        
+                        <img src="{{asset('images/workshop.png')}}" alt="" class="img">
+                    
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            @foreach(App\Models\programme::all() as $programme)
-            <div  class="mb-5" id="programme_{{$programme->id}}">
-                <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}}</h3>
-                <div class="row">
-                @if($programme->type == 'workshop')
-                    @foreach($programme->workshops as $workshop)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i style="color: rgb(0, 150, 215) !important;"class="{{$workshop->icon}} fa-3x mb-3"></i>
-                                <h5 class="card-title" style="color: rgb(0,0,64);">{{$workshop->title}}</h5>
-                                <p class="card-text">{{$workshop->description}} <a href="{{route('workshop.view',[$workshop->id])}}">view details information and apply here</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                @else
-                @foreach($programme->bootcamps as $bootcamp)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i style="color: rgb(0, 150, 215) !important;"class="{{$bootcamp->icon}} fa-3x mb-3"></i>
-                                <h5 class="card-title" style="color: rgb(0,0,64);">{{$bootcamp->title}}</h5>
-                                <p class="card-text">{{$bootcamp->description}} <a href="">view details information and apply here</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                @endif    
+
+    <section class="container my-5">
+    <h3 class="text text-center m-4">Our Programmes</h3>
+        <div class="row text-center">
+        @foreach(App\Models\Programme::all() as $programme)
+            <div class="col-md-3">
+                <div class="card-body mb-2 shadow p-4">
+                    <h6><i class="{{$programme->icon}}"></i> {{$programme->name}}</h6>
+                    <h5 class="text text-primary">
+                    {{$programme->type=='bootcamp' ? count($programme->bootcamps) : count($programme->workshops)}}
+                    {{$programme->type}}s</h5>
                 </div>
             </div>
-            @endforeach
+        @endforeach    
+        </div>
+    </section>
+    <section class="container my-5">
+    <h3 class="text text-center m-4">Our Affiliated Centres</h3>
+        <div class="row text-center">
+        @foreach(App\Models\Centre::all() as $centre)
+            <div class="col-md-4">
+                <div class="card-body mb-2 shadow p-4">
+                    <h6><i class="fas fa-home"></i> {{$centre->name}}</h6>
+                    <p class="text text-primary"><i class="fas fa-address"></i>{{$centre->address}}</p>
+                </div>
+            </div>
+        @endforeach    
         </div>
     </section>
 

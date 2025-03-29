@@ -19,7 +19,7 @@ class CreateWorkshopsTable extends Migration
             $table->string('title');
             $table->string('icon');
             $table->text('description');
-            $table->string('fees')->default('10000');
+            
             $table->timestamps();
         });
 

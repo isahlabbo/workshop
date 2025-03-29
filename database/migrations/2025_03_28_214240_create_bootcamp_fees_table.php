@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-class CreateWorkshopFeesTable extends Migration
+class CreateBootcampFeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +13,13 @@ class CreateWorkshopFeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('workshop_fees', function (Blueprint $table) {
+        Schema::create('bootcamp_fees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workshop_id');
+            $table->foreignId('bootcamp_id');
             $table->foreignId('fee_id');
             $table->string('amount');
             $table->timestamps();
         });
-
-       
     }
 
     /**
@@ -32,6 +29,6 @@ class CreateWorkshopFeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workshop_fees');
+        Schema::dropIfExists('bootcamp_fees');
     }
 }

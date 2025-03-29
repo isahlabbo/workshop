@@ -18,28 +18,24 @@ class CreateFeesTable extends Migration
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
             $table->string('item');
-            $table->string('amount');
             $table->timestamps();
         });
 
         $fees = [
-            ['item'=>'Tuition','amount'=>5000],
-            ['item'=>'Facilitation','amount'=>2000],
-            ['item'=>'Portal','amount'=>500],
-            ['item'=>'Certificate Processing','amount'=>3000],
-            ['item'=>'Maintenance','amount'=>1200],
-            ['item'=>'Materials','amount'=>2000],
-            ['item'=>'Use of Resouces','amount'=>1800],
+            'Tuition',
+            'Facilitation',
+            'Portal',
+            'Certificate Processing',
+            'Maintenance',
+            'Materials',
+            'Use of Resouces',
+            'Mentorship',
         ];
 
         foreach($fees as $fee){
-            App\Models\Fee::firstOrCreate($fee);
+            App\Models\Fee::firstOrCreate(['item'=>$fee]);
         }
-        foreach(Workshop::all() as $workshop){
-            foreach(Fee::all() as $fee){
-                $workshop->workshopFees()->create(['fee_id'=>$fee->id]);
-            }
-        }
+        
     }
 
     /**
