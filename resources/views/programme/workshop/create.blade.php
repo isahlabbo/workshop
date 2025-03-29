@@ -1,42 +1,40 @@
 
-<div class="modal fade" id="edit_{{$workshop->id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="newWorkshop" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                <b>Edit {{$workshop->title}}</b></h5>
+                <b>Register New Workshop</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('workshop.update',[$workshop->id])}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('workshop.register')}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="">Workshop Programme</label>
                         <select name="programme" class="form-control" id="">
-                        <option value="{{$workshop->programme->id}}">{{$workshop->programme->name}}</option>
+                        <option value="">Select Programme</option>
                         @foreach(App\Models\Programme::where('type','workshop')->get() as $programme)
-                            @if($programme->id != $workshop->programme->id)
                             <option value="{{$programme->id}}">{{$programme->name}}</option>
-                            @endif
                         @endforeach
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="">Workshop Icon</label>
-                        <input type="text" class="input-group form-control"  value="{{$workshop->icon}}" name="icon">
+                        <input type="text" class="input-group form-control"  value="{{old('icon')}}" name="icon">
                     </div>
 
                     <div class="form-group">
                         <label for="">Workshop Title</label>
-                        <input type="text" class="input-group form-control"  value="{{$workshop->title}}" name="title">
+                        <input type="text" class="input-group form-control"  value="{{old('title')}}" name="title">
                     </div>
 
                     <div class="form-group">
                         <label for="">Workshop Description</label>
-                        <textarea name="description" id="" class="form-control" cols="30" rows="3">{{$workshop->description}}</textarea>
+                        <textarea name="description" id="" class="form-control" cols="30" rows="3">{{old('decsription')}}</textarea>
                     </div>
 
                     <button class="btn btn-primary btn-sm">Update</button>

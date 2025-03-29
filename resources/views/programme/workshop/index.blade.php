@@ -10,9 +10,10 @@
                 <th>TITLE</th>
                 <th>DESCRIPTION</th>
                 <th>FEES</th>
-                <th><button data-toggle="modal" data-target="#addProduction" class="btn btn-primary btn-sm"><b>+Workshop</b></button></th>
+                <th><button data-toggle="modal" data-target="#newWorkshop" class="btn btn-primary btn-sm"><b>+Workshop</b></button></th>
             </tr>
         </thead>
+        @include('programme.workshop.create')
         <tbody>
             @foreach(App\Models\Programme::where('type','workshop')->get() as $programme)
                 @foreach($programme->workshops as $workshop)

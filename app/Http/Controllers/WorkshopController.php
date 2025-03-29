@@ -27,4 +27,22 @@ class WorkshopController extends Controller
         ]);
         return redirect()->route('workshop.index')->withToastSuccess('Workshop Updated');
     }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'icon'=>'required',
+            'title'=>'required',
+            'description'=>'required',
+            'programme'=>'required',
+        ]);
+
+        Workshop::firstOrCreate([
+            'icon'=>$request->icon,
+            'title'=>$request->title,
+            'programme_id'=>$request->programme,
+            'description'=>$request->description,
+        ]);
+        return redirect()->route('workshop.index')->withToastSuccess('Workshop Registered');
+    }
 }
