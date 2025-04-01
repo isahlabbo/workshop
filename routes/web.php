@@ -31,6 +31,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     
+    Route::name('calendar.')
+    ->prefix('/calendar')
+    ->group(function (){
+        Route::get('/', 'CalendarController@index')->name('index');    
+        Route::post('/register', 'CalendarController@register')->name('register');    
+        Route::post('/{calendarId}/update', 'CalendarController@update')->name('update');    
+        Route::get('/{calendarId}/delete', 'CalendarController@delete')->name('delete');        
+        Route::get('/{yearId}/synch', 'CalendarController@synch')->name('synch');        
+    });
+    
     Route::name('workshop.')
     ->prefix('/workshop')
     ->group(function (){

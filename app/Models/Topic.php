@@ -21,5 +21,15 @@ class Topic extends BaseModel
     {
         return $this->belongsTo(Workshop::class);
     }
+
+    public function day()
+    {
+        return $this->belongsTo(Day::class);
+    }
+
+    public function week()
+    {
+        return $this->belongsTo(Week::class);
+    }
     
 }

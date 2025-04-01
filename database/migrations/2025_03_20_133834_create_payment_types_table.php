@@ -19,7 +19,6 @@ class CreatePaymentTypesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-
         $types = [
             'Individual Tuition',
             'Organizational Tuition',

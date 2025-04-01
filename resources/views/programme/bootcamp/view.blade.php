@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    {{strtolower($workshop->title)}}application
+    {{strtolower($bootcamp->title)}}application
 @endsection
 
 @section('content')
@@ -11,8 +11,8 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
             <div class="card-body shadow mb-4">
-                <h4 class="text text-primary text-center" style="color: white;" >{{$workshop->title}}</h4>
-                <p class="text text-justify">{{$workshop->description}}</p>
+                <h4 class="text text-primary text-center" style="color: white;" >{{$bootcamp->title}}</h4>
+                <p class="text text-justify">{{$bootcamp->description}}</p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                             <th>SUB TOPICS</th>
                         </thead>
                         <tbody>
-                        @foreach($workshop->topics as $topic)
+                        @foreach($bootcamp->topics as $topic)
                         
                         <tr>
                         <td>Day {{$topic->day}}</td>
@@ -70,25 +70,25 @@
                             <th>AMOUNT (#)</th>
                         </thead>
                         <tbody>
-                        @foreach($workshop->workshopFees as $workshopFee)
+                        @foreach($bootcamp->bootcampFees as $bootcampFee)
                         
                         <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$workshopFee->fee->item}}</td>
-                        <td>{{number_format($workshopFee->fee->amount, 2)}}</td>
+                        <td>{{$bootcampFee->fee->item}}</td>
+                        <td>{{number_format($bootcampFee->fee->amount, 2)}}</td>
                         </tr>
                         @endforeach
                         <tr>
                         <td></td>
                         <td><b>Total</b></td>
-                        <td><b>{{number_format($workshop->totalFees(),2)}}</b></td>
+                        <td><b>{{number_format($bootcamp->totalFees(),2)}}</b></td>
                         </tr>
                         </tbody>
                         
                     </table>
                     <button data-toggle="modal" data-target="#pay" class="btn btn-primary btn-sm">Proceed to Payment</button>
                 </div>
-            @include('programme.workshop.pay')
+            @include('programme.bootcamp.pay')
             </div>
         </div>
     </div>

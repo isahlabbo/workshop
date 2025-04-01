@@ -132,8 +132,8 @@
                   
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-book"></i></span><b> Bootcamps</b></a></li>
-            <li><a class="nav-link" href="{{route('workshops')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-book"></i></span><b> Workshops</b></a></li>
+            <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
+            <li><a class="nav-link" href="{{route('workshops')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
             <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
             <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
             </ul>

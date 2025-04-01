@@ -67,8 +67,8 @@
                   
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-book"></i></span><b> Bootcamps</b></a></li>
-            <li><a class="nav-link" href="{{route('workshops')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-book"></i></span><b> Workshops</b></a></li>
+            <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
+            <li><a class="nav-link" href="{{route('workshops')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
             <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
             <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
             </ul>
@@ -89,7 +89,7 @@
                             <div class="card-body text-center">
                                 <i style="color: rgb(0, 150, 215) !important;"class="{{$bootcamp->icon}} fa-3x mb-3"></i>
                                 <h5 class="card-title" style="color: rgb(0,0,64);">{{$bootcamp->title}}</h5>
-                                <p class="card-text">{{$bootcamp->description}} <a href="">view details information and apply here</a></p>
+                                <p class="card-text">{{$bootcamp->description}} <a href="{{route('bootcamp.view',[$bootcamp->id])}}">view details information and apply here</a></p>
                             </div>
                         </div>
                     </div>

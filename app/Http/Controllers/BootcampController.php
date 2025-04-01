@@ -12,6 +12,11 @@ class BootcampController extends Controller
         return view('programme.bootcamp.index');
     }
 
+    public function view($bootcampId)
+    {
+        return view('programme.bootcamp.view',['bootcamp'=>Bootcamp::find($bootcampId)]);
+    }
+
     public function update(Request $request, $bootcampId)
     {
         $request->validate([
