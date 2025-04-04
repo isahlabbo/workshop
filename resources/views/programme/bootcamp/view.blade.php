@@ -23,34 +23,36 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="card-body shadow mb-4">
-                    <h4 class="text text-primary text-center">SCHEDULES</h4>
-                    <table class="table table-stripped table-sm">
-                        <thead>
-                            <th>DAY</th>
-                            <th>FACILITATOR</th>
-                            <th>TOPIC</th>
-                            <th>SUB TOPICS</th>
-                        </thead>
-                        <tbody>
-                        @foreach($bootcamp->topics as $topic)
+                    <h4 class="text text-primary text-center">Projects to be Covered</h4>
+                   
+
+                        @foreach($bootcamp->projects as $project)
+                        <div class="card p-4 mb-4">
                         
-                        <tr>
-                        <td>Day {{$topic->day}}</td>
-                        <td></td>
-                        <td>{{$topic->title}}</td>
-                        <td>
+                        <p class="text"><b>{{$project->name}}</b></p>
+                        <p class="text text-justify">{{$project->description}}</p>
+                        
+                        <p class="text"><b>Curriculum</b></p>
+                        <p>
+                            <ol>
+                                @foreach($project->steps as $step)
+                                <li>{{$step->title}}</li>
+                                @endforeach
+                            </ol>
+                        </p>
+
+                        <p class="text"><b>Required Tools and Softwares</b></p>
+                        <p>
                             <ul>
-                            @foreach($topic->subTopics as $subTopic)
-                                <li>{{$subTopic->title}}</li>
-                            @endforeach
+                                @foreach($project->tools as $tool)
+                                <li>{{$tool->name}}</li>
+                                @endforeach
                             </ul>
-                        </td>
-                        </tr>
+                        </p>
+                        </div>
                         @endforeach
                         
-                        </tbody>
-                        
-                    </table>
+                      
                 </div>
             
             </div>
@@ -88,7 +90,7 @@
                     </table>
                     <button data-toggle="modal" data-target="#pay" class="btn btn-primary btn-sm">Proceed to Payment</button>
                 </div>
-            @include('programme.bootcamp.pay')
+            
             </div>
         </div>
     </div>
