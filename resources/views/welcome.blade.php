@@ -122,14 +122,11 @@
                     <span><i class="fas fa-book"></i></span> <span><b>Management</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                 
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Coordinator</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Assessor</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Facilitators</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Internal Quality Assurance</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> External Quality Assuarance</a>
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Governing Body</a>
-                  
                 </div>
             </li>
             <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
@@ -143,13 +140,14 @@
     
     <!-- Welcome Section -->
     <section class="welcome1">
-        <div class="contaivner">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <img src="{{asset('images\w2.png')}}" width="100%" height="500" alt="">
+                
+                <div class="col-md-5" style="text-align: left; padding: 50px;">
+                    <h1 class="text text-primary" style="font-family: 'Cooper Black'; font-weight: 900; font-size: 50px;"><b>Promote your Digital Skill Proficiency with our Comprehensive Bootcamps and Workshops</b></h1>
                 </div>
-                <div class="col-md-5" style="text-align: left; position: absolute; top: 150px; padding: 50px;">
-                    <h1 style="color:white;"><b>Promote your Digital Skill Proficiency with our Comprehensive Bootcamps and Workshops</b></h1>
+                <div class="col-md-7">
+                    <img src="{{asset('images\w2.png')}}" width="100%" height="500" alt="">
                 </div>
             </div>
         </div>
@@ -187,9 +185,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card-body p-4">
-                        
                         <img src="{{asset('images/workshop.png')}}" alt="" class="img">
-                    
                     </div>
                 </div>
             </div>
