@@ -55,7 +55,6 @@ class RegisterAllWorkshopCommand extends Command
                 
                         $newTopic = $newWorkshop->topics()->firstOrCreate([
                             'title'=>$topic['title'],
-                            'day'=>$topic['day']
                         ]);
                         foreach($topic['subTopics'] as $subTopic){
                             $newTopic->subTopics()->firstOrCreate(['title'=>$subTopic]);
