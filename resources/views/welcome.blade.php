@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DISBAW ! Welcome</title>
+    <title>DISWAB ! Welcome</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
@@ -142,12 +142,43 @@
     <section class="welcome1">
         <div class="container">
             <div class="row">
-                
-                <div class="col-md-5" style="text-align: left; padding: 50px;">
-                    <h1 class="text text-primary" style="font-family: 'Cooper Black'; font-weight: 900; font-size: 50px;"><b>Promote your Digital Skill Proficiency with our Comprehensive Bootcamps and Workshops</b></h1>
+                <div class="col-sm-12" style="text-align: left; padding: 50px;">
+                    <h1 class="text text-primary text-center" style="font-family: 'Cooper Black'; font-weight: 700;">
+                    <img src="{{asset('images/catsol.png')}}" alt="" width="90" height="90">
+                    <img src="{{asset('images/institute.png')}}" alt="" width="90" height="90">
+                    <br>
+                    Caliphate Tech. Solutions Limited in Collaboration with Institute of Computer Technology, Sokoto</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    
                 </div>
                 <div class="col-md-7">
-                    <img src="{{asset('images\w2.png')}}" width="100%" height="500" alt="">
+                    <br>
+                    <p class="text text-center p-4"><em><b>Present</b></em></p>
+                    <br>
+                    <h5 class="text text-center" style="font-family: sans-serif"><b>ONLINE AND PHYSICAL DIGITAL SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES</b></h5>
+                    <h6 class="text text-center">Unlock opportunities for lucrative tech careers across the globe.</h6> 
+                    <p>
+                    <br>
+                    <br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td class="badge badge-primary p-2 mr-4 mb-2">Start Date <i class="fas fa-calendar"></i></td>
+                            <td class="badge badge-primary p-2  mr-4 mb-2">1st April, 2025</td>
+                        </tr>
+                        <tr>
+                            <td class="badge badge-primary p-2  mr-4 mb-2">Time <i class="fas fa-clock"></i></td>
+                            <td class="badge badge-primary p-2  mr-4 mb-2">Morning, Afternoon, Eveneing or Night</td>
+                        </tr>
+                        <tr>
+                            <td class="badge badge-primary p-2  mr-4 mb-2">Mode </td>
+                            <td class="badge badge-primary p-2  mr-4 mb-2">Virtual or Physical</td>
+                        </tr>
+                    </table>
+                    </p>  
                 </div>
             </div>
         </div>
@@ -155,9 +186,7 @@
     <section class="container my-5">
         <div class="row text-justify">
             <div class="col-md-6">
-                <div class="card-body p-4 ">
-                <img src="{{asset('images/bootcamp.png')}}" alt="" class="img img-responsive">
-                </div>
+                <img src="{{asset('images/bootcamp.png')}}" alt="">
             </div>
             <div class="col-md-6">
                 <div class="card-body p-4">
@@ -184,29 +213,15 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card-body p-4">
-                        <img src="{{asset('images/workshop.png')}}" alt="" class="img">
-                    </div>
+                    
+                        <img src="{{asset('images/workshop.png')}}" alt="" >
+                    
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container my-5">
-    <h3 class="text text-center m-4">Our Programmes</h3>
-        <div class="row text-center">
-        @foreach(App\Models\Programme::all() as $programme)
-            <div class="col-md-3">
-                <div class="card-body mb-2 shadow p-4">
-                    <h6><i class="{{$programme->icon}}"></i> {{$programme->name}}</h6>
-                    <h5 class="text text-primary">
-                    {{$programme->type=='bootcamp' ? count($programme->bootcamps) : count($programme->workshops)}}
-                    {{$programme->type}}s</h5>
-                </div>
-            </div>
-        @endforeach    
-        </div>
-    </section>
+    
     <section class="container my-5">
     <h3 class="text text-center m-4">Our Affiliated Centres</h3>
         <div class="row text-center">

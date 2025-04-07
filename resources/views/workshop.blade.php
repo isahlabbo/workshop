@@ -79,7 +79,7 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            @foreach(App\Models\Programme::where('status','workshop')->get() as $programme)
+            @foreach(App\Models\Programme::where('type','workshop')->get() as $programme)
             <div  class="mb-5" id="programme_{{$programme->id}}">
                 <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}} Workshops</h3>
                 <div class="row">
