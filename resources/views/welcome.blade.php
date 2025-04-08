@@ -144,15 +144,16 @@
             <div class="row">
                 <div class="col-sm-12" style="text-align: left; padding: 50px;">
                     <h1 class="text text-primary text-center" style="font-family: 'Cooper Black'; font-weight: 700;">
-                    <img src="{{asset('images/catsol.png')}}" alt="" width="90" height="90">
-                    <img src="{{asset('images/institute.png')}}" alt="" width="90" height="90">
+                    <img src="{{asset('images\catsol.png')}}" alt="" width="90" height="90">
+                    <img src="{{asset('images\institute.png')}}" alt="" width="90" height="90">
                     <br>
-                    Caliphate Tech. Solutions Limited in Collaboration with Institute of Computer Technology, Sokoto</h1>
+                    Caliphate Tech. Solutions Limited in Collaboration with Institute of Computer Technology, Sokoto
+                    </h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    
+                    <img src="{{asset('images/bg.jpg')}}" alt="" width="400" height="400">
                 </div>
                 <div class="col-md-7">
                     <br>
@@ -161,8 +162,7 @@
                     <h5 class="text text-center" style="font-family: sans-serif"><b>ONLINE AND PHYSICAL DIGITAL SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES</b></h5>
                     <h6 class="text text-center">Unlock opportunities for lucrative tech careers across the globe.</h6> 
                     <p>
-                    <br>
-                    <br>
+                    
                     <br>
                     <table>
                         <tr>
@@ -185,18 +185,17 @@
     </section>
     <section class="container my-5">
         <div class="row text-justify">
-            <div class="col-md-6">
-                <img src="{{asset('images/bootcamp.png')}}" alt="">
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="card-body p-4">
-                    <i class="fas fa-laptop-code fa-3x mb-3" style="color: lightpink ;"></i>
+                    <i class="fas fa-laptop-code fa-3x mb-3"></i>
                     <h3>Bootcamp</h3>
                     <p>Our bootcamp is an intensive, online or physical training program that spans several weeks or months, designed to take participants from beginner to proficient in a specific field, such as coding, cybersecurity, or data science. It follows a well-organized curriculum with hands-on projects, mentorship, and career-oriented learning, making it ideal for individuals looking for deep expertise and job-ready skills. If you are committed to long-term learning and career advancement, a bootcamp is the right choice.</p>
                     <a href="{{route('bootcamps')}}" class="btn btn-primary">View Bootcamps</a>
                 </div>
             </div>
-           
+            <div class="col-md-5">
+                
+            </div>
         </div>
     </section>
 
