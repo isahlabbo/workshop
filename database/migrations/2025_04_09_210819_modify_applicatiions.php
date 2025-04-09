@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBootcampIdToApplications extends Migration
+class ModifyApplicatiions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class AddBootcampIdToApplications extends Migration
      */
     public function up()
     {
-       
+        Schema::table('applications', function (Blueprint $table) {
+            $table->foreignId('workshop_id')->nullable()->change();
+        });
     }
 
     /**
@@ -23,8 +25,6 @@ class AddBootcampIdToApplications extends Migration
      */
     public function down()
     {
-        Schema::table('applications', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }
