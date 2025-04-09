@@ -108,7 +108,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="{{asset('images\logo.png')}}" height="60" alt=""></a>
+        <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" height="60" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -139,13 +139,15 @@
     
     
     <!-- Welcome Section -->
-    <section class="welcome1">
-        <div class="container">
+    <section class="welcome1" >
+        <div class="background">
+        <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; opacity: 0.3;">
+        </div>
+        <div class="container " style="position: absolute; top: 10px; " >
             <div class="row">
-                <div class="col-sm-12" style="text-align: left; padding: 50px;">
-                    <h1 class="text text-primary text-center" style="font-family: 'Cooper Black'; font-weight: 700;">
-                    <img src="{{asset('images\catsol.png')}}" alt="" width="90" height="90">
-                    <img src="{{asset('images\institute.png')}}" alt="" width="90" height="90">
+                <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: left; padding: 50px;">
+                    <h1 class="text text-primary text-center" style="font-family: 'Cooper Black';">
+                    <br>
                     <br>
                     Caliphate Tech. Solutions Limited in Collaboration with Institute of Computer Technology, Sokoto
                     </h1>
@@ -153,17 +155,16 @@
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    <img src="{{asset('images/bg.jpg')}}" alt="" width="400" height="400">
+                    
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-7 col-sm-12">
+                    
+                    <p class="text text-center"><em><b>Present</b></em></p>
                     <br>
-                    <p class="text text-center p-4"><em><b>Present</b></em></p>
-                    <br>
-                    <h5 class="text text-center" style="font-family: sans-serif"><b>ONLINE AND PHYSICAL DIGITAL SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES</b></h5>
+                    <h5 class="text text-center" style="font-family: sans-serif; "><b>ONLINE AND PHYSICAL DIGITAL SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES</b></h5>
                     <h6 class="text text-center">Unlock opportunities for lucrative tech careers across the globe.</h6> 
                     <p>
                     
-                    <br>
                     <table>
                         <tr>
                             <td class="badge badge-primary p-2 mr-4 mb-2">Start Date <i class="fas fa-calendar"></i></td>
@@ -179,14 +180,15 @@
                         </tr>
                         </table>
                         
-                            <a class="btn btn-primary btn-sm mt-4" href="{{route('view',['bootcamp'])}}">View Available Bootcamps</a> 
-                            <a class="btn btn-info btn-sm mt-4" href="{{route('view',['workshop'])}}">View Available Workshops</a>
+                            <a class="btn btn-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Available Bootcamps</a> 
+                            <a class="btn btn-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Available Workshops</a>
                     
                     </p>  
                 </div>
             </div>
         </div>
     </section>
+    
     <section class="container my-5">
         <div class="row text-justify">
             <div class="col-md-7">
@@ -194,7 +196,7 @@
                     <i class="fas fa-laptop-code fa-3x mb-3"></i>
                     <h3>Bootcamp</h3>
                     <p>Our bootcamp is an intensive, online or physical training program that spans several weeks or months, designed to take participants from beginner to proficient in a specific field, such as coding, cybersecurity, or data science. It follows a well-organized curriculum with hands-on projects, mentorship, and career-oriented learning, making it ideal for individuals looking for deep expertise and job-ready skills. If you are committed to long-term learning and career advancement, a bootcamp is the right choice.</p>
-                    <a href="{{route('bootcamps')}}" class="btn btn-primary">View Bootcamps</a>
+                    <a href="{{route('programme',['bootcamp'])}}" class="btn btn-primary">View Bootcamps</a>
                 </div>
             </div>
             <div class="col-md-5">
@@ -212,7 +214,7 @@
                         <i class="fas fa-chalkboard-teacher fa-3x text-secondary mb-3"></i>
                         <h3>Workshop</h3>
                         <p>A workshop is a short-term, online or physical interactive training session lasting a few hours to a few days, focusing on specific skills or concepts. It is designed to provide quick, practical knowledge through demonstrations, discussions, and hands-on activities. Workshops are ideal for professionals and learners who want to enhance their skills, gain new insights, or stay updated on industry trends without committing to a long program. If you prefer a quick learning experience with immediate application, a workshop is the best option.</p>
-                        <a href="{{route('workshops')}}" class="btn btn-secondary">View Workshops</a>
+                        <a href="{{route('programme',['workshop'])}}" class="btn btn-secondary">View Workshops</a>
                     </div>
                 </div>
                 <div class="col-md-6">

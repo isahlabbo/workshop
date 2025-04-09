@@ -57,14 +57,11 @@
                     <span><i class="fas fa-book"></i></span> <span><b>Management</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                 
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Coordinator</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Assessor</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Facilitators</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Internal Quality Assurance</a>
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> External Quality Assuarance</a>
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Governing Body</a>
-                  
                 </div>
             </li>
             <li><a class="nav-link" href="{{route('programme',['bootcamp'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>

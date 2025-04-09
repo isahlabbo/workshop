@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                <b>Proceed to Flutterwave Payment</b></h5>
+                <b>Proceed to Online Payment</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,15 +11,21 @@
             <div class="modal-body">
                 <form action="{{route('payment.authorize')}}" method="post">
                     @csrf
-                    <p>Note: that this registration require to make the payment of {{number_format($workshop->totalFees(),2)}} and transaction chages of less than 2%, and this Payment can be done online using Card, USSD, NQR, Bank Transfer and more.. </p>
-                    <input type="hidden" name="amount" value="{{$workshop->totalFees()}}">
-                    <input type="hidden" name="title" value="{{$workshop->title}}">
-                    <input type="hidden" name="phone" value="08162463010">
-                    <input type="hidden" name="workshopId" value="{{$workshop->id}}">
+                    <p>Note: that this registration require to make the payment of {{number_format($programme->totalFees(),2)}} and transaction chages of less than 2%, and this Payment can be done online using Card, USSD, NQR, Bank Transfer and more.. </p>
+                    <input type="hidden" name="amount" value="{{$programme->totalFees()}}">
+                    <input type="hidden" name="title" value="{{$programme->title}}">
+                    <input type="hidden" name="phone" value="{{Auth::user()->phone}}">
+                    <input type="hidden" name="programmeId" value="{{$programme->id}}">
+
+                    @if($programme->programme->type == 'workshop')
+                    <input type="hidden" name="workshopId" value="{{$programme->id}}">
+                    @else
+                    <input type="hidden" name="bootcampId" value="{{$programme->id}}">
+                    @endif
                     
                     <div class="form-group">
-                        <label for="workshop">Mode of Workshop</label>
-                        <select name="method" id="workshop" class="form-control">
+                        <label for="programme">Mode of Learning</label>
+                        <select name="method" id="programme" class="form-control">
                             <option value="">Select Method</option>
                             <option value="online">Online</option>
                             <option value="physical">Physical</option>
@@ -38,9 +44,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="schedule">Schedule</label>
+                        <label for="schedule">Preferred Time</label>
                         <select name="schedule" id="language" class="form-control">
-                            <option value="">Select Schedule</option>
+                            <option value="">Select Time</option>
                             <option value="morning">Morning</option>
                             <option value="afternoon">Afternoon</option>
                             <option value="evening">Evening</option>

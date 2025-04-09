@@ -3,7 +3,9 @@
 @section('title')
     {{strtolower($bootcamp->title)}}application
 @endsection
-
+@php 
+    $programme= $bootcamp;
+@endphp
 @section('content')
     
     <div class="details">
@@ -77,7 +79,7 @@
                         <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$bootcampFee->fee->item}}</td>
-                        <td>{{number_format($bootcampFee->fee->amount, 2)}}</td>
+                        <td>{{number_format($bootcampFee->amount, 2)}}</td>
                         </tr>
                         @endforeach
                         <tr>
@@ -90,7 +92,7 @@
                     </table>
                     <button data-toggle="modal" data-target="#pay" class="btn btn-primary btn-sm">Proceed to Payment</button>
                 </div>
-            
+               @include('payment.pay')
             </div>
         </div>
     </div>

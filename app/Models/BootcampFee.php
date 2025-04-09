@@ -5,7 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BootcampFee extends Model
+class BootcampFee extends BaseModel
 {
-    use HasFactory;
+    public function bootcamp()
+    {
+        return $this->belongsTo(Bootcamp::class);
+    }
+
+    public function fee()
+    {
+        return $this->belongsTo(Fee::class);
+    }
 }

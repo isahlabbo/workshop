@@ -11,7 +11,8 @@ trait HasOnlinePayment{
     {
         // initialize the application
         $application = Auth::user()->applications()->firstOrCreate([
-            'workshop_id'=>$request->workshopId,
+            'workshop_id'=>$request->workshopId ?? null,
+            'bootcamp_id'=>$request->bootcampId ?? null,
             'prefer_language'=>$request->language,
             'prefer_method'=>$request->method,
             'prefer_schedule'=>$request->schedule,
@@ -22,7 +23,7 @@ trait HasOnlinePayment{
         
         // Enter the details of the payment
         $data = [
-            'payment_options' => 'card,banktransfer',
+            'payment_options' => 'card,banktransfer, USSD',
             'amount' => $request->amount,
             'email' => Auth::user()->email,
             'tx_ref' => $reference,
@@ -40,7 +41,7 @@ trait HasOnlinePayment{
             ],
 
             "customizations" => [
-                "title" => 'Workshop Payment',
+                "title" => $request->title.' Payment',
                 "description" => $request->title
             ]
         ];

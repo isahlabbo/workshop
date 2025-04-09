@@ -17,13 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/workshop/view', function () {
-    return view('workshop');
-})->name('workshops');
-
-Route::get('/view/bootcamps', function () {
-    return view('bootcamp');
-})->name('bootcamps');
 
 Route::get('/programme/{type}', function () {
     return view('programmes');

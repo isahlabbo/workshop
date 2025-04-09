@@ -4,6 +4,10 @@
     {{strtolower($workshop->title)}}application
 @endsection
 
+@php 
+$programme = $workshop;
+@endphp
+
 @section('content')
     
     <div class="details">
@@ -75,7 +79,7 @@
                         <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$workshopFee->fee->item}}</td>
-                        <td>{{number_format($workshopFee->fee->amount, 2)}}</td>
+                        <td>{{number_format($workshopFee->amount, 2)}}</td>
                         </tr>
                         @endforeach
                         <tr>
@@ -88,7 +92,7 @@
                     </table>
                     <button data-toggle="modal" data-target="#pay" class="btn btn-primary btn-sm">Proceed to Payment</button>
                 </div>
-            @include('programme.workshop.pay')
+            @include('Payment.pay')
             </div>
         </div>
     </div>

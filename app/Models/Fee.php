@@ -11,4 +11,9 @@ class Fee extends BaseModel
     {
        return $this->hasMany(WorkshopFee::class);
     }
+
+    public function bootcampFees()
+    {
+       return $this->hasMany(BootcampFee::class);
+    }
 }
