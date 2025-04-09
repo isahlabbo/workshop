@@ -141,7 +141,7 @@
     <!-- Welcome Section -->
     <section class="welcome1" >
         <div class="background">
-        <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; opacity: 0.3;">
+        <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; opacity: 0.4;">
         </div>
         <div class="container " style="position: absolute; top: 10px; " >
             <div class="row">
@@ -188,7 +188,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="container my-5">
         <div class="row text-justify">
             <div class="col-md-7">
