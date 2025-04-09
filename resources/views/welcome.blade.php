@@ -129,8 +129,8 @@
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> External Quality Assuarance</a>
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
-            <li><a class="nav-link" href="{{route('workshops')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
+            <li><a class="nav-link" href="{{route('programme',['bootcamp'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
+            <li><a class="nav-link" href="{{route('programme',['workshop'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
             <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
             <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
             </ul>
@@ -177,7 +177,11 @@
                             <td class="badge badge-primary p-2  mr-4 mb-2">Mode </td>
                             <td class="badge badge-primary p-2  mr-4 mb-2">Virtual or Physical</td>
                         </tr>
-                    </table>
+                        </table>
+                        
+                            <a class="btn btn-primary btn-sm mt-4" href="{{route('view',['bootcamp'])}}">View Available Bootcamps</a> 
+                            <a class="btn btn-info btn-sm mt-4" href="{{route('view',['workshop'])}}">View Available Workshops</a>
+                    
                     </p>  
                 </div>
             </div>

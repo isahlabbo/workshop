@@ -67,8 +67,8 @@
                   
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('bootcamps')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
-            <li><a class="nav-link" href="{{route('workshops')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
+            <li><a class="nav-link" href="{{route('programme',['bootcamp'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
+            <li><a class="nav-link" href="{{route('programme',['workshop'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
             <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
             <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
             </ul>
@@ -78,23 +78,38 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-        
-            @foreach(App\Models\Programme::all() as $programme)
+       
+            @foreach(App\Models\Programme::where('type', request()->type)->get() as $programme)
             <div  class="mb-5" id="programme_{{$programme->id}}">
-                <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}} Bootcamps</h3>
+                <h3 class="text-center" style="color: rgb(0,0,64);">{{$programme->name}} {{ucwords( request()->type)}}s</h3>
                 <div class="row">
-                @foreach($programme->bootcamps as $bootcamp)
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <i style="color: rgb(0, 150, 215) !important;"class="{{$bootcamp->icon}} fa-3x mb-3"></i>
-                                <h5 class="card-title" style="color: rgb(0,0,64);">{{$bootcamp->title}}</h5>
-                                <p class="card-text">{{$bootcamp->description}} <a href="{{route('bootcamp.view',[$bootcamp->id])}}">view details information and apply here</a></p>
+                @if(request()->type == 'bootcamp')
+                    @foreach($programme->bootcamps as $bootcamp)
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i style="color: rgb(0, 150, 215) !important;"class="{{$bootcamp->icon}} fa-3x mb-3"></i>
+                                    <h5 class="card-title" style="color: rgb(0,0,64);">{{$bootcamp->title}}</h5>
+                                    <p class="card-text">{{$bootcamp->description}} <a href="{{route('bootcamp.view',[$bootcamp->id])}}">view details information and apply here</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
-                   
+                @elseif(request()->type == 'workshop')
+                    @foreach($programme->workshops as $workshop)
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <i style="color: rgb(0, 150, 215) !important;"class="{{$workshop->icon}} fa-3x mb-3"></i>
+                                    <h5 class="card-title" style="color: rgb(0,0,64);">{{$workshop->title}}</h5>
+                                    <p class="card-text">{{$workshop->description}} <a href="{{route('bootcamp.view',[$workshop->id])}}">view details information and apply here</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="alert">{{'No Record found for ' .request()->type}}</div>
+                @endif   
                 </div>
             </div>
             @endforeach
