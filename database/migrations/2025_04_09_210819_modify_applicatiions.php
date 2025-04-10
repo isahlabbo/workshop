@@ -14,7 +14,8 @@ class ModifyApplicatiions extends Migration
     public function up()
     {
         Schema::table('applications', function (Blueprint $table) {
-            $table->foreignId('workshop_id')->nullable()->change();
+            $table->dropColumn('workshop_id');
+            $table->foreignId('workshop_id')->nullable();
         });
     }
 
