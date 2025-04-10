@@ -99,7 +99,7 @@
                                 <div class="card-body text-center">
                                     <i style="color: rgb(0, 150, 215) !important;"class="{{$workshop->icon}} fa-3x mb-3"></i>
                                     <h5 class="card-title" style="color: rgb(0,0,64);">{{$workshop->title}}</h5>
-                                    <p class="card-text">{{$workshop->description}} <a href="{{route('bootcamp.view',[$workshop->id])}}">view details information and apply here</a></p>
+                                    <p class="card-text">{{$workshop->description}} <a href="{{route('workshop.view',[$workshop->id])}}">view details information and apply here</a></p>
                                 </div>
                             </div>
                         </div>

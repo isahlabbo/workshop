@@ -22,6 +22,7 @@ Route::get('/programme/{type}', function () {
     return view('programmes');
 })->name('programme');
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

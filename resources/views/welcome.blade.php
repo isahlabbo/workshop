@@ -143,28 +143,19 @@
         <div class="background">
         <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; opacity: 0.4;">
         </div>
-        <div class="container " style="position: absolute; top: 10px; " >
+        <div class="container " style="position: absolute; top: 100px; " >
+            
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: left; padding: 50px;">
-                    <h1 class="text text-primary text-center" style="font-family: 'Cooper Black';">
-                    <br>
-                    <br>
-                    Caliphate Tech. Solutions Limited in Collaboration with Institute of Computer Technology, Sokoto
-                    </h1>
-                </div>
+                <div class="col-md-12">
+                    <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black';"><b></b></h3>
+                    <h5 class="text text-center p-4"><b>Unlock opportunities for lucrative tech careers across the globe.</b></h5> 
+                </div>  
             </div>
+            
             <div class="row">
-                <div class="col-md-5">
-                    
-                </div>
-                <div class="col-md-7 col-sm-12">
-                    
-                    <p class="text text-center"><em><b>Present</b></em></p>
-                    <br>
-                    <h5 class="text text-center" style="font-family: sans-serif; "><b>ONLINE AND PHYSICAL DIGITAL SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES</b></h5>
-                    <h6 class="text text-center">Unlock opportunities for lucrative tech careers across the globe.</h6> 
-                    <p>
-                    
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                <div class="card-body shadow" style="border-radius: 15px 20px 25px 30px;">
                     <table>
                         <tr>
                             <td class="badge badge-primary p-2 mr-4 mb-2">Start Date <i class="fas fa-calendar"></i></td>
@@ -178,14 +169,13 @@
                             <td class="badge badge-primary p-2  mr-4 mb-2">Mode </td>
                             <td class="badge badge-primary p-2  mr-4 mb-2">Virtual or Physical</td>
                         </tr>
-                        </table>
-                        
-                            <a class="btn btn-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Available Bootcamps</a> 
-                            <a class="btn btn-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Available Workshops</a>
-                    
-                    </p>  
+                    </table>
+                    <a class="btn btn-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Bootcamps</a> 
+                    <a class="btn btn-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Workshops</a>
                 </div>
-            </div>
+                </div>
+            </div>  
+            
         </div>
     </section>
 
@@ -296,6 +286,28 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    // Text to be typed
+    var text = "ENHANCE YOUR DIGITAL SKILLS THROUGH OUR COMPREHENSIVE SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES";
+
+    // Speed of typing (in milliseconds)
+    var speed = 100;
+
+    // Initialize index
+    var i = 0;
+
+    // Function to type text
+    function typeWriter() {
+        if (i < text.length) {
+        document.getElementById("hero").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+        }
+    }
+
+    // Call the function
+    typeWriter();
+    </script>
 </body>
 
 </html>
