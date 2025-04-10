@@ -145,12 +145,6 @@
         </div>
         <div class="container " style="position: absolute; top: 100px; " >
             
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black';"><b></b></h3>
-                    <h5 class="text text-center p-4"><b>Unlock opportunities for lucrative tech careers across the globe.</b></h5> 
-                </div>  
-            </div>
             
             <div class="row">
                 <div class="col-md-3"></div>
