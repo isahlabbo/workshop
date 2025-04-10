@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddWorkshopIdToApplications extends Migration
+class CreateCoordinatorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddWorkshopIdToApplications extends Migration
      */
     public function up()
     {
-        Schema::table('applications', function (Blueprint $table) {
-            $table->foreignId('workshop_id')->nullable();
+        Schema::create('coordinators', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('programme_id');
+            $table->string('status')->default('active');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddWorkshopIdToApplications extends Migration
      */
     public function down()
     {
-        Schema::table('applications', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('coordinators');
     }
 }

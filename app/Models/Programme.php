@@ -16,4 +16,9 @@ class Programme extends BaseModel
     {
         return $this->hasMany(Bootcamp::class);
     }
+
+    public function coordinators()
+    {
+        return $this->hasMany(Coordinator::class);
+    }
 }

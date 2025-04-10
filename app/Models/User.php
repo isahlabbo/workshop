@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(TopicAllocation::class);
     }
+
+    public function coordinators()
+    {
+        return $this->hasMany(Coordinator::class);
+    }
 }
