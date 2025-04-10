@@ -288,7 +288,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
     // Text to be typed
-    var text = "ENHANCE YOUR DIGITAL SKILLS THROUGH OUR COMPREHENSIVE SKILLS WORKSHOP AND  BOOTCAMP PROGRAMMES";
+    var text = "LEARN DIGITAL SKILLS, BUILD REAL PROJECTS, AND LUNCH YOUR CAREER.";
 
     // Speed of typing (in milliseconds)
     var speed = 100;
