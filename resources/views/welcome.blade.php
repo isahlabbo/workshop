@@ -145,6 +145,11 @@
         </div>
         <div class="container " style="position: absolute; top: 100px; " >
             
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black';"><b></b></h3>
+                </div>  
+            </div>
             
             <div class="row">
                 <div class="col-md-3"></div>
