@@ -60,17 +60,20 @@
             </div>
             @endforeach
             </div>
-            </div>
-       
+            </div> 
     @else
-        <p> You have just a step to register for one of our workshop pls fill the form below</p>
+        @if(count(Auth::user()->applications)>0)
+        <p> You can register for another workshop or bootcamp here, just select a category and wait for a 2 seconds</p>
+        @else
+        <p> You have just few steps to register for your first bootcamp or workshop just select a category and wait for a 2 seconds</p>
+        @endif
         <div class="application">
             <form id="verifyProgramme" action="{{route('programme.verify')}}" method="post">
                 @csrf
                 <select name="programme" id="programme" class="form-control me-2" aria-label="Input">
                     <option value="">Select Section</option>
                     @foreach(App\Models\Programme::all() as $programme)
-                    <option value="{{$programme->id}}">{{$programme->name}}</option>
+                    <option value="{{$programme->id}}">{{$programme->name}} {{ucwords($programme->type)}}</option>
                     @endforeach
                 </select>
             </form>
@@ -78,9 +81,10 @@
 
         @foreach(Auth::user()->applications as $application)
         <div class="card-body shadow mt-4">
-        <p><i class="{{$application->workshop->icon}}"></i> {{$application->workshop->title}}</p>
+        <p>Your application to <i class="{{$application->workshop->icon}}"></i> {{$application->workshop->title}} was recieved and you payment status is {{$application->payment->status}}</p>
        <div class="row">
        <div class="col-md-6">
+        @if($application->schedule)
         <table class="table table-sm table-striped">
             <tr>
                 <td >Payment Status:</td>
@@ -119,6 +123,9 @@
                 <td>{{date('d M, Y', strtotime($application->schedule->certificate_distribution_date)) ?? 'Pending'}}</td>
             </tr>
         </table>
+        @else
+        <div class="alert alert-warinig">Your application scheduling is not approve please checkback next time</div>
+        @endif
         </div>
        <div class="col-md-6">
        <p>Resources</p>
