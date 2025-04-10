@@ -64,6 +64,7 @@
                  
                 </div>
             </li>
+            <li><a class="nav-link" href="{{route('coordinator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Coordinators</b></a></li>
             <li><a class="nav-link" href="{{route('calendar.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a></li>
             <li><a class="nav-link" href="{{route('payment.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
             <li><a class="nav-link" href="{{route('application.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>

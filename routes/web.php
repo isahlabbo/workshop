@@ -38,6 +38,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/{calendarId}/delete', 'CalendarController@delete')->name('delete');        
         Route::get('/{yearId}/synch', 'CalendarController@synch')->name('synch');        
     });
+
+    Route::name('coordinator.')
+    ->prefix('/coordinator')
+    ->group(function (){
+        Route::get('/', 'CoordinatorController@index')->name('index');    
+        Route::post('/register', 'CoordinatorController@register')->name('register');    
+        Route::post('/{coordinatorId}/update', 'CoordinatorController@update')->name('update');    
+        Route::get('/{coordinatorId}/delete', 'CoordinatorController@delete')->name('delete');        
+        Route::get('/{yearId}/synch', 'CoordinatorController@synch')->name('synch');        
+    });
     
     Route::name('workshop.')
     ->prefix('/workshop')
