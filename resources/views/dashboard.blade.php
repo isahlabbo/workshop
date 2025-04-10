@@ -81,7 +81,11 @@
 
         @foreach(Auth::user()->applications as $application)
         <div class="card-body shadow mt-4">
-        <p>Your application to <i class="{{$application->workshop->icon}}"></i> {{$application->workshop->title}} was recieved and you payment status is {{$application->payment->status}}</p>
+        @if($application->payment && $application->payment->status == 'success')
+        <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved and your payment status is <b>{{$application->payment->status}}</b></p>
+       @else
+       <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved but your payment status is <b>{{$application->payment->status}}</b> <a href="">you can try your payment again here</a></p>
+       @endif
        <div class="row">
        <div class="col-md-6">
         @if($application->schedule)
@@ -124,7 +128,7 @@
             </tr>
         </table>
         @else
-        <div class="alert alert-warinig">Your application scheduling is not approve please checkback next time</div>
+        <div class="alert alert-warnig">Your application scheduling is not approve please checkback next time</div>
         @endif
         </div>
        <div class="col-md-6">

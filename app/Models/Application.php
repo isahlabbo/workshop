@@ -17,6 +17,18 @@ class Application extends BaseModel
         return $this->belongsTo(Workshop::class);
     }
 
+    public function bootcamp()
+    {
+        return $this->belongsTo(Bootcamp::class);
+    }
+
+    public function programme()
+    {
+        if($this->bootcamp){
+            return $this->bootcamp;
+        }
+        return $this->workshop;
+    }
     public function schedule()
     {
         return $this->belongsTo(Schedule::class);
