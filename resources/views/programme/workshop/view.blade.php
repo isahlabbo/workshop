@@ -92,7 +92,7 @@ $programme = $workshop;
                     </table>
                     <button data-toggle="modal" data-target="#pay" class="btn btn-primary btn-sm">Proceed to Payment</button>
                 </div>
-            @include('Payment.pay')
+            @include('payment.pay')
             </div>
         </div>
     </div>
