@@ -35,28 +35,32 @@ class WorkshopController extends Controller
         return redirect()->route('programme.workshop.index',[$workshop->programme->id])->withToastSuccess('Workshop Updated');
     }
 
-    public function register(Request $request)
+    public function register(Request $request, $programmeId)
     {
         $request->validate([
             'icon'=>'required',
             'title'=>'required',
             'description'=>'required',
-            'programme'=>'required',
         ]);
 
-        Workshop::firstOrCreate([
+        $workshop = Workshop::firstOrCreate([
             'icon'=>$request->icon,
             'title'=>$request->title,
-            'programme_id'=>$request->programme,
+            'programme_id'=>$programmeId,
             'description'=>$request->description,
         ]);
-        return redirect()->route('programme.workshop.index' ,[$workshop->programme->id])->withToastSuccess('Workshop Registered');
+        $workshop->updateFees();
+
+        return redirect()->route('programme.workshop.index' ,[$programmeId])->withToastSuccess('Workshop Registered');
     }
 
     public function delete($workshopId)
     {
         $workshop = Workshop::find($workshopId);
         $workshop->delete();
+        foreach($workshop->workshopFees as $fee){
+            $fee->delete();
+        }
         return redirect()->route('programme.workshop.index',[$workshop->programme->id])->withToastSuccess('Workshop Deleted');
     }
 }

@@ -24,33 +24,33 @@ class BootcampController extends Controller
             'icon'=>'required',
             'title'=>'required',
             'description'=>'required',
-            'programme'=>'required',
         ]);
         $bootcamp = Bootcamp::find($bootcampId);
         $bootcamp->update([
+            'icon'=>$request->icon,
             'title'=>$request->title,
-            'programme_id'=>$request->programme,
             'description'=>$request->description,
         ]);
-        return redirect()->route('bootcamp.index')->withToastSuccess('Bootcamp Updated');
+        
+        return redirect()->route('programme.bootcamp.index',[$bootcamp->programme->id])->withToastSuccess('Bootcamp Updated');
     }
 
-    public function register(Request $request)
+    public function register(Request $request, $programmeId)
     {
         $request->validate([
             'icon'=>'required',
             'title'=>'required',
             'description'=>'required',
-            'programme'=>'required',
         ]);
 
-        Bootcamp::firstOrCreate([
+       $bootcamp = Bootcamp::firstOrCreate([
             'icon'=>$request->icon,
             'title'=>$request->title,
-            'programme_id'=>$request->programme,
+            'programme_id'=>$programmeId,
             'description'=>$request->description,
         ]);
-        return redirect()->route('bootcamp.index')->withToastSuccess('Bootcamp Registered');
+        $bootcamp->updateFees();
+        return redirect()->route('programme.bootcamp.index',[$programmeId])->withToastSuccess('Bootcamp Registered');
     }
 
     public function delete($bootcampId)
@@ -58,6 +58,9 @@ class BootcampController extends Controller
         
         $bootcamp = Bootcamp::find($bootcampId);
         $bootcamp->delete();
-        return redirect()->route('bootcamp.index')->withToastSuccess('Bootcamp Deleted');
+        foreach($bootcamp->bootcampFees as $fee){
+            $fee->delete();
+        }
+        return redirect()->route('programme.bootcamp.index',[$bootcamp->programme->id])->withToastSuccess('Bootcamp Deleted');
     }
 }

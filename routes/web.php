@@ -126,7 +126,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         ->group(function (){
             Route::get('{programmeId}/', 'WorkshopController@index')->name('index');    
             Route::get('/{workshopId}/view', 'WorkshopController@view')->name('view');    
-            Route::post('/register', 'WorkshopController@register')->name('register');    
+            Route::post('{programmeId}/register', 'WorkshopController@register')->name('register');    
             Route::post('/{WorkshopId}/update', 'WorkshopController@update')->name('update');    
             Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
         });
@@ -136,7 +136,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         ->group(function (){
             Route::get('{programmeId}/', 'BootcampController@index')->name('index');    
             Route::get('/{bootcampId}/view', 'BootcampController@view')->name('view');    
-            Route::post('/register', 'BootcampController@register')->name('register');    
+            Route::post('{programmeId}/register', 'BootcampController@register')->name('register');    
             Route::post('/{bootcampId}/update', 'BootcampController@update')->name('update');    
             Route::get('/{bootcampId}/delete', 'BootcampController@delete')->name('delete');        
         });

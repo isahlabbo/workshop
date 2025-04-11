@@ -10,17 +10,8 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('programme.workshop.register')}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('programme.workshop.register', [$programme->id])}}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <label for="">Workshop Programme</label>
-                        <select name="programme" class="form-control" id="">
-                        <option value="">Select Programme</option>
-                        @foreach(App\Models\Programme::where('type','workshop')->get() as $programme)
-                            <option value="{{$programme->id}}">{{$programme->name}}</option>
-                        @endforeach
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label for="">Workshop Icon</label>
@@ -37,7 +28,7 @@
                         <textarea name="description" id="" class="form-control" cols="30" rows="3">{{old('decsription')}}</textarea>
                     </div>
 
-                    <button class="btn btn-primary btn-sm">Update</button>
+                    <button class="btn btn-primary btn-sm">Register</button>
                 </form>
             </div>
             <div class="modal-footer">

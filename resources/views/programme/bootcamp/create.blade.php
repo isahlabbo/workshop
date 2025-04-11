@@ -10,17 +10,8 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('programme.bootcamp.register')}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('programme.bootcamp.register',[$programme->id])}}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <label for="">Bootcamp Programme</label>
-                        <select name="programme" class="form-control" id="">
-                        <option value="">Select Programme</option>
-                        @foreach(App\Models\Programme::where('type','bootcamp')->get() as $programme)
-                            <option value="{{$programme->id}}">{{$programme->name}}</option>
-                        @endforeach
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <label for="">Bootcamp Icon</label>
