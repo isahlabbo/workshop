@@ -139,6 +139,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             Route::post('{programmeId}/register', 'BootcampController@register')->name('register');    
             Route::post('/{bootcampId}/update', 'BootcampController@update')->name('update');    
             Route::get('/{bootcampId}/delete', 'BootcampController@delete')->name('delete');        
+
+            Route::name('project.')
+            ->prefix('/project')
+            ->group(function (){
+                Route::get('{bootcampId}/', 'ProjectController@index')->name('index');    
+                Route::post('{projectId}/update', 'ProjectController@update')->name('update');    
+                Route::get('{projectId}/delete', 'ProjectController@delete')->name('delete');    
+            });
         });
     
     });

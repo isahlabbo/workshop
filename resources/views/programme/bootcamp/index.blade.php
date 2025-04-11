@@ -24,7 +24,7 @@
                         <td>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit_{{$bootcamp->id}}">Edit</button>
                            <a href="{{route('programme.bootcamp.delete',[$bootcamp->id])}}" onclick="return confirm('Are you sure, you want to delete this bootcamp?')"><button class="btn btn-danger btn-sm">Delete</button></a>
-                           <a href="" ><button class="btn btn-info btn-sm">Curriculum</button></a>
+                           <a href="{{route('programme.bootcamp.project.index',[$bootcamp->id])}}"><button class="btn btn-info btn-sm">Curriculum</button></a>
                         </td>
                     </tr>
                     @include('programme.bootcamp.edit')

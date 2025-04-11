@@ -16,4 +16,9 @@ class Project extends BaseModel
     {
         return $this->hasMany(Step::class);
     }
+
+    public function bootcamp()
+    {
+        return $this->belongsTo(Bootcamp::class);
+    }
 }
