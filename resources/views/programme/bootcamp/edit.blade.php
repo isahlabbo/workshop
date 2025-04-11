@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('bootcamp.update',[$bootcamp->id])}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('programme.bootcamp.update',[$bootcamp->id])}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="">Bootcamp Programme</label>

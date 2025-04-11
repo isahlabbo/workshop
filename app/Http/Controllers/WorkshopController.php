@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Workshop;
+use App\Models\Programme;
 
 class WorkshopController extends Controller
 {
@@ -12,9 +13,9 @@ class WorkshopController extends Controller
         return view('programme.workshop.view',['workshop'=>Workshop::find($workshopId)]);
     }
 
-    public function index()
+    public function index($programmeId)
     {
-        return view('programme.workshop.index');
+        return view('programme.workshop.index',['programme'=>Programme::find($programmeId)]);
     }
 
     public function update(Request $request, $workshopId)
@@ -31,7 +32,7 @@ class WorkshopController extends Controller
             'programme_id'=>$request->programme,
             'description'=>$request->description,
         ]);
-        return redirect()->route('workshop.index')->withToastSuccess('Workshop Updated');
+        return redirect()->route('programme.workshop.index',[$workshop->programme->id])->withToastSuccess('Workshop Updated');
     }
 
     public function register(Request $request)
@@ -49,14 +50,13 @@ class WorkshopController extends Controller
             'programme_id'=>$request->programme,
             'description'=>$request->description,
         ]);
-        return redirect()->route('workshop.index')->withToastSuccess('Workshop Registered');
+        return redirect()->route('programme.workshop.index' ,[$workshop->programme->id])->withToastSuccess('Workshop Registered');
     }
 
     public function delete($workshopId)
     {
-        
         $workshop = Workshop::find($workshopId);
         $workshop->delete();
-        return redirect()->route('workshop.index')->withToastSuccess('Workshop Deleted');
+        return redirect()->route('programme.workshop.index',[$workshop->programme->id])->withToastSuccess('Workshop Deleted');
     }
 }

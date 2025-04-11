@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('workshop.update',[$workshop->id])}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('programme.workshop.update',[$workshop->id])}}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="">Workshop Programme</label>

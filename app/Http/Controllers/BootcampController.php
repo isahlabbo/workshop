@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bootcamp;
+use App\Models\Programme;
 
 class BootcampController extends Controller
 {
-    public function index()
+    public function index($programmeId)
     {
-        return view('programme.bootcamp.index');
+        return view('programme.bootcamp.index',['programme'=>Programme::find($programmeId)]);
     }
 
     public function view($bootcampId)

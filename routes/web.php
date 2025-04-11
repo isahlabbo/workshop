@@ -49,25 +49,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/{yearId}/synch', 'CoordinatorController@synch')->name('synch');        
     });
     
-    Route::name('workshop.')
-    ->prefix('/workshop')
-    ->group(function (){
-        Route::get('/', 'WorkshopController@index')->name('index');    
-        Route::get('/{workshopId}/view', 'WorkshopController@view')->name('view');    
-        Route::post('/register', 'WorkshopController@register')->name('register');    
-        Route::post('/{WorkshopId}/update', 'WorkshopController@update')->name('update');    
-        Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
-    });
-
-    Route::name('bootcamp.')
-    ->prefix('/bootcamp')
-    ->group(function (){
-        Route::get('/', 'BootcampController@index')->name('index');    
-        Route::get('/{bootcampId}/view', 'BootcampController@view')->name('view');    
-        Route::post('/register', 'BootcampController@register')->name('register');    
-        Route::post('/{bootcampId}/update', 'BootcampController@update')->name('update');    
-        Route::get('/{bootcampId}/delete', 'BootcampController@delete')->name('delete');        
-    });
+    
 
     Route::name('facilitator.')
     ->prefix('/facilitator')
@@ -138,6 +120,27 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::post('/register', 'ProgrammeController@register')->name('register');    
         Route::get('/{programmeId}/workshops', 'ProgrammeController@workshops')->name('workshops');    
         Route::get('/{programmeId}/delete', 'ProgrammeController@delete')->name('delete');        
+    //    programme workshops
+        Route::name('workshop.')
+        ->prefix('/workshop')
+        ->group(function (){
+            Route::get('{programmeId}/', 'WorkshopController@index')->name('index');    
+            Route::get('/{workshopId}/view', 'WorkshopController@view')->name('view');    
+            Route::post('/register', 'WorkshopController@register')->name('register');    
+            Route::post('/{WorkshopId}/update', 'WorkshopController@update')->name('update');    
+            Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
+        });
+    // programme bootcamps
+        Route::name('bootcamp.')
+        ->prefix('/bootcamp')
+        ->group(function (){
+            Route::get('{programmeId}/', 'BootcampController@index')->name('index');    
+            Route::get('/{bootcampId}/view', 'BootcampController@view')->name('view');    
+            Route::post('/register', 'BootcampController@register')->name('register');    
+            Route::post('/{bootcampId}/update', 'BootcampController@update')->name('update');    
+            Route::get('/{bootcampId}/delete', 'BootcampController@delete')->name('delete');        
+        });
+    
     });
     
     
