@@ -52,6 +52,8 @@
             <ul class="navbar-nav ml-auto"> 
             
             @if(Auth::user()->role == 'admin')
+            <li><a class="nav-link" href="{{route('payment.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
+            <li><a class="nav-link" href="{{route('application.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
@@ -78,14 +80,31 @@
                     @endforeach
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('coordinator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Coordinators</b></a></li>
-            <li><a class="nav-link" href="{{route('calendar.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a></li>
-            <li><a class="nav-link" href="{{route('payment.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
-            <li><a class="nav-link" href="{{route('application.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a></li>
-            <li><a class="nav-link" href="{{route('schedule.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-clock"></i></span><b> Schedule</b></a></li>
-            <li><a class="nav-link" href="{{route('centre.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-home"></i></span><b> Centres</b></a></li>
-            <li><a class="nav-link" href="{{route('facilitator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-users"></i></span> <span><b>Users</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <a class="nav-link" href="{{route('coordinator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Coordinators</b></a>
+                <a class="nav-link" href="{{route('facilitator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-users"></i></span> <span><b>Administration</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <a class="nav-link" href="{{route('calendar.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a>
+                <a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a>
+                <a class="nav-link" href="{{route('schedule.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-clock"></i></span><b> Schedule</b></a>
+                <a class="nav-link" href="{{route('centre.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-home"></i></span><b> Centres</b></a>
+                </div>
+            </li>
+            
+            
+            
             @endif
 
             @if(Auth::user()->role == 'student')
