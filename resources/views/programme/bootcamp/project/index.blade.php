@@ -45,7 +45,7 @@
                             <tr>
                                 <th>SN</th>
                                 <th>Title</th>
-                                <th></th>
+                                <th><a href="#" data-toggle="modal" data-target="#tool_{{$project->id}}"class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,9 +55,10 @@
                             <td>{{$tool->name}}</td>
                             <td> 
                             <a href="{{route('programme.bootcamp.project.tool.delete',[$tool->id])}}" onclick="return confirm('Are you sure, you want to delete this project procedure?')" class="btn btn-sm btn-outline-danger "><i class="fas fa-trash"></i></a>
-                            <a href="#" data-toggle="modal" data-target="#edit_{{$tool->id}}"class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#edit_{{$tool->id}}"class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
                             </td>
                         </tr>
+                        @include('programme.bootcamp.project.tool.create')
                         @include('programme.bootcamp.project.tool.edit')
                         @endforeach
                     </tbody>

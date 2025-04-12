@@ -150,6 +150,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                 Route::name('step.')
                 ->prefix('/step')
                 ->group(function (){
+                    Route::post('{projectId}/register', 'ProjectStepController@register')->name('register');    
                     Route::post('{stepId}/update', 'ProjectStepController@update')->name('update');    
                     Route::get('{stepId}/delete', 'ProjectStepController@delete')->name('delete');    
                 });
@@ -157,6 +158,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                 Route::name('tool.')
                 ->prefix('/tool')
                 ->group(function (){
+                    Route::post('{projectId}/register', 'ProjectToolController@register')->name('register');    
                     Route::post('{toolId}/update', 'ProjectToolController@update')->name('update');    
                     Route::get('{toolId}/delete', 'ProjectToolController@delete')->name('delete');    
                 });
