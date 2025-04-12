@@ -144,6 +144,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             ->prefix('/project')
             ->group(function (){
                 Route::get('{bootcampId}/', 'ProjectController@index')->name('index');    
+                Route::post('{bootcampId}/register', 'ProjectController@register')->name('register');    
                 Route::post('{projectId}/update', 'ProjectController@update')->name('update');    
                 Route::get('{projectId}/delete', 'ProjectController@delete')->name('delete');    
 

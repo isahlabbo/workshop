@@ -13,6 +13,16 @@ class ProjectController extends Controller
         return view('programme.bootcamp.project.index',['bootcamp'=>Bootcamp::find($bootcampId)]);
     }
 
+    public function register(Request $request, $bootcampId)
+    {
+        $request->validate(['name'=>'required', 'description'=>'required']);
+
+        $bootcamp = Bootcamp::find($bootcampId);
+        $bootcamp->projects()->create(['name'=>$request->name,'description'=>$request->description]);
+
+        return redirect()->route('programme.bootcamp.project.index', [$bootcamp->id])->withToastSuccess('Project Registered');
+    }
+
     public function update(Request $request, $projectId)
     {
         $request->validate(['name'=>'required', 'description'=>'required']);
