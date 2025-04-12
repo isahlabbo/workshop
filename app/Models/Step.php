@@ -9,6 +9,6 @@ class Step extends BaseModel
 {
     public function project()
     {
-        return $ths->belongsTo(Project::class);
+        return $this->belongsTo(Project::class);
     }
 }
