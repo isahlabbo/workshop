@@ -1,21 +1,21 @@
 
-<div class="modal fade" id="edit_{{$step->id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit_{{$tool->id}}" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                <b>Edit {{$project->name}} Step</b></h5>
+                <b>Edit {{$project->name}} Tool</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form enctype="multipart/form-data" action="{{route('programme.bootcamp.project.step.update',[$step->id])}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('programme.bootcamp.project.tool.update',[$tool->id])}}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="">Procedure</label>
-                        <textarea name="title" id="" cols="30" rows="4" class="form-control">{{$step->title}}</textarea>
+                        <label for="">Tool Name</label>
+                        <input name="name" id=""  class="form-control" value="{{$tool->name}}">
                     </div>
 
                     <button class="btn btn-primary btn-sm">Update</button>

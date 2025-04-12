@@ -54,10 +54,11 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$tool->name}}</td>
                             <td> 
-                                <a href="" class="btn btn-sm btn-outline-danger "><i class="fas fa-trash"></i></a>
-                                <a href="" class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
+                            <a href="{{route('programme.bootcamp.project.tool.delete',[$tool->id])}}" onclick="return confirm('Are you sure, you want to delete this project procedure?')" class="btn btn-sm btn-outline-danger "><i class="fas fa-trash"></i></a>
+                            <a href="#" data-toggle="modal" data-target="#edit_{{$tool->id}}"class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
                             </td>
                         </tr>
+                        @include('programme.bootcamp.project.tool.edit')
                         @endforeach
                     </tbody>
                 </table>

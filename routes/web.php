@@ -153,6 +153,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                     Route::post('{stepId}/update', 'ProjectStepController@update')->name('update');    
                     Route::get('{stepId}/delete', 'ProjectStepController@delete')->name('delete');    
                 });
+
+                Route::name('tool.')
+                ->prefix('/tool')
+                ->group(function (){
+                    Route::post('{toolId}/update', 'ProjectToolController@update')->name('update');    
+                    Route::get('{toolId}/delete', 'ProjectToolController@delete')->name('delete');    
+                });
             });
         });
     
