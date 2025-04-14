@@ -137,6 +137,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                     Route::post('{workshopId}/register', 'TopicController@register')->name('register');    
                     Route::post('{topicId}/update', 'TopicController@update')->name('update');    
                     Route::get('{topicId}/delete', 'TopicController@delete')->name('delete');    
+
+                Route::name('subtopic.')
+                    ->prefix('/subtopic')
+                    ->group(function (){
+                        Route::post('{topicId}/register', 'SubtopicController@register')->name('register');    
+                        Route::post('{subtopicId}/update', 'SubtopicController@update')->name('update');    
+                        Route::get('{subtopicId}/delete', 'SubtopicController@delete')->name('delete');    
+                });
             });
         });
     // programme bootcamps

@@ -29,14 +29,25 @@
                                     <tr>
                                         <th>Title</th>
                                         <th>
-                                            <a href="" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#topic_{{$topic->id}}"><i class="fas fa-pen"></i></a>
-                                            <a href="" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
-                                            <a href="" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#subtopic_{{$topic->id}}"><i class="fas fa-pen"></i></a>
+                                            
                                         </th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                @foreach($topic->subTopics as $subTopic)
+                                <tr>
+                                <td>{{$subTopic->title}}</td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#edit_subtopic_{{$subTopic->id}}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
+                                    <a href="{{route('programme.workshop.topic.subtopic.delete',[$subTopic->id])}}" onclick="return confirm('Are you sure, you want to delete this sub topic?')" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                                </tr>
+                                @include('programme.workshop.topic.subtopic.edit')
+                                @endforeach
+                                </tbody>
                             </table>
-                            
+                            @include('programme.workshop.topic.subtopic.create')
                         </div>
                     </div>
                 </div>
