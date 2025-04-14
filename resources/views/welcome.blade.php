@@ -169,8 +169,8 @@
                             <td class="badge badge-primary p-2  mr-4 mb-2">Virtual or Physical</td>
                         </tr>
                     </table>
-                    <a class="btn btn-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Bootcamps</a> 
-                    <a class="btn btn-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Workshops</a>
+                    <a class="btn btn-outline-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Bootcamps</a> 
+                    <a class="btn btn-outline-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Workshops</a>
                 </div>
                 </div>
             </div>  
