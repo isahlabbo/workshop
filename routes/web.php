@@ -128,7 +128,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             Route::get('/{workshopId}/view', 'WorkshopController@view')->name('view');    
             Route::post('{programmeId}/register', 'WorkshopController@register')->name('register');    
             Route::post('/{WorkshopId}/update', 'WorkshopController@update')->name('update');    
-            Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');        
+            Route::get('/{WorkshopId}/delete', 'WorkshopController@delete')->name('delete');
+            
+            Route::name('topic.')
+                ->prefix('/topic')
+                ->group(function (){
+                    Route::get('{workshopId}/', 'TopicController@index')->name('index');    
+                    Route::post('{workshopId}/register', 'TopicController@register')->name('register');    
+                    Route::post('{topicId}/update', 'TopicController@update')->name('update');    
+                    Route::get('{topicId}/delete', 'TopicController@delete')->name('delete');    
+            });
         });
     // programme bootcamps
         Route::name('bootcamp.')
