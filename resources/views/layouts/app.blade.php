@@ -43,7 +43,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" height="60" alt=""></a>
+        <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}"  alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -54,6 +54,22 @@
             @if(Auth::user()->role == 'admin')
             <li><a class="nav-link" href="{{route('payment.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
             <li><a class="nav-link" href="{{route('application.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-book"></i></span> <span><b>Access Control</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                
+                    <a class="nav-link"  href="{{route('access.index')}}"><span><i class="fas fa-list"></i></span> Role</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-list"></i></span> Permissions</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-list"></i></span> User Roles</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-list"></i></span> Role Permissions</a>
+                    
+                </div>
+            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">

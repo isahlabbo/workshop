@@ -42,7 +42,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4 m-4">
                 <div class="card-body shadow mt-4">
-                    <div class="text-center"><img src="images/favicon.png" alt="" width="120" ></div>
+                    <div class="text-center"><img src="images/logo.png" alt=""  ></div>
                     {{$slot}}
                 </div>
             </div>

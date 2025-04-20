@@ -70,6 +70,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                     
     });
 
+    Route::name('access.')
+    ->prefix('/access')
+    ->group(function (){
+        Route::get('/', 'AccessController@index')->name('index');    
+                
+});
+
     Route::name('schedule.')
         ->prefix('/schedule')
         ->group(function (){

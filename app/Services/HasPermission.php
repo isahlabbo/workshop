@@ -2,9 +2,27 @@
 namespace App\Services;
 
 
-trait HasOnlinePayment{
+trait HasPermission{
 
-    public function can($permission)
+    public function hasRoles()
+    {
+        if(count($this->userRoles) > 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function hasPermissions()
+    {
+        if(count($this->userPermissions) > 0){
+            return true;
+        }
+
+        return false;
+    }
+    
+    public function canDo($permission)
     {
         $status = false;
         foreach($this->userRoles as $userRole){

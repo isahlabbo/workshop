@@ -108,7 +108,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" height="60" alt=""></a>
+        <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(249, 109,2) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -140,43 +140,12 @@
     
     <!-- Welcome Section -->
     <section class="welcome1 position-relative" style="height: 500px;">
-    <div class="background hero-image">
-        <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; object-fit: cover; opacity: 0.4;">
-    </div>
-
-    <div class="container hero-content position-absolute top-50 start-50 translate-middle">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black';">
-                    <b>Welcome to Our Program</b> <!-- Add your text inside <b> if needed -->
-                </h3>
-            </div>  
+        <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black'; position: absolute;  z-index: 1;"></h3>
+        
+        <div class="background hero-image">
+            <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; object-fit: cover; opacity: 0.4;">
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card-body shadow" style="border-radius: 15px 20px 25px 30px; background-color: white;">
-                    <table>
-                        <tr>
-                            <td class="badge badge-primary p-2 mr-4 mb-2">Start Date <i class="fas fa-calendar"></i></td>
-                            <td class="badge badge-primary p-2 mr-4 mb-2">1st May, 2025</td>
-                        </tr>
-                        <tr>
-                            <td class="badge badge-primary p-2 mr-4 mb-2">Time <i class="fas fa-clock"></i></td>
-                            <td class="badge badge-primary p-2 mr-4 mb-2">Morning, Afternoon, Evening or Night</td>
-                        </tr>
-                        <tr>
-                            <td class="badge badge-primary p-2 mr-4 mb-2">Mode</td>
-                            <td class="badge badge-primary p-2 mr-4 mb-2">Virtual or Physical</td>
-                        </tr>
-                    </table>
-                    <a class="btn btn-outline-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Bootcamps</a> 
-                    <a class="btn btn-outline-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Workshops</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="container my-5">
         <div class="row text-justify">
