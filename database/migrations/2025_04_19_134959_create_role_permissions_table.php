@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkshopsTable extends Migration
+class CreateRolePermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateWorkshopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('workshops', function (Blueprint $table) {
+        Schema::create('role_permissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('programme_id');
-            $table->string('title');
-            $table->string('icon');
-            $table->text('description');
+            $table->foreignId('role_id');
+            $table->foreignId('permission_id');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
-
-        
     }
 
     /**
@@ -32,6 +29,6 @@ class CreateWorkshopsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workshops');
+        Schema::dropIfExists('role_permissions');
     }
 }

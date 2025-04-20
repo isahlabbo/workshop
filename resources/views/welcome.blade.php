@@ -110,15 +110,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" height="60" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
+            aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(249, 109,2) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown" style="z-index: 1; position: absolute; top: 100px; ">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <li><a class="nav-link" href="" style="color: rgb(0, 150, 215);"><span><i class="fas fa-users"></i></span><b> Who We Are</b></a></li> 
+            <li><a class="nav-link" href="" style="color: rgb(249, 109,2);"><span><i class="fas fa-users"></i></span><b> Who We Are</b></a></li> 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(249, 109,2);">
                     <span><i class="fas fa-book"></i></span> <span><b>Management</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
@@ -129,54 +129,54 @@
                     <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> External Quality Assuarance</a>
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('programme',['bootcamp'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
-            <li><a class="nav-link" href="{{route('programme',['workshop'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
-            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
-            <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
+            <li><a class="nav-link" href="{{route('programme',['bootcamp'])}}" style="color: rgb(249, 109,2);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
+            <li><a class="nav-link" href="{{route('programme',['workshop'])}}" style="color: rgb(249, 109,2);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
+            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(249, 109,2);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
+            <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(249, 109,2);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
             </ul>
         </div>
     </nav>
     
     
     <!-- Welcome Section -->
-    <section class="welcome1" >
-        <div class="background">
-        <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; opacity: 0.4;">
+    <section class="welcome1 position-relative" style="height: 500px;">
+    <div class="background hero-image">
+        <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; object-fit: cover; opacity: 0.4;">
+    </div>
+
+    <div class="container hero-content position-absolute top-50 start-50 translate-middle">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black';">
+                    <b>Welcome to Our Program</b> <!-- Add your text inside <b> if needed -->
+                </h3>
+            </div>  
         </div>
-        <div class="container " style="position: absolute; top: 100px; " >
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black';"><b></b></h3>
-                </div>  
-            </div>
-            
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                <div class="card-body shadow" style="border-radius: 15px 20px 25px 30px;">
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card-body shadow" style="border-radius: 15px 20px 25px 30px; background-color: white;">
                     <table>
                         <tr>
                             <td class="badge badge-primary p-2 mr-4 mb-2">Start Date <i class="fas fa-calendar"></i></td>
-                            <td class="badge badge-primary p-2  mr-4 mb-2">1st April, 2025</td>
+                            <td class="badge badge-primary p-2 mr-4 mb-2">1st May, 2025</td>
                         </tr>
                         <tr>
-                            <td class="badge badge-primary p-2  mr-4 mb-2">Time <i class="fas fa-clock"></i></td>
-                            <td class="badge badge-primary p-2  mr-4 mb-2">Morning, Afternoon, Eveneing or Night</td>
+                            <td class="badge badge-primary p-2 mr-4 mb-2">Time <i class="fas fa-clock"></i></td>
+                            <td class="badge badge-primary p-2 mr-4 mb-2">Morning, Afternoon, Evening or Night</td>
                         </tr>
                         <tr>
-                            <td class="badge badge-primary p-2  mr-4 mb-2">Mode </td>
-                            <td class="badge badge-primary p-2  mr-4 mb-2">Virtual or Physical</td>
+                            <td class="badge badge-primary p-2 mr-4 mb-2">Mode</td>
+                            <td class="badge badge-primary p-2 mr-4 mb-2">Virtual or Physical</td>
                         </tr>
                     </table>
                     <a class="btn btn-outline-primary btn-sm mt-4" href="{{route('programme',['bootcamp'])}}">View Bootcamps</a> 
                     <a class="btn btn-outline-info btn-sm mt-4" href="{{route('programme',['workshop'])}}">View Workshops</a>
                 </div>
-                </div>
-            </div>  
-            
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="container my-5">
         <div class="row text-justify">
