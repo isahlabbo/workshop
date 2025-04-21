@@ -70,7 +70,7 @@
   <!-- End Google Map -->
   <script>
   // Text to be typed
-  var text = "If you dont have account you can create one here";
+  var text = "Register here";
 
   // Speed of typing (in milliseconds)
   var speed = 50;

@@ -74,6 +74,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     ->prefix('/access')
     ->group(function (){
         Route::get('/', 'AccessController@index')->name('index');    
+        // Roles management routes
+
+        Route::name('role.')
+        ->prefix('/role')
+        ->group(function (){
+            Route::post('/register', 'Access\RoleController@register')->name('register');    
+            Route::post('/{roleId}/update', 'Access\RoleController@update')->name('update');    
+                    
+    });
                 
 });
 

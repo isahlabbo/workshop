@@ -139,10 +139,11 @@
     
     
     <!-- Welcome Section -->
-    <section class="welcome1 position-relative" style="height: 500px;">
-        <h3 class="text text-primary text-center m-4" id="hero" style="font-family: 'Cooper Black'; position: absolute;  z-index: 1;"></h3>
-        
-        <div class="background hero-image">
+    <section class="welcome1" style="height: 500px;">
+        <div class="container" style="position: absolute;  z-index: 1; bottom: 10px;">
+            <h3 class="text text-primary text-center m-4 " id="hero" style="font-family: 'Cooper Black'; "></h3>
+        </div>
+        <div class="background hero-image" ">
             <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; object-fit: cover; opacity: 0.4;">
         </div>
     </section>

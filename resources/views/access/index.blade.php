@@ -4,14 +4,13 @@
     @endsection
     @section('content')
     <div class="card-body shadow mb-4">
-    <p class=""><b>Role and Permissions</b></p>
+        <p class=""><b>Role</b></p>
         <table class="table table-sm table-striped" style="color: black;">
             <thead>
                 <tr>
                     <th>S/N</th>
                     <th>Role</th>
-                    <th>Permissions</th>
-                    <th><button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Role</b></button></th>
+                    <th><button data-toggle="modal" data-target="#newRole" class="btn btn-sm btn-outline-primary btn-sm"><b><i class="fas fa-pen"></i></b></button></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +18,30 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$role->name}}</td>
-                        <td></td>
+                        <td><a href="#" data-toggle="modal" data-target="#edit_role_{{$role->id}}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a></td>
+                    </tr>
+                @include('access.role.edit')    
+                @endforeach
+            </tbody>
+        </table>
+        @include('access.role.create')
+    </div>
+
+    <div class="card-body shadow mb-4">
+        <p class=""><b>Permissions</b></p>
+        <table class="table table-sm table-striped" style="color: black;">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Permission</th>
+                    <th><button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Permission</b></button></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(App\Models\Permission::all() as $permission)
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$permission->name}}</td>
                         <td></td>
                     </tr>
                 @endforeach

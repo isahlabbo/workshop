@@ -37,9 +37,7 @@
 
             <div class="items-center">
             
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}" id="register">
-                        
-                    </a>
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}" id="register"></a>
                 
             </div>
 
@@ -50,9 +48,11 @@
                         Forgot Password
                     </a>
                 @endif
+                <br>
                 <x-jet-button class="btn btn-primary">
                     {{ __('Log in') }}
                 </x-jet-button>
+                <a class="btn btn-outline-primary" href="{{ url('/') }}" id=""><i class="fas fa-home"></i> Home</a>
             </div>
         </form>
     </x-jet-authentication-card>
