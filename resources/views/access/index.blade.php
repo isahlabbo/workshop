@@ -146,21 +146,34 @@
                     <th>Name</th>
                     <th>Email Address</th>
                     <th>Permissions</th>
-                    <th><button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Role</b></button></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach(App\Models\User::all() as $user)
-                    @if($user->hasPermissions())
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    @endif    
-                @endforeach
+            @foreach(App\Models\User::all() as $user)
+            <form action="{{route('access.role.updateUserPermission',[$user->id])}}" method="post">
+            @csrf
+                <tr>    
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                    <div class="row">
+                        @foreach(App\Models\Permission::all() as $permission)
+                        <div class="col-md-3">
+                        @if($user->canDo($permission))
+                            {{$permission->name}} : <input type="checkbox" checked name="permission[]" value="{{$permission->id}}">
+                        @else
+                            {{$permission->name}} : <input type="checkbox" name="permission[]" value="{{$permission->id}}">
+                        @endif
+                        </div>
+                        @endforeach
+                    </div>
+                    </td>
+                    <td><button class="btn btn-sm btn-outline-primary">Update</button></td>
+                </tr>
+                </form>
+            @endforeach
             </tbody>
         </table>
     </div>

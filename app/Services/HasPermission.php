@@ -34,20 +34,33 @@ trait HasPermission{
 
         return $status;
     }
+
+    public function hasThisPermission($permission)
+    {
+        $status = false;
+
+        foreach($this->userPermissions as $userPermission){
+            if($userPermission->permission->id == $permission->id){
+                $status = true;
+            }
+        }
+
+        return $status;
+    }
     
     public function canDo($permission)
     {
         $status = false;
         foreach($this->userRoles as $userRole){
             foreach($userRole->role->rolePermissions as $rolePermission){
-                if($rolePermission->status == 'active'){
+                if($rolePermission->permission->id == $permission->id){
                     $status = true;
                 }
             }
         }
 
         foreach($this->userPermissions as $userPermission){
-            if($userPermission->status == 'active'){
+            if($userPermission->permission->id == $permission->id){
                 $status = true;
             }
         }

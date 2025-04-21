@@ -28,7 +28,7 @@ class RoleController extends Controller
     {
         $role = Role::find($roleId);
         foreach($role->rolePermissions as $rolePermission){
-            if(!$this->requestHasThisPermission($rolePermission, $request->permission)){
+            if(!$this->requestHasThisRolePermission($rolePermission, $request->permission)){
                 $rolePermission->delete();
             }
         }
@@ -38,6 +38,23 @@ class RoleController extends Controller
         }
         
         return redirect()->route('access.index')->withToastSuccess('Role Permissions Updated');
+
+    }
+
+    public function updateUserPermission(Request $request, $userId)
+    {
+        $user = User::find($userId);
+        foreach($user->userPermissions as $userPermission){
+            if(!$this->requestHasThisUserPermission($userPermission, $request->permission)){
+                $userPermission->delete();
+            }
+        }
+
+        foreach($request->permission as $permission=>$permission_id){
+            $user->userPermissions()->firstOrCreate(['permission_id'=>$permission_id]);
+        }
+        
+        return redirect()->route('access.index')->withToastSuccess('User Permissions Updated');
 
     }
 
@@ -70,12 +87,24 @@ class RoleController extends Controller
         return $status; 
     }
 
-    public function requestHasThisPermission($rolePermission, $permissions)
+    public function requestHasThisRolePermission($rolePermission, $permissions)
     {
         $status = false;
 
         foreach($permissions as $permission=>$permission_id){
             if($rolePermission->permission->id == $permission_id){
+                $status = true;
+            }
+        }
+        return $status; 
+    }
+
+    public function requestHasThisUserPermission($userPermission, $permissions)
+    {
+        $status = false;
+
+        foreach($permissions as $permission=>$permission_id){
+            if($userPermission->permission->id == $permission_id){
                 $status = true;
             }
         }
