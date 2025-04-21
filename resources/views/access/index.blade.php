@@ -10,7 +10,7 @@
                 <tr>
                     <th>S/N</th>
                     <th>Role</th>
-                    <th><button data-toggle="modal" data-target="#newRole" class="btn btn-sm btn-outline-primary btn-sm"><b><i class="fas fa-pen"></i></b></button></th>
+                    <th><button data-toggle="modal" data-target="#newRole" class="btn btn-sm btn-outline-primary btn-sm"><b><i class="fas fa-pen"> Role</i></b></button></th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,10 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$role->name}}</td>
-                        <td><a href="#" data-toggle="modal" data-target="#edit_role_{{$role->id}}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a></td>
+                        <td>
+                        <a href="#" data-toggle="modal" data-target="#edit_role_{{$role->id}}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i> Edit</a>
+                        <a href="{{route('access.role.delete',[$role->id])}}" onclick="return confirm('Are sure, you want to delete this role?')" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
                     </tr>
                 @include('access.role.edit')    
                 @endforeach
@@ -34,16 +37,21 @@
                 <tr>
                     <th>S/N</th>
                     <th>Permission</th>
-                    <th><button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Permission</b></button></th>
+                    <th><button data-toggle="modal" data-target="#newPermission" class="btn btn-sm btn-outline-primary btn-sm"><b><i class="fas fa-pen"></i> Permission</b></button></th>
                 </tr>
             </thead>
+            @include('access.permission.create')
             <tbody>
                 @foreach(App\Models\Permission::all() as $permission)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$permission->name}}</td>
-                        <td></td>
+                        <td>
+                        <button data-toggle="modal" data-target="#edit_permission_{{$permission->id}}" class="btn btn-sm btn-outline-info btn-sm"><b><i class="fas fa-eye"></i> Edit</b></button>
+                        <a href="{{route('access.permission.delete',[$permission->id])}}" onclick="return confirm('Are sure, you want to delete this permission?')" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
                     </tr>
+                    @include('access.permission.edit')
                 @endforeach
             </tbody>
         </table>
@@ -57,7 +65,10 @@
                     <th>S/N</th>
                     <th>Role</th>
                     <th>Permissions</th>
-                    <th><button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Role</b></button></th>
+                    <th>
+                    <button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Role</b></button>
+                    
+                    </th>
                 </tr>
             </thead>
             <tbody>

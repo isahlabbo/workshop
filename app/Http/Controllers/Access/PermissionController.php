@@ -22,4 +22,11 @@ class PermissionController extends Controller
         $permission->update(['name'=>$request->name]);
         return redirect()->route('access.index')->withToastSuccess('Permission Updated');
     }
+
+    public function delete($permissionId)
+    {
+        $permission = Permission::find($permissionId);
+        $permission->delete();
+        return redirect()->route('access.index')->withToastSuccess('Permission Deleted');
+    }
 }

@@ -22,4 +22,11 @@ class RoleController extends Controller
         $role->update(['name'=>$request->name]);
         return redirect()->route('access.index')->withToastSuccess('Role Updated');
     }
+
+    public function delete($roleId)
+    {
+        $role = Role::find($roleId);
+        $role->delete();
+        return redirect()->route('access.index')->withToastSuccess('Role Deleted');
+    }
 }

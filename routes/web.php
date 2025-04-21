@@ -75,16 +75,25 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     ->group(function (){
         Route::get('/', 'AccessController@index')->name('index');    
         // Roles management routes
-
         Route::name('role.')
         ->prefix('/role')
         ->group(function (){
             Route::post('/register', 'Access\RoleController@register')->name('register');    
             Route::post('/{roleId}/update', 'Access\RoleController@update')->name('update');    
+            Route::get('/{roleId}/delete', 'Access\RoleController@delete')->name('delete');    
+                    
+        });
+
+        // Permission management routes
+        Route::name('permission.')
+        ->prefix('/permission')
+        ->group(function (){
+            Route::post('/register', 'Access\PermissionController@register')->name('register');    
+            Route::post('/{roleId}/update', 'Access\PermissionController@update')->name('update');    
+            Route::get('/{roleId}/delete', 'Access\PermissionController@delete')->name('delete');    
+        });
                     
     });
-                
-});
 
     Route::name('schedule.')
         ->prefix('/schedule')

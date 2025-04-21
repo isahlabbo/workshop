@@ -16,7 +16,7 @@
                     <label for="">Name</label>
                         <input type="text" class="input-group form-control" placeholder="Name" value="" name="name">
                     </div>
-                    <button class="btn btn-primary btn-sm">Register</button>
+                    <button class="btn btn-primary">Register</button>
                 </form>
             </div>
             <div class="modal-footer">
