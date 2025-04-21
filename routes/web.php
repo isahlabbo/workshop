@@ -80,6 +80,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         ->group(function (){
             Route::post('/register', 'Access\RoleController@register')->name('register');    
             Route::post('/{roleId}/update', 'Access\RoleController@update')->name('update');    
+            Route::post('/{roleId}/update-permissions', 'Access\RoleController@updatePermission')->name('updatePermission');    
+            Route::post('/{userId}/update-user-roles', 'Access\RoleController@updateUserRole')->name('updateUserRole');    
             Route::get('/{roleId}/delete', 'Access\RoleController@delete')->name('delete');    
                     
         });

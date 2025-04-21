@@ -21,6 +21,19 @@ trait HasPermission{
 
         return false;
     }
+
+    public function hasThisRole($role)
+    {
+        $status = false;
+
+        foreach($this->userRoles as $userRole){
+            if($userRole->role->id == $role->id){
+                $status = true;
+            }
+        }
+
+        return $status;
+    }
     
     public function canDo($permission)
     {

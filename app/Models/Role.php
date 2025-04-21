@@ -11,4 +11,17 @@ class Role extends BaseModel
     {
         return $this->hasMany(RolePermission::class);
     }
+
+    public function hasThisPermission($permission)
+    {
+        $flag = false;
+
+        foreach($this->rolePermissions as $rolePermission){
+            if($rolePermission->permission->id == $permission->id){
+                $flag = true;
+            }
+        }
+
+        return $flag;
+    }
 }

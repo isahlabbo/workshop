@@ -58,29 +58,80 @@
     </div>
 
     <div class="card-body shadow mb-4">
-    <p class=""><b>Users Role</b></p>
+    <p class=""><b>Role Permissions</b></p>
         <table class="table table-sm table-striped" style="color: black;">
             <thead>
                 <tr>
                     <th>S/N</th>
                     <th>Role</th>
                     <th>Permissions</th>
-                    <th>
-                    <button data-toggle="modal" data-target="#facilitator" class="btn btn-primary btn-sm"><b>+ Role</b></button>
-                    
-                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(App\Models\Role::all() as $role)
+                <form action="{{route('access.role.updatePermission',[$role->id])}}" method="post">
+                    @csrf
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$role->name}}</td>
+                        <td>
+                        <div class="row">
+                            @foreach(App\Models\Permission::all() as $permission)
+                            <div class="col-md-3">
+                            @if($role->hasThisPermission($permission))
+                            {{$permission->name}} : <input type="checkbox" name="permission[]" checked value="{{$permission->id}}">
+                            @else
+                            {{$permission->name}} : <input type="checkbox" name="permission[]" value="{{$permission->id}}">
+                            @endif
+                            </div>
+                            @endforeach
+                        </div>
+                        </td>
+                        <td><button class="btn btn-sm btn-outline-primary">Update</button></td>
+                    </tr>
+                </form>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-body shadow mb-4">
+    <p class=""><b>User Roles</b></p>
+        <table class="table table-sm table-striped" style="color: black;">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Email Address</th>
+                    <th>Roles</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(App\Models\User::all() as $user)
-                    @if($user->hasRoles())
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td></td>
-                        </tr>
-                    @endif
+                <form action="{{route('access.role.updateUserRole',[$user->id])}}" method="post">
+                @csrf
+                    <tr>    
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>
+                        <div class="row">
+                            @foreach(App\Models\Role::all() as $role)
+                            <div class="col-md-3">
+                            @if($user->hasThisRole($role))
+                                {{$role->name}} : <input type="checkbox" checked name="role[]" value="{{$role->id}}">
+                            @else
+                                {{$role->name}} : <input type="checkbox" name="role[]" value="{{$role->id}}">
+                            @endif
+                            </div>
+                            @endforeach
+                        </div>
+                        </td>
+                        <td><button class="btn btn-sm btn-outline-primary">Update</button></td>
+                    </tr>
+                    </form>
                 @endforeach
             </tbody>
         </table>
