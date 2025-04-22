@@ -15,29 +15,18 @@
             font-family: sans-serif;
         }
 
-        .navbar {
-            margin-bottom: 50px;
-            background-color: white !important;
+     
+        input[type="checkbox"], input[type="radio"]{
+            width: 20px;
+            height: 20px;
         }
 
-        .welcome {
-            background: linear-gradient(180deg, white, rgb(0, 150, 215));
-            color: white;
-            padding: 100px 0;
-            text-align: center;
+        .required-label::after {
+            content: " *";
+            color: red;
+            font-size: 25px;
         }
-
-        .services,
-        .testimonials,
-        .footer {
-            padding: 50px 0;
-        }
-
-        .services .card,
-        .testimonials .card {
-            margin: 20px 0;
-        }
-    </style>
+  </style>
 </head>
 
 <body>
@@ -58,14 +47,15 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
-                    <span><i class="fas fa-book"></i></span> <span><b>Access Control</b></span>
+                    <span><i class="fas fa-shield-alt"></i></span> <span><b>Access Control</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
                 
-                    <a class="nav-link"  href="{{route('access.index')}}"><span><i class="fas fa-list"></i></span> Role</a>
-                    <a class="nav-link"  href=""><span><i class="fas fa-list"></i></span> Permissions</a>
-                    <a class="nav-link"  href=""><span><i class="fas fa-list"></i></span> User Roles</a>
-                    <a class="nav-link"  href=""><span><i class="fas fa-list"></i></span> Role Permissions</a>
+                    <a class="nav-link"  href="{{route('access.index')}}"><span><i class="fas fa-user-tag"></i></span> Role</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-key"></i></span> Permissions</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-user-shield"></i></span> Role Permissions</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-users-cog"></i></span> User Roles</a>
+                    <a class="nav-link"  href=""><span><i class="fas fa-user-lock"></i></span> User Permissions</a>
                     
                 </div>
             </li>
@@ -182,7 +172,9 @@
         <div class="container">
            @yield('content')
            @include('sweetalert::alert')
+
         </div>
+        
     </section>
 
     
@@ -193,6 +185,40 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    
+    <script>
+        function printContent(el){
+        var restorepage = $('body').html();
+        var printcontent = $('#' + el).clone();
+        $('body').empty().html(printcontent);
+        window.print();
+        $('body').html(restorepage);
+        }
+    </script>
+	
+    <script>
+		$(document).ready( function(){
+			$('#myTable').DataTable();
+		});
+	</script>
+    
+    <script>
+        $(document).ready(function (e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#picture').change(function(){
+                let reader = new FileReader();
+                reader.onload = (e) => { 
+                    $('#picture_preview_container').attr('src', e.target.result); 
+                }
+                reader.readAsDataURL(this.files[0]); 
+            });
+        });
+    </script>
 </body>
 
 </html>

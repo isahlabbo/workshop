@@ -5,7 +5,7 @@
     @section('content')
     <div class="card-body shadow mb-4">
         <p class=""><b>Role</b></p>
-        <table class="table table-sm table-striped" style="color: black;">
+        <table class="table table-sm table-striped" style="color: black;" id="myTable">
             <thead>
                 <tr>
                     <th>S/N</th>

@@ -23,11 +23,11 @@
                     <td>{{$loop->iteration}}</td>
                     <td>{{$application->user->name}}</td>
                     <td>{{$application->user->email}}</a></td>
-                    <td>{{$application->programme()ap->title}}</a></td>
+                    <td>{{$application->programme()->title}}</a></td>
                     <td>{{$application->prefer_method}}</td>
                     <td>{{$application->prefer_language}}</td>
                     <td>{{$application->prefer_schedule}}</td>
-                    <td>{{$application->payment->status}}</td>
+                    <td>{{$application->payment->status ?? 'Pending'}}</td>
                    
                 </tr>
             @endforeach
