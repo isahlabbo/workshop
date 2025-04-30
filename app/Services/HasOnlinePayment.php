@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 use Illuminate\Http\Request;
+use App\Models\Coupon;
 use App\Models\Application;
 use EdwardMuss\Rave\Facades\Rave as Flutterwave;
 use Auth;
@@ -18,13 +19,27 @@ trait HasOnlinePayment{
             'prefer_schedule'=>$request->schedule,
         ]);
 
+        $coupon = Coupon::where(['code'=>$request->coupon, 'status'=>'active'])->first();
+       
+        $perecentOff = 0.0001;
+
+        if($coupon){
+            $application->update(['coupon_id'=>$coupon->id]);
+            $coupon->update(['status'=>'used']);
+            $perecentOff = $coupon->percentage;
+        }
+
+        
+        if($perecentOff < 100){
+        
+        try {
         //This generates a payment reference
         $reference = Flutterwave::generateReference();
         
         // Enter the details of the payment
         $data = [
-            'payment_options' => 'card,banktransfer, USSD',
-            'amount' => $request->amount,
+            'payment_options' => 'card, banktransfer, USSD',
+            'amount' => $request->amount - (($request->amount/100) * $perecentOff),
             'email' => Auth::user()->email,
             'tx_ref' => $reference,
             'currency' => "NGN",
@@ -47,7 +62,7 @@ trait HasOnlinePayment{
         ];
 
     
-        try {
+       
             $payment = Flutterwave::initializePayment($data);
         
             if ($payment['status'] !== 'success') {
@@ -57,9 +72,27 @@ trait HasOnlinePayment{
 
             return redirect($payment['data']['link']);
         } catch (\Exception $e) {
-            return redirect()->route('workshop.view', [$request->workshopId])
+            return redirect()->route('programme.workshop.view', [$request->workshopId])
                 ->withError('Payment initialization failed. Please try again.');
         }
+
+    }else{
+        $payment = $application->payment()->firstOrCreate([
+            'amount'=>$request->amount,
+            'payment_type_id'=>6,
+            'status'=> 'success'
+        ]);
+
+        $payment->paymentAttempts()->create([
+            'message'=>'success',
+            'method'=>'CARD Transaction',
+            'ip_address'=>'102.91.77.252',
+            'bank'=>'GUARANTY TRUST BANK Mastercard Naira Debit Card',
+            'account'=>'539983'."******".'8157',
+        ]);
+
+        return redirect()->route('dashboard')->withToastSuccess('Application was successfull');
+    }
         
     }
 

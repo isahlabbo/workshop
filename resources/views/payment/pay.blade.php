@@ -54,6 +54,11 @@
                             <option value="weekend">Weekend</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label for="schedule">Coupon Code</label>
+                        <input type="text" class="form-control" name="coupon">
+                    </div>
                     <button class="btn btn-info"><i class="fas fa-wallet"></i> Pay Now</button>
                 </form>
             </div>

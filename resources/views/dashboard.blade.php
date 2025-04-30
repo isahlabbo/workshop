@@ -84,7 +84,7 @@
         @if($application->payment && $application->payment->status == 'success')
         <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved and your payment status is <b>{{$application->payment->status}}</b></p>
        @else
-       <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved but your payment status is <b>{{$application->payment->status}}</b> <a href="">you can try your payment again here</a></p>
+       <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved but your payment status is <b>{{$application->payment->status ?? 'Not Successfull'}}</b> <a href="">you can try your payment again here</a></p>
        @endif
        <div class="row">
        <div class="col-md-6">
