@@ -38,4 +38,9 @@ class Application extends BaseModel
     {
         return $this->hasOne(Payment::class);
     }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
 }
