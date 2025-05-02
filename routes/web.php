@@ -39,6 +39,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/{yearId}/synch', 'CalendarController@synch')->name('synch');        
     });
 
+    Route::name('coupon.')
+    ->prefix('/coupon')
+    ->group(function (){
+        Route::post('/check', 'CouponController@check')->name('check');    
+               
+    });
+
     Route::name('coordinator.')
     ->prefix('/coordinator')
     ->group(function (){

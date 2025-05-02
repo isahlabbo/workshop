@@ -10,6 +10,11 @@ trait HasOnlinePayment{
     
     public function authorizePayment(Request $request)
     {
+        $request->validate([
+            'language'=>'required',
+            'method'=>'required',
+            'schedule'=>'required',
+        ]);
         // initialize the application
         $application = Auth::user()->applications()->firstOrCreate([
             'workshop_id'=>$request->workshopId ?? null,

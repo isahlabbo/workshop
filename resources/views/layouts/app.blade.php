@@ -186,7 +186,45 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    
+    <!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#coupon').on('input', function() {
+        var code = $(this).val();
+
+        // Optional: Only trigger if length is at least 3 chars (to reduce unnecessary checks)
+        if(code.length >= 10) {
+            $.ajax({
+                url: '/coupon/check',
+                method: 'POST',
+                data: {
+                    code: code,
+                    _token: '{{ csrf_token() }}'  // Laravel CSRF token
+                },
+                success: function(response) {
+                    $('#success').html('');
+                    $('#error').html('');
+                    if(response.success) {
+                        $('#success').html('✅ Coupon Available! and  ' + response.percentage_off + '% is off from your payment.');
+                    } else {
+                        $('#error').html('❌ This coupon code is not avaialable, but you can proceed to make your full payment.');
+                    }
+                },
+                error: function() {
+                    $('#error').html('⚠️ An error occurred.');
+                }
+            });
+        } else {
+            // Clear result if input is less than 3 characters
+            $('#success').html('');
+            $('#error').html('');
+        }
+    });
+});
+</script>
+
     <script>
         function printContent(el){
         var restorepage = $('body').html();
