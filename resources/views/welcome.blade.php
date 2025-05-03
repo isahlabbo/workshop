@@ -103,6 +103,35 @@
 		transform: rotateY(360deg);
 	}
     </style>
+    <style>
+    .hero-carousel {
+      height: 100vh;
+    }
+    .hero-carousel .carousel-item {
+      height: 100vh;
+    }
+    .hero-carousel img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+    .description-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      background-color: rgba(16, 16, 173, 0.5);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 80%;
+    }
+    .typed-cursor {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
 </head>
 
 <body>
@@ -140,11 +169,28 @@
     
     <!-- Welcome Section -->
     <section class="welcome1" style="height: 500px;">
-        <div class="container" style="position: absolute;  z-index: 1; bottom: 10px;">
-            <h3 class="text text-primary text-center m-4 " id="hero" style="font-family: 'Cooper Black'; "></h3>
-        </div>
-        <div class="background hero-image" ">
-            <img src="{{asset('images/bg.png')}}" alt="" style="height: 500px; width: 100%; object-fit: cover; opacity: 0.4;">
+        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="8000">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-description="Learn Digital Skills, Build Real Project, and Lunch Your Career.">
+                    <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item" data-description="Discover cutting-edge solutions tailored for you.">
+                    <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item" data-description="Join us and transform your ideas into reality.">
+                    <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 3">
+                </div>
+
+                <div class="carousel-item" data-description="we have industrial professional facilitator">
+                    <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+    
+        
+            <!-- Description Box -->
+            <div class="description-box">
+            <span id="typed-text" style="font-size: 45px; font-weight: 900"></span>
+            </div>
         </div>
     </section>
 
@@ -255,28 +301,49 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <script>
-    // Text to be typed
-    var text = "LEARN DIGITAL SKILLS, BUILD REAL PROJECTS, AND LUNCH YOUR CAREER.";
+        $(document).ready(function() {
+        var typed;
+        
+        function showDescription(text) {
+            if (typed) {
+            typed.destroy();
+            }
 
-    // Speed of typing (in milliseconds)
-    var speed = 100;
-
-    // Initialize index
-    var i = 0;
-
-    // Function to type text
-    function typeWriter() {
-        if (i < text.length) {
-        document.getElementById("hero").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, speed);
+            $('#typed-text').fadeOut(200, function() {
+            $('#typed-text').html('').fadeIn(200, function() {
+                typed = new Typed('#typed-text', {
+                strings: [text],
+                typeSpeed: 50,
+                showCursor: true,
+                cursorChar: '|',
+                onComplete: function() {
+                    setTimeout(() => {
+                    $('#typed-text').fadeOut(800);
+                    }, 2000); // wait 2 sec before fade out
+                }
+                });
+            });
+            });
         }
-    }
 
-    // Call the function
-    typeWriter();
+        // Initialize first description
+        var firstDesc = $('.carousel-item.active').data('description');
+        showDescription(firstDesc);
+
+        // On slide event
+        $('#heroCarousel').on('slide.bs.carousel', function (e) {
+            var nextSlide = $(e.relatedTarget);
+            var nextDesc = nextSlide.data('description');
+            showDescription(nextDesc);
+        });
+        });
     </script>
+    
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
     @section('title')
-        available centre$centres
+        available centres
     @endsection
     @section('content')
     <table class="table table-sm table-striped" style="color: black;">
