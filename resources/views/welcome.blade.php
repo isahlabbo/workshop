@@ -106,15 +106,31 @@
     <style>
     .hero-carousel {
       height: 100vh;
+      overflow: hidden;
     }
+
     .hero-carousel .carousel-item {
       height: 100vh;
+      position: relative;
     }
+
     .hero-carousel img {
       object-fit: cover;
       height: 100%;
       width: 100%;
+      animation: kenburns 8s ease-in-out forwards;
+      transition: opacity 1s ease;
     }
+
+    @keyframes kenburns {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      100% {
+        transform: scale(1.2) translate(-20px, -20px);
+      }
+    }
+
     .description-box {
       position: absolute;
       top: 50%;
@@ -122,11 +138,12 @@
       transform: translate(-50%, -50%);
       color: white;
       text-align: center;
-      background-color: rgba(16, 16, 173, 0.5);
+      background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
       border-radius: 12px;
       max-width: 80%;
     }
+
     .typed-cursor {
       font-weight: bold;
       font-size: 1.2em;
@@ -306,43 +323,49 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
     <script>
-        $(document).ready(function() {
-        var typed;
-        
-        function showDescription(text) {
-            if (typed) {
-            typed.destroy();
-            }
-
-            $('#typed-text').fadeOut(200, function() {
-            $('#typed-text').html('').fadeIn(200, function() {
-                typed = new Typed('#typed-text', {
-                strings: [text],
-                typeSpeed: 50,
-                showCursor: true,
-                cursorChar: '|',
-                onComplete: function() {
-                    setTimeout(() => {
-                    $('#typed-text').fadeOut(800);
-                    }, 2000); // wait 2 sec before fade out
-                }
-                });
-            });
-            });
-        }
-
-        // Initialize first description
-        var firstDesc = $('.carousel-item.active').data('description');
-        showDescription(firstDesc);
-
-        // On slide event
-        $('#heroCarousel').on('slide.bs.carousel', function (e) {
-            var nextSlide = $(e.relatedTarget);
-            var nextDesc = nextSlide.data('description');
-            showDescription(nextDesc);
+$(document).ready(function() {
+  var typed;
+  
+  function showDescription(text) {
+    if (typed) {
+      typed.destroy();
+    }
+    $('#typed-text').fadeOut(200, function() {
+      $('#typed-text').html('').fadeIn(200, function() {
+        typed = new Typed('#typed-text', {
+          strings: [text],
+          typeSpeed: 50,
+          showCursor: true,
+          cursorChar: '|',
+          onComplete: function() {
+            setTimeout(() => {
+              $('#typed-text').fadeOut(800);
+            }, 2000); // wait 2 sec before fade out
+          }
         });
-        });
-    </script>
+      });
+    });
+  }
+
+  // Initialize first description
+  var firstDesc = $('.carousel-item.active').data('description');
+  showDescription(firstDesc);
+
+  // On slide event
+  $('#heroCarousel').on('slide.bs.carousel', function (e) {
+    var nextSlide = $(e.relatedTarget);
+    var nextDesc = nextSlide.data('description');
+
+    // Restart Ken Burns animation by removing/re-adding image
+    var img = nextSlide.find('img');
+    img.css('animation', 'none');
+    img[0].offsetHeight; // trigger reflow
+    img.css('animation', '');
+
+    showDescription(nextDesc);
+  });
+});
+</script>
     
 </body>
 
