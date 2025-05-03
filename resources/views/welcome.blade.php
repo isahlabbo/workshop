@@ -141,7 +141,7 @@
       background-color: rgba(0, 0, 0, 0.5);
       padding: 20px;
       border-radius: 12px;
-      max-width: 80%;
+      max-width: 90%;
     }
 
     .typed-cursor {
@@ -205,8 +205,8 @@
     
         
             <!-- Description Box -->
-            <div class="description-box">
-            <span id="typed-text" style="font-size: 45px; font-weight: 900"></span>
+            <div class="description-box h1">
+            <span id="typed-text" style="font-weight: 900"></span>
             </div>
         </div>
     </section>
