@@ -10,6 +10,7 @@
                 <th>TITLE</th>
                 <th>DESCRIPTION</th>
                 <th>FEES</th>
+                <th>APPLICATION STATUS</th>
                 <th><button data-toggle="modal" data-target="#newWorkshop" class="btn btn-primary btn-sm"><b>+Workshop</b></button></th>
             </tr>
         </thead>
@@ -21,6 +22,7 @@
                         <td> <i class="{{$workshop->icon}}"></i> {{$workshop->title}}</td>
                         <td>{{$workshop->description}}</td>
                         <td><b>{{number_format($workshop->totalFees(),2)}}</b></td>
+                        <td><b>{{$workshop->application}}</b></td>
                         <td>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit_{{$workshop->id}}">Edit</button>
                            <a href="{{route('programme.workshop.delete',[$workshop->id])}}" onclick="return confirm('Are you sure, you want to delete this workshop?')"><button class="btn btn-danger btn-sm">Delete</button></a>

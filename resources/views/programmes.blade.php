@@ -87,7 +87,12 @@
                                 <div class="card-body text-center">
                                     <i style="color: rgb(0, 150, 215) !important;"class="{{$bootcamp->icon}} fa-3x mb-3"></i>
                                     <h5 class="card-title" style="color: rgb(0,0,64);">{{$bootcamp->title}}</h5>
-                                    <p class="card-text">{{$bootcamp->description}} <a href="{{route('programme.bootcamp.view',[$bootcamp->id])}}">view details information and apply here</a></p>
+                                    <p class="card-text">{{$bootcamp->description}} 
+                                    @if($bootcamp->application == 'open')
+                                    <a class="btn btn-outline-primary" href="{{route('programme.bootcamp.view',[$bootcamp->id])}}">view details information and proceed to application</a></p>
+                                    @else
+                                    <a href="#" class="btn btn-outline-warning">The application to this <b>bootcamp</b> currently close</a> 
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -99,7 +104,12 @@
                                 <div class="card-body text-center">
                                     <i style="color: rgb(0, 150, 215) !important;"class="{{$workshop->icon}} fa-3x mb-3"></i>
                                     <h5 class="card-title" style="color: rgb(0,0,64);">{{$workshop->title}}</h5>
-                                    <p class="card-text">{{$workshop->description}} <a href="{{route('programme.workshop.view',[$workshop->id])}}">view details information and apply here</a></p>
+                                    <p class="card-text">{{$workshop->description}} 
+                                    @if($workshop->application == 'open')
+                                    <a href="{{route('programme.workshop.view',[$workshop->id])}}">view details information and proceed to application</a></p>
+                                    @else
+                                    <a href="#" class="btn btn-outline-warning">The application to this <b>workshop</b> currently close</a> 
+                                    @endif
                                 </div>
                             </div>
                         </div>

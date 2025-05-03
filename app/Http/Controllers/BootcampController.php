@@ -24,12 +24,14 @@ class BootcampController extends Controller
             'icon'=>'required',
             'title'=>'required',
             'description'=>'required',
+            'application'=>'required',
         ]);
         $bootcamp = Bootcamp::find($bootcampId);
         $bootcamp->update([
             'icon'=>$request->icon,
             'title'=>$request->title,
             'description'=>$request->description,
+            'application'=>$request->application,
         ]);
         
         return redirect()->route('programme.bootcamp.index',[$bootcamp->programme->id])->withToastSuccess('Bootcamp Updated');

@@ -25,12 +25,14 @@ class WorkshopController extends Controller
             'title'=>'required',
             'description'=>'required',
             'programme'=>'required',
+            'application'=>'required',
         ]);
         $workshop = Workshop::find($workshopId);
         $workshop->update([
             'title'=>$request->title,
             'programme_id'=>$request->programme,
             'description'=>$request->description,
+            'application'=>$request->application,
         ]);
         return redirect()->route('programme.workshop.index',[$workshop->programme->id])->withToastSuccess('Workshop Updated');
     }

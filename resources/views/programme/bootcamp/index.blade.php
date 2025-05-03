@@ -10,6 +10,7 @@
                 <th>TITLE</th>
                 <th>DESCRIPTION</th>
                 <th>FEES</th>
+                <th>APPLICATION STATUS</th>
                 <th><button data-toggle="modal" data-target="#newBootcamp" class="btn btn-primary btn-sm"><b>+Bootcamp</b></button></th>
             </tr>
         </thead>
@@ -21,6 +22,7 @@
                         <td> <i class="{{$bootcamp->icon}}"></i> {{$bootcamp->title}}</td>
                         <td>{{$bootcamp->description}}</td>
                         <td><b>{{number_format($bootcamp->totalFees(),2)}}</b></td>
+                        <td><b>{{$bootcamp->application}}</b></td>
                         <td>
                             <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit_{{$bootcamp->id}}">Edit</button>
                            <a href="{{route('programme.bootcamp.delete',[$bootcamp->id])}}" onclick="return confirm('Are you sure, you want to delete this bootcamp?')"><button class="btn btn-danger btn-sm">Delete</button></a>

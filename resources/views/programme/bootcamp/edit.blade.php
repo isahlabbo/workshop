@@ -39,6 +39,20 @@
                         <textarea name="description" id="" class="form-control" cols="30" rows="3">{{$bootcamp->description}}</textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label for="">Application Status</label>
+                        <select name="application" class="form-control" id="">
+                        <option value="{{$bootcamp->application}}">Application {{ucwords($bootcamp->application)}}</option>
+                       
+                            @if($bootcamp->application == 'close')
+                            <option value="open">Open Application</option>
+                            @else
+                            <option value="close">Close Application</option>
+                            @endif
+                        
+                        </select>
+                    </div>
+
                     <button class="btn btn-primary btn-sm">Update</button>
                 </form>
             </div>
