@@ -7,6 +7,28 @@ use App\Models\Programme;
 
 class ProgrammeController extends Controller
 {
+    public function index()
+    {
+        return view('programme.index');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'icon'=>'required',
+            'type'=>'required',
+            ]);
+
+        $programme = Programme::firstOrCreate([
+            'name'=>$request->name,
+            'icon'=>$request->icon,
+            'type'=>$request->type,
+            ]);
+
+        return redirect()->route('programme.index')->withToastSuccess('Programme Registered');
+    }
+
     public function verify(Request $request)
     {
         $request->validate(['programme'=>'required']);

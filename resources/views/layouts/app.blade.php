@@ -31,8 +31,8 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand ml-4" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}"  alt=""></a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" width="100"  alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -102,6 +102,7 @@
                     <span><i class="fas fa-users"></i></span> <span><b>Administration</b></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <a class="nav-link" href="{{route('programme.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i> </span><b>Programmes</b></a>
                 <a class="nav-link" href="{{route('calendar.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a>
                 <a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a>
                 <a class="nav-link" href="{{route('schedule.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-clock"></i></span><b> Schedule</b></a>
@@ -170,6 +171,7 @@
     <!-- Welcome Section -->
     <section class="dashboard">
         <div class="container">
+        <div class="text text-right"><img src="{{asset('images\logo.png')}}" width="80" alt=""></div>
            @yield('content')
            @include('sweetalert::alert')
 

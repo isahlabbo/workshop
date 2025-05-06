@@ -153,6 +153,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/', 'ProgrammeController@index')->name('index');    
         Route::post('/verify', 'ProgrammeController@verify')->name('verify');    
         Route::post('/register', 'ProgrammeController@register')->name('register');    
+        Route::post('/{programmeId}/update', 'ProgrammeController@update')->name('update');    
         Route::get('/{programmeId}/workshops', 'ProgrammeController@workshops')->name('workshops');    
         Route::get('/{programmeId}/delete', 'ProgrammeController@delete')->name('delete');        
     //    programme workshops
