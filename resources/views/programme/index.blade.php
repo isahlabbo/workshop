@@ -16,7 +16,7 @@
         </thead>
         @include('programme.create')
         <tbody>
-                @foreach(App\Models\programme::all() as $programme)
+                @foreach(App\Models\Programme::all() as $programme)
                     <tr>
                         <td><i class="{{$programme->icon}}"></i></td>
                         <td>{{$programme->name}}</td>
