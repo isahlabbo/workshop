@@ -13,7 +13,26 @@
             <form enctype="multipart/form-data" action="{{route('programme.update',[$programme->id])}}" method="post">
                     @csrf
                     
-
+                    <div class="form-group mb-4">
+                        <input type="text" class="input-group form-control" placeholder="Name" value="{{$programme->name}}" name="name">
+                    </div>
+                    
+                    
+                    <div class="form-group mb-4">
+                        <input type="text" class="input-group form-control" placeholder="Icon" value="{{$programme->icon}}" name="icon">
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <select class="input-group form-control" name="type">
+                        <option value="{{$programme->type}}">{{ucwords($programme->type)}}</option>
+                       @if($programme->type == 'workshop')
+                        <option value="bootcamp">Bootcamp</option>
+                       @else
+                        <option value="workshop">Workshop</option>
+                        @endif
+                        </select>
+                    </div>
+                    
                     <button class="btn btn-primary">Update</button>
                 </form>
             </div>

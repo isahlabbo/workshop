@@ -29,6 +29,24 @@ class ProgrammeController extends Controller
         return redirect()->route('programme.index')->withToastSuccess('Programme Registered');
     }
 
+    public function update(Request $request, $programmeId)
+    {
+        $request->validate([
+            'name'=>'required',
+            'icon'=>'required',
+            'type'=>'required',
+            ]);
+
+        $programme = Programme::find($programmeId);
+        $programme->update([
+            'name'=>$request->name,
+            'icon'=>$request->icon,
+            'type'=>$request->type,
+            ]);
+
+        return redirect()->route('programme.index')->withToastSuccess('Programme Updated');
+    }
+
     public function verify(Request $request)
     {
         $request->validate(['programme'=>'required']);

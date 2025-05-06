@@ -22,7 +22,7 @@
                         <td>{{$programme->name}}</td>
                         <td><a href="{{route('programme.workshop.index', $programme->id)}}">{{count($programme->workshops)}}</a></td>
                         <td><a href="{{route('programme.bootcamp.index', $programme->id)}}">{{count($programme->bootcamps)}}</a></td>
-                        <td></td>
+                        <td><button class="btn btn-outline-info" data-toggle="modal" data-target="#edit_{{$programme->id}}">Edit</button></td>
                     </tr>
                     @include('programme.edit')
                 @endforeach
