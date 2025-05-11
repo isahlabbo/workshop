@@ -13,6 +13,7 @@
     <style>
         body {
             font-family: sans-serif;
+            padding-top: 70px;
         }
 
      
@@ -31,8 +32,8 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images\logo.png')}}" width="100"  alt=""></a>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" height="100" width="80"  alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -94,6 +95,7 @@
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
                 <a class="nav-link" href="{{route('coordinator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Coordinators</b></a>
                 <a class="nav-link" href="{{route('facilitator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a>
+                <a class="nav-link" href="{{route('participant.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Participant</b></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -114,7 +116,7 @@
             
             @endif
 
-            @if(Auth::user()->role == 'student')
+            @if(Auth::user()->role == 'participant')
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-receipt"></i></span><b> Receipt</b></a></li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
@@ -170,8 +172,11 @@
     
     <!-- Welcome Section -->
     <section class="dashboard">
+    <br>
+    <br>
+    <br>
         <div class="container">
-        <div class="text text-right"><img src="{{asset('images\logo.png')}}" width="80" alt=""></div>
+        <div class="text text-right"><img src="{{asset('images/logo.png')}}" width="80" alt=""></div>
            @yield('content')
            @include('sweetalert::alert')
 

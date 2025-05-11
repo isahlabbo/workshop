@@ -55,6 +55,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         Route::get('/{coordinatorId}/delete', 'CoordinatorController@delete')->name('delete');        
         Route::get('/{yearId}/synch', 'CoordinatorController@synch')->name('synch');        
     });
+
+    Route::name('participant.')
+    ->prefix('/participant')
+    ->group(function (){
+        Route::get('/', 'ParticipantController@index')->name('index');    
+        Route::post('/register', 'ParticipantController@register')->name('register');    
+        Route::get('{participantId}/delete', 'ParticipantController@delete')->name('delete');    
+        Route::post('{participantId}/update', 'ParticipantController@update')->name('update');    
+    });
     
     
 
