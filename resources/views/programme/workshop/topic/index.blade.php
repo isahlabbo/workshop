@@ -30,9 +30,9 @@
                                         <th>Title</th>
                                         <th>
                                             <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#subtopic_{{$topic->id}}"><i class="fas fa-pen"></i></a>
-                                            
                                         </th>
                                     </tr>
+                                    @include('programme.workshop.topic.subtopic.create')
                                 </thead>
                                 <tbody>
                                 @foreach($topic->subTopics as $subTopic)
@@ -47,7 +47,34 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            @include('programme.workshop.topic.subtopic.create')
+                            
+                        
+                            <!-- Practical Activities -->
+                            <p><b>Practical Activities:</b></p>
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Activity</th>
+                                        <th>
+                                            <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#practical_{{$topic->id}}"><i class="fas fa-pen"></i></a>
+                                        </th>
+                                    </tr>
+                                    @include('programme.workshop.topic.practical.create')
+                                </thead>
+                                <tbody>
+                                @foreach($topic->practicals as $practical)
+                                <tr>
+                                <td>{{$practical->activity}}</td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#edit_practical_{{$practical->id}}" class="btn btn-sm btn-outline-info"><i class="fas fa-eye"></i></a>
+                                    <a href="{{route('programme.workshop.topic.practical.delete',[$practical->id])}}" onclick="return confirm('Are you sure, you want to delete this Practical Activity?')" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                                </tr>
+                                @include('programme.workshop.topic.practical.edit')
+                                @endforeach
+                                </tbody>
+                            </table>
+                            
                         </div>
                     </div>
                 </div>

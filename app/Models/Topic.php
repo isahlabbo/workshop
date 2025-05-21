@@ -31,5 +31,10 @@ class Topic extends BaseModel
     {
         return $this->belongsTo(Week::class);
     }
+
+    public function practicals()
+    {
+        return $this->hasMany(Practical::class);
+    }
     
 }

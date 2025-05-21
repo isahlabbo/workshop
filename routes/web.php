@@ -190,6 +190,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
                         Route::post('{subtopicId}/update', 'SubtopicController@update')->name('update');    
                         Route::get('{subtopicId}/delete', 'SubtopicController@delete')->name('delete');    
                 });
+
+                Route::name('practical.')
+                    ->prefix('/practical')
+                    ->group(function (){
+                        Route::post('{topicId}/register', 'PracticalController@register')->name('register');    
+                        Route::post('{practicalId}/update', 'PracticalController@update')->name('update');    
+                        Route::get('{practicalId}/delete', 'PracticalController@delete')->name('delete');    
+                });
             });
         });
     // programme bootcamps
