@@ -176,10 +176,8 @@
     <br>
     <br>
         <div class="container">
-        <div class="text text-right"><img src="{{asset('images/logo.png')}}" width="80" alt=""></div>
            @yield('content')
            @include('sweetalert::alert')
-
         </div>
         
     </section>

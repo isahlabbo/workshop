@@ -155,7 +155,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="height: 120px;">
     <a class="navbar-brand" href="{{ url('/') }}">
-        <img src="{{ asset('images/brand-logo.png') }}" height="70" width="200" alt="Brand Logo">
+        <img src="{{ asset('images/brand-logo.png') }}" height="70" width="300" alt="Brand Logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

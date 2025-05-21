@@ -9,7 +9,7 @@
         @if(count($workshop->topics) == 0)
         There is no any topic register for this workshop <a href="#" data-toggle="modal" data-target="#newTopic" class="btn btn-sm btn-outline-primary">Add first topic to the Worshop</a>
         @else
-        <a href="" data-toggle="modal" data-target="newTopic" class="btn btn-sm btn-outline-primary my-2"><i class="fas fa-pen"></i> Add Topic</a>
+        <a href="#" data-toggle="modal" data-target="#newTopic" class="btn btn-sm btn-outline-primary my-2"><i class="fas fa-pen"></i> Add Topic</a>
         @endif
         @include('programme.workshop.topic.create')
             @foreach($workshop->topics as $topic)
