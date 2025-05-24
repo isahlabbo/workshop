@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="text" name="email" id="" class="form-control" value="{{$participant->name}}"/>
+                <input type="text" name="email" id="" class="form-control" value="{{$participant->email}}"/>
             </div>
 
             <div class="form-group">
