@@ -31,21 +31,27 @@ $programme = $workshop;
                     <table class="table table-stripped table-sm">
                         <thead>
                             <th>DAY</th>
-                            <th>FACILITATOR</th>
                             <th>TOPIC</th>
                             <th>SUB TOPICS</th>
+                            <th>PRACTICALS</th>
                         </thead>
                         <tbody>
                         @foreach($workshop->topics as $topic)
                         
                         <tr>
-                        <td>Day {{$topic->day}}</td>
-                        <td></td>
+                        <td>Day-w{{$loop->iteration}}</td>
                         <td>{{$topic->title}}</td>
                         <td>
                             <ul>
                             @foreach($topic->subTopics as $subTopic)
                                 <li>{{$subTopic->title}}</li>
+                            @endforeach
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                            @foreach($topic->practicals as $practical)
+                                <li>{{$practical->title}}</li>
                             @endforeach
                             </ul>
                         </td>

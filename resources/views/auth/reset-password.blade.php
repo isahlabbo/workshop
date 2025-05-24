@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
     @section('title') 
-    reset password
+        reset password
     @endsection
         <x-slot name="logo">
         <h5 class="text text-center text-primary">Reset Your Password</h5>
