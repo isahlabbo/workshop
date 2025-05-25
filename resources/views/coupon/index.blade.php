@@ -7,9 +7,9 @@
         <thead>
             <tr>
                 <th>S/N</th>
-                <th>CODE</th>
-                <th>PERCENTAGE OFF</th>
-                <th>STATUS</th>
+                <th>Code</th>
+                <th>Percentage off</th>
+                <th>Status</th>
                 <th><button data-toggle="modal" data-target="#coupon" class="btn btn-primary btn-sm"><b>+ coupon</b></button></th>
             </tr>
             @include('coupon.create')
@@ -22,8 +22,8 @@
                     <td>{{$coupon->percentage}} %</td>
                     <td>{{$coupon->status}}</td>
                     <td>
-                        <button class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#edit_{{$coupon->id}}">Edit</button>
-                        <a href="{{route('coupon.delete',[$coupon->id])}}" onclick="return confirm('Are you sure, you want to delete this coupon?')"><button class="btn btn-outline-danger btn-sm">Delete</button></a>
+                        <button class="btn btn-sm btn-outline-warning btn-sm" data-toggle="modal" data-target="#edit_{{$coupon->id}}">Edit</button>
+                        <a href="{{route('coupon.delete',[$coupon->id])}}" onclick="return confirm('Are you sure, you want to delete this coupon?')"><button class="btn btn-sm btn-outline-danger btn-sm">Delete</button></a>
                     </td>
                     @include('coupon.edit')
                 </tr>

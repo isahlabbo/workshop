@@ -14,13 +14,19 @@
                 @csrf
                 <div class="form-group">
                     <label for="">Code</label>
-                    <input type="text" class="input-group form-control" placeholder="Name" value="{{$coupon->name}}" name="name">
+                    <input type="text" class="input-group form-control" placeholder="Name" value="{{$coupon->code}}" name="code">
                 </div>
-
             
                 <div class="form-group">
                     <label for="">Percentage</label>
-                    <input type="text" class="input-group form-control" placeholder="Percentage off" value="{{$coupon->percentage}}" name="percentage">
+                    <select class="input-group form-control" name="percentage">
+                    <option value="{{$coupon->percentage}}">{{$coupon->percentage}}</option>
+                    @for($percent = 1; $percent <=100; $percent++)
+                        @if($percent != $coupon->percentage)
+                        <option value="{{$percent}}">{{$percent}}%</option>
+                        @endif
+                    @endfor
+                    </select>
                 </div>
 
                 <div class="form-group">
