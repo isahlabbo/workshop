@@ -7,6 +7,11 @@ use App\Models\Coupon;
 
 class CouponController extends Controller
 {
+    public function index()
+    {
+        return view('coupon.index');
+    }
+
     public function check(Request $request)
     {
         $coupon = Coupon::where(['code'=> $request->code,'status'=>'active'])->first();

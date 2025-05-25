@@ -211,6 +211,7 @@
     <!-- Welcome Section -->
     <section class="welcome1" style="height: 500px;">
         <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="8000">
+           
             <div class="carousel-inner">
                 <div class="carousel-item active" data-description="Learn Digital Skills, Build Real Project, and Lunch Your Career.">
                     <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 1">
@@ -227,7 +228,7 @@
                 </div>
             </div>
     
-        
+
             <!-- Description Box -->
             <div class="description-box h1">
             <span id="typed-text" style="font-weight: 900"></span>

@@ -43,6 +43,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     ->prefix('/coupon')
     ->group(function (){
         Route::post('/check', 'CouponController@check')->name('check');    
+        Route::get('/', 'CouponController@index')->name('index');    
+        Route::get('/{couponId}/delete', 'CouponController@delete')->name('delete');    
+        Route::post('/{couponId}/update', 'CouponController@update')->name('update');    
                
     });
 

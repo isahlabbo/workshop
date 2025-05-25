@@ -108,6 +108,7 @@
                 <a class="nav-link" href="{{route('calendar.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a>
                 <a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a>
                 <a class="nav-link" href="{{route('schedule.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-clock"></i></span><b> Schedule</b></a>
+                <a class="nav-link" href="{{route('coupon.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-dollar"></i></span><b> Coupon</b></a>
                 <a class="nav-link" href="{{route('centre.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-home"></i></span><b> Centres</b></a>
                 </div>
             </li>
