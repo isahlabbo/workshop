@@ -156,8 +156,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     ->prefix('/application')
     ->group(function (){
         Route::get('/', 'ApplicationController@index')->name('index');    
+        
+        Route::name('certificate.')
+        ->prefix('/certificate')
+        ->group(function (){
+            Route::get('/', 'certificateController@index')->name('index');    
+            Route::get('/{applicationId}/view', 'CertificateController@view')->name('view');    
+                    
+        });
                 
-});
+    });
     
 
     Route::name('programme.')

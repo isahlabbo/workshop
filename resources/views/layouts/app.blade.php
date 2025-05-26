@@ -28,6 +28,7 @@
             font-size: 25px;
         }
   </style>
+  @yield('styles')
 </head>
 
 <body>

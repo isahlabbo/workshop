@@ -7,6 +7,11 @@ use App\Models\Coupon;
 
 class CouponController extends Controller
 {
+    public function certificate()
+    {
+        return view('application.certificate.view');
+    }
+
     public function index()
     {
         return view('coupon.index');
