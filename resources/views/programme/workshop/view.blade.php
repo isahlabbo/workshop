@@ -39,7 +39,7 @@ $programme = $workshop;
                         @foreach($workshop->topics as $topic)
                         
                         <tr>
-                        <td>Day-w{{$loop->iteration}}</td>
+                        <td>Day-{{$loop->iteration}}</td>
                         <td>{{$topic->title}}</td>
                         <td>
                             <ul>

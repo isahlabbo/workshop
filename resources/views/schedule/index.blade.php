@@ -14,7 +14,10 @@
                 <th>ASSESSMENT DATE</th>
                 <th>CERTIFICATE DISTRIBUTION DATE</th>
                 <th>PARTICIPANTS</th>
-                <th><button class="btn btn-primary btn-sm"><b>+ schedule</b></button></th>
+                <th><a href="{{route('schedule.create')}}">
+                <button class="btn btn-primary btn-sm"><b>+ schedule</b></button>
+                </a>
+                </th>
             </tr>
             
         </thead>
@@ -32,7 +35,7 @@
                     <td>
                         <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_{{$schedule->id}}"><i class="fas fa-eye"></i> Edit</button>
                         <a href="{{route('schedule.allocation.index',[$schedule->id])}}">
-                        <button class="btn btn-primary btn-sm" ><i class="fas fa-share"></i> Allocation</button>
+                        <button class="btn btn-primary btn-sm" ><i class="fas fa-share"></i> Facilitators Allocation</button>
                         </a>
                         <a href="{{route('schedule.delete',[$schedule->id])}}" onclick="return confirm('Are you sure, you want to delete this schedule?')">
                         <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button></a>

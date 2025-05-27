@@ -27,6 +27,11 @@ class Workshop extends BaseModel
        return $this->hasMany(Application::class);
     }
 
+    public function schedules()
+    {
+       return $this->hasMany(Schedule::class);
+    }
+
     public function totalFees()
     {
         $total = 0;
@@ -34,6 +39,17 @@ class Workshop extends BaseModel
             $total +=$workshopFee->amount;
         }
         return $total;
+    }
+
+    public function allocateThisParticipant(Application $application)
+    {
+        $schedule = $this->schedules->where('status', 'open')->first();
+
+        if(count($schedule->applications) < $schedule->centre->capacity){
+            $application->update(['status'=>'allocated','schedule_id'=>$schedule->id]);
+        }else{
+            $application->update(['status'=>'centre closed']);
+        }
     }
 
     public function updateFees()

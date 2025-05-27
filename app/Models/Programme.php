@@ -22,5 +22,10 @@ class Programme extends BaseModel
         return $this->hasMany(Coordinator::class);
     }
 
+    public function activeCoordinator()
+    {
+        return $this->coordinators->where('status', 'active')->first();
+    }
+
    
 }

@@ -129,7 +129,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
                   @foreach(Auth::user()->applications as $application)
-                    <a class="nav-link"  href="#"><span><i class="fas fa-graduation-cap"></i></span> {{$application->workshop->title}}</a>
+                    <a class="nav-link"  href="{{route('application.certificate.view',[$application->id])}}"><span><i class="fas fa-graduation-cap"></i></span> {{$application->workshop->title}}</a>
                   @endforeach
                 </div>
             </li>

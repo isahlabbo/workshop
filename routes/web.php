@@ -122,8 +122,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
         ->prefix('/schedule')
         ->group(function (){
             Route::get('/', 'ScheduleController@index')->name('index');    
-            Route::post('/{workshopId}/register', 'ScheduleController@register')->name('register');    
-            Route::get('/{workshopId}/create', 'ScheduleController@create')->name('create');    
+            Route::post('register', 'ScheduleController@register')->name('register');    
+            Route::get('/create', 'ScheduleController@create')->name('create');    
             Route::get('/{workshopId}/delete', 'ScheduleController@delete')->name('delete');    
            
         Route::name('allocation.')
@@ -156,6 +156,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     ->prefix('/application')
     ->group(function (){
         Route::get('/', 'ApplicationController@index')->name('index');    
+        Route::get('/{applicationId}/re-schedule', 'ApplicationController@schedule')->name('schedule');    
         
         Route::name('certificate.')
         ->prefix('/certificate')

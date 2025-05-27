@@ -62,6 +62,7 @@
             </div>
             </div> 
     @else
+   
         @if(count(Auth::user()->applications)>0)
         <p> You can register for another workshop or bootcamp here, just select a category and wait for a 2 seconds</p>
         @else
@@ -84,7 +85,11 @@
         @if($application->payment && $application->payment->status == 'success')
         <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved and your payment status is <b>{{$application->payment->status}}</b></p>
        @else
-       <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved but your payment status is <b>{{$application->payment->status ?? 'Not Successfull'}}</b> <a href="">you can try your payment again here</a></p>
+       <p>Your application to <i class="{{$application->programme()->icon}}"></i> <em>{{$application->programme()->title}}</em> was recieved but your payment status is <b>{{$application->payment->status ?? 'Not Successfull'}}</b> <a href="" data-toggle="modal" data-target="#pay">you can try your payment again here</a></p>
+       @php 
+        $programme = $application->programme();
+       @endphp
+       @include('payment.pay')
        @endif
        <div class="row">
        <div class="col-md-6">
@@ -128,7 +133,9 @@
             </tr>
         </table>
         @else
-        <div class="alert alert-warnig">Your application scheduling is not approve please checkback next time</div>
+        <div class="alert alert-warning">Your application scheduling is not approve please checkback next time, 
+        <b>If this has taken a while <a href="{{route('application.schedule',[$application->id])}}">you can send re-schedule Request here</a></b>
+        </div>
         @endif
         </div>
        <div class="col-md-6">

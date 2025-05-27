@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{strtolower($application->programme()->name)}} certificate
+@endsection
+
 @section('styles')
 <style>
     body {
@@ -62,31 +66,31 @@
     </div>
     <h1 class="text text-left" style="font-size: 32px; font-family:  'Viner Hand ITC';"><b>of award to</b></h1>
     <div class="name my-4" style="font-family: 'Lucida Calligraphy'; font-size 32px; letter-spacing: 2px;" >
-        Isah  Labbo
+       {{ucwords(strtolower($application->user->name))}}
     </div>
     <h2>
-        For successfully completing the workshop on
+        For successfully completing the {{$application->programme()->type}} on
         Digital Skills Workshop and Bootcamp Programme 
-        and Passed all Required Skills Assessment for.
+        and Passed all Required Skills Assessment.
     </h2>
     <div class="name my-4" style="font-family: 'Lucida Calligraphy';">
-        Cybersecurity Best Practices
+    {{ucwords(strtolower($application->programme()->title))}}
     </div>
     <div class="footer">
         <div class="row">
             <div class="col-sm-3">
-            Isah Labbo<br>
+            {{ucwords(strtolower($application->programme()->programme->activeCoordinator()->user->name))}}<br>
             Programme Coordinator
             </div>
             <div class="col-sm-9">
                 <table class="text">
                     <tr>
                         <td width="130">Center: </td>
-                        <td>Sokoto Education Develo-pment Trust Fund</td>
+                        <td>{{$application->schedule->center->name}}</td>
                     </tr>
                     <tr>
                         <td>Issued On:</td>
-                        <td>May 25, 2025</td>
+                        <td>{{date('d M, Y', strtotime($application->schedule->certificate_distribution_date))}}</td>
                     </tr>
                     <tr>
                         <td>Certificate No: </td>
@@ -100,11 +104,11 @@
             </div>
                 <div class="mt-2 p-2 " style="margin-left: 0px; margin-right: 0px; background-color: rgb(128,255,159); color: black;"> 
                 <div class="row">
-                <div class="col-sm-8 text text-justify">
-                This qualification is rated at <b>16 credit</b> hours and is equivalent to the qualification award abtain under Affiliation to 
-                Usmanu Danfodiyo University Consultancy Service (UDUCONS).  
-                </div>
-                <div class="col-sm-4">For verification: https://diswab.catsol.ng/verify-cert</div>
+                    <div class="col-sm-8 text text-justify">
+                    This qualification is rated at <b>16 credit</b> hours and is equivalent to the qualification award abtain under Affiliation to 
+                    Usmanu Danfodiyo University Consultancy Service (UDUCONS).  
+                    </div>
+                    <div class="col-sm-4">For verification: https://diswab.catsol.ng/verify-cert</div>
                     </div>
                 </div>
             
