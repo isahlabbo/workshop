@@ -27,5 +27,16 @@ class Programme extends BaseModel
         return $this->coordinators->where('status', 'active')->first();
     }
 
+    public function getCode()
+    {
+        $count = 1;
+        foreach(Programme::all() as $programme){
+            if($programme->id == $this->id){
+                return sprintf("%02d", $count);
+            }
+            $count++;
+        }
+    }
+
    
 }

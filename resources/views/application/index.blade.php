@@ -7,13 +7,14 @@
         <thead>
             <tr>
                 <th>S/N</th>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>WORKSHOP</th>
-                <th>METHOD</th>
-                <th>LANGUAGE</th>
-                <th>SCHEDULE</th>
-                <th>PAYMENT STATUS</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Workshop</th>
+                <th>Method</th>
+                <th>Language</th>
+                <th>Schedule</th>
+                <th>Registration No</th>
+                <th>Payment Status</th>
             </tr>
             
         </thead>
@@ -27,6 +28,7 @@
                     <td>{{$application->prefer_method}}</td>
                     <td>{{$application->prefer_language}}</td>
                     <td>{{$application->prefer_schedule}}</td>
+                    <td>{{$application->schedule ? $application->registrationNo() : 'has no schedule'}}</td>
                     <td>{{$application->payment->status ?? 'Pending'}}</td>
                    
                 </tr>

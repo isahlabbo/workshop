@@ -34,7 +34,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" height="100" width="80"  alt=""></a>
+        <a class="navbar-brand" href="{{route('dashboard')}}"><img src="{{asset('images/logo.png')}}" height="100" width="80"  alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

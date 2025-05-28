@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>S/N</th>
+                <th>WORKSHOP</th>
                 <th>CENTER</th>
                 <th>TIME</th>
                 <th>START DATE</th>
@@ -25,8 +26,9 @@
             @foreach(App\Models\Schedule::all() as $schedule)
                 <tr>
                     <td>{{$loop->iteration}}</td>
+                    <td>{{$schedule->workshop->title}}</td>
                     <td>{{$schedule->centre->name}}</td>
-                    <td>{{date('h:i:a', strtotime($schedule->time))}}</td>
+                    <td>{{date('h:ia', strtotime($schedule->time))}}</td>
                     <td>{{date('d M, Y', strtotime($schedule->start_date))}}</td>
                     <td>{{date('d M, Y', strtotime($schedule->end_date))}}</td>
                     <td>{{date('d M, Y', strtotime($schedule->assessment_date))}}</td>

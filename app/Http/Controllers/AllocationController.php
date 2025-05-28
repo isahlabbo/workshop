@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Schedule;
+use App\Models\TopicAllocation;
 use App\Models\User as Facilitator;
 
 class AllocationController extends Controller
@@ -18,7 +19,9 @@ class AllocationController extends Controller
         $request->validate(['facilitator'=>'required']);
 
         $facilitator= Facilitator::find($request->facilitator);
-        $facilitator->topicAllocations()->create(['topic_id'=>$topicId,'schedule_id'=>$scheduleId]);
+        $allocation= TopicAllocation::firstOrCreate(['topic_id'=>$topicId,'schedule_id'=>$scheduleId]);
+
+        $allocation->update(['user_id'=>$facilitator->id]);
 
         return redirect()->route('schedule.allocation.index',[$scheduleId])->withToastSuccess('Topic allocated to '.$facilitator->name);
     }

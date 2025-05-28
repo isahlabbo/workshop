@@ -7,17 +7,57 @@
 @section('content')
     @if(Auth::user()->role == 'admin')
     <div class="row">
+    @foreach(App\Models\Schedule::all() as $schedule)
         <div class="col-md-6">
             <div class="card-body shadow">
-                <h4>Bootcamps</h4>
-            </div>
-        </div>
+                <h5 class="text text-primary"><i class="{{$schedule->workshop->icon}}"></i> <b>{{$schedule->workshop->title}}</b></h5>
+                <table>
+                    <tr>
+                        <td width="40%"><b>Centre Name:</b> </td>
+                        <td>{{$schedule->centre->name}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Address:</b> </td>
+                        <td>{{$schedule->centre->address}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Capacity:</b> </td>
+                        <td>{{$schedule->centre->capacity}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Participants:</b> </td>
+                        <td>{{count($schedule->applications)}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Start Dtae:</b> </td>
+                        <td>{{date('d M, Y',strtotime($schedule->start_date))}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>End Date:</b> </td>
+                        <td>{{date('d M, Y',strtotime($schedule->end_date))}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Assessment Date:</b> </td>
+                        <td>{{date('d M, Y',strtotime($schedule->assessment_date))}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Certificate Distribution Date:</b> </td>
+                        <td>{{date('d M, Y',strtotime($schedule->certificate_distribution_date))}}</td>
+                    </tr>
 
-        <div class="col-md-6">
-            <div class="card-body shadow">
-                <h4>Workshops</h4>
+                    <tr>
+                        <td><b>Time:</b> </td>
+                        <td>{{date('h: ia',strtotime($schedule->time))}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Progress:</b> </td>
+                        <td>{{$schedule->status}}</td>
+                    </tr>
+                    </table>
             </div>
         </div>
+    @endforeach
+        
     </div>
     @elseif(Auth::user()->role == 'facilitator')
     
@@ -36,19 +76,19 @@
                     <p><b>Centre</b>
                     <table>
                     <tr>
-                        <td>Name: </td>
+                        <td>Name:</b> </td>
                         <td>{{$topicAllocation->schedule->centre->name}}</td>
                     </tr>
                     <tr>
-                        <td>Address: </td>
+                        <td>Address:</b> </td>
                         <td>{{$topicAllocation->schedule->centre->address}}</td>
                     </tr>
                     <tr>
-                        <td>Capacity: </td>
+                        <td>Capacity:</b> </td>
                         <td>{{$topicAllocation->schedule->centre->capacity}}</td>
                     </tr>
                     <tr>
-                        <td>Participants: </td>
+                        <td>Participants:</b> </td>
                         <td>{{count($topicAllocation->schedule->applications)}}</td>
                     </tr>
                     </table>

@@ -130,7 +130,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             ->prefix('/allocation')
             ->group(function (){
                 Route::get('{scheduleId}/', 'AllocationController@index')->name('index');    
-                Route::post('/{workshopId}/register', 'AllocationController@register')->name('register');    
+                Route::post('/schedule/{scheduleId}/workshop/{workshopId}/register', 'AllocationController@register')->name('register');    
                
                 Route::name('question.')
                 ->prefix('/question')

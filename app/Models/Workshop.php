@@ -41,6 +41,17 @@ class Workshop extends BaseModel
         return $total;
     }
 
+    public function getCode()
+    {
+        $count = 1;
+        foreach($this->programme->workshops as $workshop){
+            if($workshop->id == $this->id){
+                return sprintf("%02d", $count);
+            }
+            $count++;
+        }
+    }
+
     public function allocateThisParticipant(Application $application)
     {
         $schedule = $this->schedules->where('status', 'open')->first();

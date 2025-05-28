@@ -22,6 +22,17 @@ class Bootcamp extends BaseModel
         return $this->hasMany(BootcampFee::class);
     }
 
+    public function getCode()
+    {
+        $count = 1;
+        foreach($this->programme->bootcamps as $bootcamp){
+            if($bootcamp->id == $this->id){
+                return sprintf("%02d", $count);
+            }
+            $count++;
+        }
+    }
+
     public function totalFees()
     {
         $total = 0;

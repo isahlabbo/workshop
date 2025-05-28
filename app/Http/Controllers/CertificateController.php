@@ -16,7 +16,7 @@ class CertificateController extends Controller
             $message = 'Access to your certificate was restricted due to payment pls make your payment now';
         }
 
-        if(!$application->certificate){
+        if($application->certificate){
             $message = 'Your certificate was not publish, pls check back next time';
         }
 

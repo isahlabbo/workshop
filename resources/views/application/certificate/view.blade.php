@@ -9,11 +9,11 @@
     body {
       font-family: 'Georgia', serif;
       text-align: center;
-      padding: 50px;
+      padding: 60px;
     }
     .certificate {
       background: white;
-      padding: 50px;
+      padding: 60px;
       margin: auto;
     }
     h1 {
@@ -65,7 +65,7 @@
         <b>Certificate</b>
     </div>
     <h1 class="text text-left" style="font-size: 32px; font-family:  'Viner Hand ITC';"><b>of award to</b></h1>
-    <div class="name my-4" style="font-family: 'Lucida Calligraphy'; font-size 32px; letter-spacing: 2px;" >
+    <div class="name my-4 text-center" style="font-family: 'Lucida Calligraphy'; font-size 32px; letter-spacing: 2px;" >
        {{ucwords(strtolower($application->user->name))}}
     </div>
     <h2>
@@ -85,8 +85,8 @@
             <div class="col-sm-9">
                 <table class="text">
                     <tr>
-                        <td width="130">Center: </td>
-                        <td>{{$application->schedule->center->name}}</td>
+                        <td width="130">Centre: </td>
+                        <td>{{$application->schedule->centre->name}}</td>
                     </tr>
                     <tr>
                         <td>Issued On:</td>
@@ -98,17 +98,22 @@
                     </tr>
                     <tr>
                         <td>Registration No: </td>
-                        <td>12345678</td>
+                        <td>{{$application->registrationNo()}}</td>
                     </tr>
                 </table>
             </div>
-                <div class="mt-2 p-2 " style="margin-left: 0px; margin-right: 0px; background-color: rgb(128,255,159); color: black;"> 
+                <div class="mt-2 " > 
+                
                 <div class="row">
-                    <div class="col-sm-8 text text-justify">
-                    This qualification is rated at <b>16 credit</b> hours and is equivalent to the qualification award abtain under Affiliation to 
-                    Usmanu Danfodiyo University Consultancy Service (UDUCONS).  
+                <div class="col-sm-12">
+                    <div class="text text-center" style="color: rgb(157, 74, 202); font-size: 19px;">
+                        @foreach(App\Models\workshop::all() as $workshop)
+                            <span><i class="{{$workshop->icon}} fa-1x text-center"></i> </span>
+                        @endforeach
+                        @foreach(App\Models\bootcamp::all() as $bootcamp)
+                            <span><i class="{{$bootcamp->icon}} fa-1x text-center"></i> </span>
+                        @endforeach
                     </div>
-                    <div class="col-sm-4">For verification: https://diswab.catsol.ng/verify-cert</div>
                     </div>
                 </div>
             
