@@ -18,19 +18,21 @@
         </thead>
         <tbody>
             @foreach(App\Models\Coordinator::all() as $coordinator)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$coordinator->user->name ?? ' '}}</td>
-                    <td>{{$coordinator->programme->name ?? ' '}}</td>
-                    <td>{{$coordinator->user->email ?? ' '}}</td>
-                    <td>{{$coordinator->user->phone ?? ' '}}</td>
-                    <td>{{$coordinator->status ?? ' '}}</td>
-                    <td>
-                        <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_{{$coordinator->id}}">Edit</button>
-                        <a href="{{route('coordinator.delete',[$coordinator->id])}}" onclick="return confirm('Are you sure, you want to delete this coordinator?')"><button class="btn btn-danger btn-sm">Delete</button></a>
-                    </td>
-                    @include('coordinator.edit')
-                </tr>
+                @if($coordinator->user && $coordinator->programme)
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$coordinator->user->name}}</td>
+                        <td>{{$coordinator->programme->name}}</td>
+                        <td>{{$coordinator->user->email}}</td>
+                        <td>{{$coordinator->user->phone}}</td>
+                        <td>{{$coordinator->status}}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_{{$coordinator->id}}">Edit</button>
+                            <a href="{{route('coordinator.delete',[$coordinator->id])}}" onclick="return confirm('Are you sure, you want to delete this coordinator?')"><button class="btn btn-danger btn-sm">Delete</button></a>
+                        </td>
+                        @include('coordinator.edit')
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
