@@ -245,7 +245,7 @@
     
     
     <div class="col-sm-6">
-    <div class="card-body shadow p-4" style="border-radius: 0px 50px 0px 50px; border-top: 2px solid blue;">
+    <div class="card-body shadow p-4 m-2" style="border-radius: 0px 50px 0px 50px; border-top: 2px solid blue;">
         <b>{{$loop->iteration}}. {{$schedule->workshop->title}} From: <span class="badge badge-primary p-2">{{date('d M, Y',strtotime($schedule->start_date))}}</span>
         To: <span class="badge badge-primary p-2">{{date('d M, Y',strtotime($schedule->end_date))}}</span>
         </b>

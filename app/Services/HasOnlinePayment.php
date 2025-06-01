@@ -19,6 +19,9 @@ trait HasOnlinePayment{
         $application = Auth::user()->applications()->firstOrCreate([
             'workshop_id'=>$request->workshopId ?? null,
             'bootcamp_id'=>$request->bootcampId ?? null,
+        ]);
+        
+        $application->update([
             'prefer_language'=>$request->language,
             'prefer_method'=>$request->method,
             'prefer_schedule'=>$request->schedule,
