@@ -16,10 +16,16 @@ trait HasOnlinePayment{
             'schedule'=>'required',
         ]);
         // initialize the application
-        $application = Auth::user()->applications()->firstOrCreate([
-            'workshop_id'=>$request->workshopId ?? null,
-            'bootcamp_id'=>$request->bootcampId ?? null,
-        ]);
+        if($request->workshopId){
+            $application = Auth::user()->applications()->firstOrCreate([
+                'workshop_id'=>$request->workshopId,
+            ]);
+        }else{
+            $application = Auth::user()->applications()->firstOrCreate([
+                'bootcamp_id'=>$request->bootcampId,
+            ]);
+        }
+        
         
         $application->update([
             'prefer_language'=>$request->language,

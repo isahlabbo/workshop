@@ -38,19 +38,10 @@ class GenerateCouponCommand extends Command
      */
     public function handle()
     {
-        for($no = 1; $no<=40; $no++){
-            $code = 'DCS/2025B/'.sprintf("%03d", $no);
-            Coupon::create(['code'=>$code, 'percentage'=>100]);
-        }
+       
 
-        for($no = 1; $no<=80; $no++){
-            $code = 'CCS/2025B/'.sprintf("%03d", $no);
-            Coupon::create(['code'=>$code, 'percentage'=>100]);
-        }
-
-        for($no = 1; $no<=40; $no++){
-            $code = 'CCE/2025B/'.sprintf("%03d", $no);
-            Coupon::create(['code'=>$code, 'percentage'=>100]);
-        }
+       foreach(App\Models\Coupon::where('status','active')->get() as $coupon){
+           $coupon->delete();
+       }
     }
 }

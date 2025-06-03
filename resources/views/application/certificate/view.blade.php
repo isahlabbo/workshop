@@ -45,16 +45,21 @@
   </style>
 @endsection
 @section('content')
-
+<br>
+<br>
+<div class="row">
+<div class="col-sm-10"></div>
+<div class="col-sm-2"> <button onclick="downloadPDF()" class="btn btn-outline-success"><i class="fas fa-download"></i> Download</button></div>
+</div>
 <div class="certificate container" id="certificate">
     <div class="row">
         <div class="col-sm-2 text-right">
         <img src="{{asset('images/logo.png')}}" alt="">
         </div>
         <div class="col-sm-8 text text-left">
-        <span style="font-family: 'cooper black'; font-size: 26px; color: rgb(112,146,190);"><b>Digital Skills</b></span><br>
-        <span style="font-family: 'cooper black'; font-size: 22px; color: rgb(112,146,190);"><b>Workshop and Bootcamp</b></span><br>
-        <span style="font-family: 'cooper black'; font-size: 18px; color:  rgb(53,247,102);"><b>Catsol Institute of Computer Tecnology in Affiliation to Usmanu Danfodiyo University, Sokoto</b></span><br>
+        <span style="font-family: 'Arial Black'; font-size: 32px; color: rgb(112,106,220);"><b>Caliphate Tech Solutions Limited</b></span><br>
+        <span style="font-family: 'Georgia'; font-size: 22px; color: rgb(112,106,220);">Catsol Institute of Computer Tecnology in Affiliation to Usmanu Danfodiyo University, Sokoto</span><br>
+        <span style="letter-spacing: 1px; font-family: 'Arial Rounded MT Bold'; font-size: 18px; color:  rgb(53,247,102);"><b><em>Behind Umaru Ali Shinkafi Polytechnic Sokoto</em></b></span><br>
         </div>
         <div class="col-sm-2 text-left">
         <img src="{{asset('images/udus.png')}}" alt="">
@@ -64,25 +69,26 @@
     <div class="text text-left mt-2" style=" color: rgb(157, 74, 202);  font-size: 100px; font-family: 'old english text MT';">
         <b>Certificate</b>
     </div>
-    <h1 class="text text-left" style="font-size: 32px; font-family:  'Viner Hand ITC';"><b>of award to</b></h1>
+    <h1 class="text text-left ml-4" style="font-size: 32px; font-family:  'Viner Hand ITC';"><b>of award to</b></h1>
     <div class="name my-4 text-center" style="font-family: 'Lucida Calligraphy'; font-size 32px; letter-spacing: 2px;" >
        {{ucwords(strtolower($application->user->name))}}
     </div>
     <h2>
         For successfully completing the {{$application->programme()->type}} on
-        Digital Skills Workshop and Bootcamp Programme 
-        and Passed all Required Skills Assessment.
+        <b>Digital Skills Workshop and Bootcamp Programme</b> 
+        and Passed all Required Skills Assessment of.
     </h2>
     <div class="name my-4" style="font-family: 'Lucida Calligraphy';">
     {{ucwords(strtolower($application->programme()->title))}}
     </div>
     <div class="footer">
+
         <div class="row">
             <div class="col-sm-3">
             {{ucwords(strtolower($application->programme()->programme->activeCoordinator()->user->name))}}<br>
             Programme Coordinator
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-7">
                 <table class="text">
                     <tr>
                         <td width="130">Centre: </td>
@@ -102,16 +108,19 @@
                     </tr>
                 </table>
             </div>
-                <div class="mt-2 " > 
+            <div class="col-sm-2 text-left">
+            {{$application->generateQRCode(120,$application->id)}}
+            </div>
+        <div class="mt-2 " > 
                 
-                <div class="row">
+        <div class="row">
                 <div class="col-sm-12">
                     <div class="text text-center" style="color: rgb(157, 74, 202); font-size: 19px;">
-                        @foreach(App\Models\workshop::all() as $workshop)
-                            <span><i class="{{$workshop->icon}} fa-1x text-center"></i> </span>
+                        @foreach(App\Models\Workshop::all() as $workshop)
+                            <span title="{{$workshop->title}}"><i class="{{$workshop->icon}} fa-1x text-center"></i> </span>
                         @endforeach
-                        @foreach(App\Models\bootcamp::all() as $bootcamp)
-                            <span><i class="{{$bootcamp->icon}} fa-1x text-center"></i> </span>
+                        @foreach(App\Models\Bootcamp::all() as $bootcamp)
+                            <span title="{{$bootcamp->title}}"><i class="{{$bootcamp->icon}} fa-1x text-center"></i> </span>
                         @endforeach
                     </div>
                     </div>
@@ -120,7 +129,7 @@
         </div>
     </div>
 </div>
-  <button onclick="downloadPDF()" class="btn btn-outline-success"><i class="fas fa-download"></i> Download</button>
+ 
   
 
   <!-- jsPDF library -->

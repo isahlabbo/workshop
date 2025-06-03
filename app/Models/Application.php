@@ -63,4 +63,29 @@ class Application extends BaseModel
     {
         return $this->belongsTo(Coupon::class);
     }
+
+    public function hasErrorFromCertificateDisplay()
+    {
+        $message = null;
+
+        if($this->payment->status != 'success'){
+            $message = 'Access to your certificate was restricted due to payment pls make your payment now';
+        }
+
+        if($this->certificate){
+            $message = 'Your certificate was not publish, pls check back next time';
+        }
+
+        if(!$this->schedule){
+            $message = 'Your Application was not schedule';
+        }
+
+
+        if(!$this->programme()->programme->activeCoordinator()){
+            $message = 'There is no active coodinator for your programme';
+        }
+
+        return $message;
+
+    }
 }
