@@ -13,9 +13,9 @@ class BaseModel extends Model
 
    
 
-    public function generateQRCode($codeSize, $applicationId)
+    public function generateQRCode($codeSize, $certificateNo)
     {
-        $url = config('app.url').'/application/'.$applicationId.'/cert-verify';
+        $url = config('app.url').'/certificate/'.$certificateNo.'/verify';
 
         return QrCode::size($codeSize)->generate($url);
     }

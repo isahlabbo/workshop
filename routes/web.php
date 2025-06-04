@@ -12,9 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\Certificate;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/certificate/{certificateNo}/verify', function ($certificate_no) {
+    $certificate = Certificate::where('no',$certificate_no)->first();
+
+    if($certificate){
+        return view('verify-cert',['certificate'=>$certificate]);
+    }
+
+    return redirect()->back()->withToastWarning('Invalid Certificate Number');
 });
 
 
@@ -124,6 +135,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             Route::get('/', 'ScheduleController@index')->name('index');    
             Route::post('register', 'ScheduleController@register')->name('register');    
             Route::get('/create', 'ScheduleController@create')->name('create');    
+            Route::get('/{scheduleId}/view', 'ScheduleController@view')->name('view');    
+            Route::get('/certificate/{scheduleId}/publish', 'ScheduleController@publish')->name('publish');    
             Route::get('/{workshopId}/delete', 'ScheduleController@delete')->name('delete');    
            
         Route::name('allocation.')

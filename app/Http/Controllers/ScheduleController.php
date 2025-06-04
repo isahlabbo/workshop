@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Workshop;
 use App\Models\Centre;
 use App\Models\Schedule;
+use Auth;
 
 class ScheduleController extends Controller
 {
@@ -17,6 +18,25 @@ class ScheduleController extends Controller
     public function create()
     {
         return view('schedule.create');
+    }
+
+    public function view($scheduleId)
+    {
+        return view('schedule.view',['schedule'=>Schedule::find($scheduleId)]);
+    }
+
+    public function publish($scheduleId)
+    {
+        $schedule= Schedule::find($scheduleId);
+
+        foreach($schedule->applications as $application){
+            $application->certificate()->create([
+                'user_id'=>Auth::user()->id,
+                'no'=>$application->generateCertificateNo(),
+            ]);
+        }
+
+        return redirect()->route('dashboard')->withToastSuccess(' All Certificate Were Published');
     }
 
     public function register(Request $request)

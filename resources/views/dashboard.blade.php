@@ -59,6 +59,7 @@
     @endforeach
         
     </div>
+    
     @elseif(Auth::user()->role == 'facilitator')
     
             <div class="card-body shadow mb-4">

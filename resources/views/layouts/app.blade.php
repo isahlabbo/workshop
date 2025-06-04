@@ -162,6 +162,21 @@
                     @endforeach
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    <span><i class="fas fa-clock"></i></span> <span><b>Schedule</b></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                    @foreach(Auth::user()->coordinators as $coordinator)
+                        @foreach($coordinator->programme->workshops as $workshop)
+                        @foreach($workshop->schedules as $schedule)
+                            <a class="nav-link"  href="{{route('schedule.view',[$schedule->id])}}"><span><i class="fas fa-clock"></i></span> {{$schedule->workshop->title}} / {{$schedule->centre->name}}</a>
+                        @endforeach
+                        @endforeach
+                    @endforeach
+                </div>
+            </li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
             <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
             @endif

@@ -12,6 +12,11 @@ class Application extends BaseModel
         return $this->belongsTo(User::class);
     }
 
+    public function certificate()
+    {
+        return $this->hasOne(Certificate::class);
+    }
+
     public function workshop()
     {
         return $this->belongsTo(Workshop::class);
@@ -27,7 +32,13 @@ class Application extends BaseModel
         return $this->belongsTo(Schedule::class);
     }
 
-    public function registrationNo(Type $var = null)
+    public function generateCertificateNo()
+    {
+        return substr($this->created_at,2,2).
+            sprintf("%02d",$this->schedule->id).$this->getSerialNo();
+    }
+
+    public function registrationNo()
     {
         return substr($this->created_at,2,2).
                 $this->programme()->programme->getCode().
@@ -72,7 +83,7 @@ class Application extends BaseModel
             $message = 'Access to your certificate was restricted due to payment pls make your payment now';
         }
 
-        if($this->certificate){
+        if(!$this->certificate){
             $message = 'Your certificate was not publish, pls check back next time';
         }
 

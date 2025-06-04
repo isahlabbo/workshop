@@ -31,6 +31,7 @@ trait HasOnlinePayment{
             'prefer_language'=>$request->language,
             'prefer_method'=>$request->method,
             'prefer_schedule'=>$request->schedule,
+            'registration_no'=>$application->registrationNo(),
         ]);
 
         $coupon = Coupon::where(['code'=>$request->coupon, 'status'=>'active'])->first();

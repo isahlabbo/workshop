@@ -100,16 +100,16 @@
                     </tr>
                     <tr>
                         <td>Certificate No: </td>
-                        <td>1234567</td>
+                        <td>{{$application->certificate->no}}</td>
                     </tr>
                     <tr>
                         <td>Registration No: </td>
-                        <td>{{$application->registrationNo()}}</td>
+                        <td>{{$application->registration_no}}</td>
                     </tr>
                 </table>
             </div>
             <div class="col-sm-2 text-left">
-            {{$application->generateQRCode(120,$application->id)}}
+            {{$application->generateQRCode(120,$application->certificate->no)}}
             </div>
         <div class="mt-2 " > 
                 
