@@ -23,9 +23,6 @@ class AddRegistrationNoToApplications extends Migration
             $table->foreignId('application_id')->nullable();
         });
 
-        foreach(Application::all() as $application){
-            $application->update(['application'=>$application->registrationNo()]);
-        }
     }
 
     /**

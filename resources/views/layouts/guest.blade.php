@@ -38,10 +38,17 @@
   
 <section >
     <div class="container">
-        
+    <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 m-4">
+                <div class="card-body shadow mt-4">
+                    <div class="text-center"><img src="{{asset('images/logo.png')}}" alt=""  ></div>
+
                     {{$slot}}
                 
-                
+                </div>      
+              </div>      
+            </div>      
     </div>
 </section>
 
