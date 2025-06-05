@@ -153,7 +153,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="height: 120px;">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(112,146,190) !important; height: 120px;">
     <a class="navbar-brand" href="{{ url('/') }}">
         <img src="{{ asset('images/brand-logo.png') }}" height="70" width="300" alt="Brand Logo">
     </a>
@@ -165,13 +165,13 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" style="color: rgb(112,146,190);">
+                <a class="nav-link" href="#" style="color: white;">
                     <i class="fas fa-users"></i> <b>Who We Are</b>
                 </a>
             </li> 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(112,146,190);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <i class="fas fa-book"></i> <b>Management</b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="ministryDropdown">
@@ -183,22 +183,22 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('programme', ['bootcamp']) }}" style="color: rgb(112,146,190);">
+                <a class="nav-link" href="{{ route('programme', ['bootcamp']) }}" style="color: white;">
                     <i class="fas fa-laptop-code"></i> <b>Bootcamps</b>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('programme', ['workshop']) }}" style="color: rgb(112,146,190);">
+                <a class="nav-link" href="{{ route('programme', ['workshop']) }}" style="color: white;">
                     <i class="fas fa-chalkboard-teacher"></i> <b>Workshops</b>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}" style="color: rgb(112,146,190);">
+                <a class="nav-link" href="{{ route('register') }}" style="color: white;">
                     <i class="fas fa-user-plus"></i> <b>Register</b>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}" style="color: rgb(112,146,190);">
+                <a class="nav-link" href="{{ route('login') }}" style="color: white;">
                     <i class="fas fa-sign-in-alt"></i> <b>Login</b>
                 </a>
             </li>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DISWAB ! @yield('title')</title>
+    <title>DISWAB | @yield('title')</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS -->
@@ -33,7 +33,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: rgb(112,146,190) !important; ">
         <a class="navbar-brand" href="{{route('dashboard')}}"><img src="{{asset('images/logo.png')}}" height="100" width="80"  alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
@@ -43,15 +43,15 @@
             <ul class="navbar-nav ml-auto"> 
             
             @if(Auth::user()->role == 'admin')
-            <li><a class="nav-link" href="{{route('payment.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
-            <li><a class="nav-link" href="{{route('application.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
+            <li><a class="nav-link" href="{{route('payment.index')}}" style="color: white;"><span><i class="fas fa-wallet"></i></span><b> Payments</b></a></li>
+            <li><a class="nav-link" href="{{route('application.index')}}" style="color: white;"><span><i class="fas fa-list"></i></span><b> Applications</b></a></li>
             
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-shield-alt"></i></span> <span><b>Access Control</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
                 
                     <a class="nav-link"  href="{{route('access.index')}}"><span><i class="fas fa-user-tag"></i></span> Role</a>
                     <a class="nav-link"  href=""><span><i class="fas fa-key"></i></span> Permissions</a>
@@ -64,53 +64,53 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-book"></i></span> <span><b>Bootcamps</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
                 @foreach(App\Models\Programme::all() as $programme)
                     @if($programme->type =='bootcamp')
-                        <a class="nav-link"  href="{{route('programme.bootcamp.index',[$programme->id])}}"><span><i class="fas fa-list"></i></span> {{$programme->name}} {{ucwords($programme->type)}}</a>
+                        <a class="nav-link"  href="{{route('programme.bootcamp.index',[$programme->id])}}" style="color: white;"><span><i class="fas fa-list"></i></span> {{$programme->name}} {{ucwords($programme->type)}}</a>
                     @endif
                 @endforeach
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-book"></i></span> <span><b>Workshops</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white !important;">
                     @foreach(App\Models\Programme::all() as $programme)
                         @if($programme->type =='workshop')
-                            <a class="nav-link"  href="{{route('programme.workshop.index',[$programme->id])}}"><span><i class="fas fa-list"></i></span> {{$programme->name}}</a>
+                            <a class="nav-link"  href="{{route('programme.workshop.index',[$programme->id])}}" style="color: white;"><span><i class="fas fa-list"></i></span> {{$programme->name}}</a>
                         @endif
                     @endforeach
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-users"></i></span> <span><b>Users</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                <a class="nav-link" href="{{route('coordinator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Coordinators</b></a>
-                <a class="nav-link" href="{{route('facilitator.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a>
-                <a class="nav-link" href="{{route('participant.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user"></i></span><b> Participant</b></a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white !important;">
+                <a class="nav-link" href="{{route('coordinator.index')}}" style="color: white;"><span><i class="fas fa-calendar"></i> </span><b>Coordinators</b></a>
+                <a class="nav-link" href="{{route('facilitator.index')}}" style="color: white;"><span><i class="fas fa-user"></i></span><b> Facilitators</b></a>
+                <a class="nav-link" href="{{route('participant.index')}}" style="color: white;"><span><i class="fas fa-user"></i></span><b> Participant</b></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-users"></i></span> <span><b>Administration</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                <a class="nav-link" href="{{route('programme.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-list"></i> </span><b>Programmes</b></a>
-                <a class="nav-link" href="{{route('calendar.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a>
-                <a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a>
-                <a class="nav-link" href="{{route('schedule.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-clock"></i></span><b> Schedule</b></a>
-                <a class="nav-link" href="{{route('coupon.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-dollar"></i></span><b> Coupon</b></a>
-                <a class="nav-link" href="{{route('centre.index')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-home"></i></span><b> Centres</b></a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
+                <a class="nav-link" href="{{route('programme.index')}}" style="color: white;"><span><i class="fas fa-list"></i> </span><b>Programmes</b></a>
+                <a class="nav-link" href="{{route('calendar.index')}}" style="color: white;"><span><i class="fas fa-calendar"></i> </span><b>Calendar</b></a>
+                <a class="nav-link" href="#" style="color: white;"><span><i class="fas fa-graduation-cap"></i></span><b> Certificates</b></a>
+                <a class="nav-link" href="{{route('schedule.index')}}" style="color: white;"><span><i class="fas fa-clock"></i></span><b> Schedule</b></a>
+                <a class="nav-link" href="{{route('coupon.index')}}" style="color: white;"><span><i class="fas fa-dollar"></i></span><b> Coupon</b></a>
+                <a class="nav-link" href="{{route('centre.index')}}" style="color: white;"><span><i class="fas fa-home"></i></span><b> Centres</b></a>
                 </div>
             </li>
             
@@ -119,15 +119,15 @@
             @endif
 
             @if(Auth::user()->role == 'participant')
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-receipt"></i></span><b> Receipt</b></a></li>
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
+            <li><a class="nav-link" href="#" style="color: white;"><span><i class="fas fa-receipt"></i></span><b> Receipt</b></a></li>
+            <li><a class="nav-link" href="#" style="color: white;"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
+            <li><a class="nav-link" href="#" style="color: white;"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-graduation-cap"></i></span> <span><b>Certificates</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
                   @foreach(Auth::user()->applications as $application)
                     <a class="nav-link"  href="{{route('application.certificate.view',[$application->id])}}"><span><i class="fas fa-graduation-cap"></i></span> {{$application->workshop->title}}</a>
                   @endforeach
@@ -138,10 +138,10 @@
             @if(Auth::user()->role == 'facilitator')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-book"></i></span> <span><b>Bootcamps</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
                 @foreach(Auth::user()->coordinators as $coordinator)
                     @if($coordinator->programme->type =='bootcamp')
                         <a class="nav-link"  href="{{route('programme.bootcamp.index',[$coordinator->programme_id])}}"><span><i class="fas fa-list"></i></span> {{$coordinator->programme->name}} {{ucwords($coordinator->programme->type)}}</a>
@@ -151,10 +151,10 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-book"></i></span> <span><b>Workshops</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
                     @foreach(Auth::user()->coordinators as $coordinator)
                         @if($coordinator->programme->type =='workshop')
                             <a class="nav-link"  href="{{route('programme.workshop.index',[$coordinator->programme_id])}}"><span><i class="fas fa-list"></i></span> {{$coordinator->programme->name}}</a>
@@ -164,10 +164,10 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
                     <span><i class="fas fa-clock"></i></span> <span><b>Schedule</b></span>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown p-2" style="background-color: rgb(112,146,190) !important; width: 300px; padding: 10px !important; color: white;">
                     @foreach(Auth::user()->coordinators as $coordinator)
                         @foreach($coordinator->programme->workshops as $workshop)
                         @foreach($workshop->schedules as $schedule)
@@ -177,10 +177,10 @@
                     @endforeach
                 </div>
             </li>
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
-            <li><a class="nav-link" href="#" style="color: rgb(0, 150, 215);"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
+            <li><a class="nav-link" href="#" style="color: white;"><span><i class="fas fa-search"></i></span><b> Assigment</b></a></li>
+            <li><a class="nav-link" href="#" style="color: white;"><span><i class="fas fa-pen"></i></span><b> Exam</b></a></li>
             @endif
-            <li><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-out-alt"></i></span><b>Signout</b></a></li>
+            <li><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: white;"><span><i class="fas fa-sign-out-alt"></i></span><b>Signout</b></a></li>
             <form action="{{route('logout')}}" method="post" id="logout-form">@csrf</form>
             </ul>
         </div>

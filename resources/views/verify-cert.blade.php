@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title>DISWAB! @yield('title') </title>
+  <title>DISWAB | {{$certificate->no}} certificate verification </title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
@@ -55,6 +55,7 @@
                             <p><strong>Name:</strong> {{ucwords(strtolower($certificate->application->user->name))}}</p>
                             <p><strong>Certificate ID:</strong> {{$certificate->no}}</p>
                             <p><strong>Registration No:</strong> {{$certificate->application->registration_no}}</p>
+                            <p><strong>Coordinator:</strong> {{ucwords(strtolower($certificate->user->name))}}</p>
                             <p><strong>Issued On:</strong> {{date('d M, Y',strtotime($certificate->application->schedule->certificate_distribution_date))}}</p>
                             <p><strong>Issued By:</strong> Catsol Institute of Computer Technology</p>
                             <p><strong>Program:</strong> Digital Skills Workshops and Bootcamps</p>
