@@ -153,9 +153,9 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(112,146,255) !important; height: 120px;">
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(45,56,255) !important; height: 120px;">
     <a class="navbar-brand" href="{{ url('/') }}">
-        <img src="{{ asset('images/brand-logo.png') }}" height="70" width="300" alt="Brand Logo">
+        <img src="{{ asset('images/brand_logo.png') }}" height="120" width="300" alt="Brand Logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -213,22 +213,24 @@
         <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="8000">
            
             <div class="carousel-inner">
+
                 <div class="carousel-item active" data-description="Learn Digital Skills, Build Real Project, and Lunch Your Career.">
                     <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 1">
                 </div>
+
                 <div class="carousel-item" data-description="Discover cutting-edge solutions tailored for you.">
                     <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 2">
                 </div>
-                <div class="carousel-item" data-description="Join us and transform your ideas into reality.">
+
+                <div class="carousel-item" data-description="Join us and transform your certificate into reality.">
                     <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 3">
                 </div>
 
-                <div class="carousel-item" data-description="we have industrial professional facilitator">
+                <div class="carousel-item" data-description="We have Industrial Professional Facilitators">
                     <img src="{{asset('images/bg.png')}}" class="d-block w-100" alt="Slide 3">
                 </div>
             </div>
     
-
             <!-- Description Box -->
             <div class="description-box h1">
             <span id="typed-text" style="font-weight: 900"></span>

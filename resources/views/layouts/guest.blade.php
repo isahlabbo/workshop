@@ -42,7 +42,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4 m-4">
                 <div class="card-body shadow mt-4">
-                    <div class="text-center"><img src="{{asset('images/logo.png')}}" alt=""  ></div>
+                    <div class="text-center"><img src="{{asset('images/guest_logo.png')}}" alt=""  ></div>
 
                     {{$slot}}
                 

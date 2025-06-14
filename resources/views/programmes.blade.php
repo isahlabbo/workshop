@@ -42,36 +42,63 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="{{asset('images\logo.png')}}" height="60" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-            <li><a class="nav-link" href="" style="color: rgb(0, 150, 215);"><span><i class="fas fa-users"></i></span><b> Who We Are</b></a></li> 
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(45,56,255) !important; height: 120px;">
+    <a class="navbar-brand" href="{{ url('/') }}">
+        <img src="{{ asset('images/brand_logo.png') }}" height="120" width="300" alt="Brand Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white;">
+                    <i class="fas fa-users"></i> <b>Who We Are</b>
+                </a>
+            </li> 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="ministryDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false" style="color: rgb(0, 150, 215);">
-                    <span><i class="fas fa-book"></i></span> <span><b>Management</b></span>
+                    aria-haspopup="true" aria-expanded="false" style="color: white;">
+                    <i class="fas fa-book"></i> <b>Management</b>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="ministryDropdown" style="width: 250px;">
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Coordinator</a>
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Assessor</a>
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Facilitators</a>
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> Internal Quality Assurance</a>
-                    <a class="nav-link"  href="#"><span><i class="fas fa-user"></i></span> External Quality Assuarance</a>
+                <div class="dropdown-menu" aria-labelledby="ministryDropdown">
+                    <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Coordinator</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Assessor</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Facilitators</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Internal Quality Assurance</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-user"></i> External Quality Assurance</a>
                 </div>
             </li>
-            <li><a class="nav-link" href="{{route('programme',['bootcamp'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-laptop-code"></i></span><b> Bootcamps</b></a></li>
-            <li><a class="nav-link" href="{{route('programme',['workshop'])}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-chalkboard-teacher"></i></span><b> Workshops</b></a></li>
-            <li><a class="nav-link" href="{{route('register')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-user-plus"></i></span><b> Register</b></a></li>
-            <li><a class="nav-link" href="{{route('login')}}" style="color: rgb(0, 150, 215);"><span><i class="fas fa-sign-in-alt"></i></span><b> Login</b></a></li>
-            </ul>
-        </div>
-    </nav>
-    
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('programme', ['bootcamp']) }}" style="color: white;">
+                    <i class="fas fa-laptop-code"></i> <b>Bootcamps</b>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('programme', ['workshop']) }}" style="color: white;">
+                    <i class="fas fa-chalkboard-teacher"></i> <b>Workshops</b>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}" style="color: white;">
+                    <i class="fas fa-user-plus"></i> <b>Register</b>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}" style="color: white;">
+                    <i class="fas fa-sign-in-alt"></i> <b>Login</b>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
