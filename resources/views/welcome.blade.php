@@ -153,7 +153,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(112,146,190) !important; height: 120px;">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(112,146,255) !important; height: 120px;">
     <a class="navbar-brand" href="{{ url('/') }}">
         <img src="{{ asset('images/brand-logo.png') }}" height="70" width="300" alt="Brand Logo">
     </a>
@@ -246,8 +246,10 @@
     
     <div class="col-sm-6">
     <div class="card-body shadow p-4 m-2" style="border-radius: 0px 50px 0px 50px; border-top: 2px solid blue;">
-        <b>{{$loop->iteration}}. {{$schedule->workshop->title}} From: <span class="badge badge-primary p-2">{{date('d M, Y',strtotime($schedule->start_date))}}</span>
-        To: <span class="badge badge-primary p-2">{{date('d M, Y',strtotime($schedule->end_date))}}</span>
+        <h5 class="text text-center"><b>{{$schedule->workshop->title}} {{ucwords($schedule->workshop->type)}}</b></h5>
+        <p>From: <span class="badge badge-primary p-2">{{date('d M, Y',strtotime($schedule->start_date))}}</span></p>
+        <p>To: <span class="badge badge-primary p-2">{{date('d M, Y',strtotime($schedule->end_date))}}</span></p>
+        <p>Participants: <span class="badge badge-primary p-2">{{count($schedule->applications)}}</span></p>
         </b>
         <p class="text text-justify mt-2" style="color:black;">{{$schedule->workshop->description}}
         <a class="btn btn-sm btn-outline-primary" href="{{route('programme.workshop.view',[$schedule->workshop->id])}}"><i class="fas fa-pen"></i> Apply Now</a></p>

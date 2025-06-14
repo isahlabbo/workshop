@@ -56,7 +56,7 @@ class Workshop extends BaseModel
     {
         $schedule = $this->schedules->where('status', 'open')->first();
 
-        if(count($schedule->applications) < $schedule->centre->capacity){
+        if($schedule && count($schedule->applications) < $schedule->centre->capacity){
             $application->update(['status'=>'allocated','schedule_id'=>$schedule->id]);
         }else{
             $application->update(['status'=>'centre closed']);

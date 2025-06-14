@@ -49,12 +49,17 @@ class Application extends BaseModel
     public function getSerialNo()
     {
         $count = 1;
-        foreach($this->schedule->applications as $application){
-            if($application->id == $this->id){
-                return sprintf("%03d", $count);
+        if($this->schedule){
+            foreach($this->schedule->applications as $application){
+                if($application->id == $this->id){
+                    return sprintf("%03d", $count);
+                }
+                $count++;
             }
-            $count++;
+        }else{
+            return sprintf("%03d", $count);
         }
+        
     }
 
     public function programme()
