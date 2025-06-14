@@ -153,7 +153,7 @@
 
 <body>
     <!-- Navbar -->
-<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm" style="background-color: rgb(45,56,255) !important; height: 120px;">
+<nav class="navbar navbar-expand-sm navbar-light fixed-top shadow-sm" style="background-color: rgb(45,56,255) !important;">
     <a class="navbar-brand" href="{{ url('/') }}">
         <img src="{{ asset('images/brand_logo.png') }}" height="120" width="300" alt="Brand Logo">
     </a>
