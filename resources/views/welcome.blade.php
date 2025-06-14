@@ -15,9 +15,31 @@
             font-family: Arial, sans-serif;
         }
 
+
         .navbar {
             margin-bottom: 50px;
             background-color: white !important;
+        }
+
+        .navbar-logo {
+        width: 300px;
+        height: auto;
+        }
+
+        /* Medium screens (tablets, 768px and below) */
+        @media (max-width: 768px) {
+            .navbar-logo {
+                width: 250px;
+                height: auto;
+            }
+        }
+
+        /* Small screens (phones, 480px and below) */
+        @media (max-width: 480px) {
+            .navbar-logo {
+                width: 200px;
+                height: auto;
+            }
         }
 
         .welcome {
@@ -155,7 +177,7 @@
     <!-- Navbar -->
 <nav class="navbar navbar-expand-sm navbar-light fixed-top shadow-sm" style="background-color: rgb(45,56,255) !important;">
     <a class="navbar-brand" href="{{ url('/') }}">
-        <img src="{{ asset('images/brand_logo.png') }}" height="120" width="300" alt="Brand Logo">
+        <img src="{{ asset('images/brand_logo.png') }}" class="navbar-logo" alt="Brand Logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
