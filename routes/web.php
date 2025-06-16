@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use App\Mail\WelcomeMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Certificate;
 
 Route::get('/', function () {
+    $user = User::find(1);
+    Mail::to('isahlabbo22@gmail.com')->queue(new WelcomeMail($user));
     return view('welcome');
 });
 
@@ -135,7 +138,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
             Route::get('/', 'ScheduleController@index')->name('index');    
             Route::post('register', 'ScheduleController@register')->name('register');    
             Route::get('/create', 'ScheduleController@create')->name('create');    
+            Route::get('/{scheduleId}/edit', 'ScheduleController@edit')->name('edit');    
             Route::get('/{scheduleId}/view', 'ScheduleController@view')->name('view');    
+            Route::post('/{scheduleId}/update', 'ScheduleController@update')->name('update');    
             Route::get('/certificate/{scheduleId}/publish', 'ScheduleController@publish')->name('publish');    
             Route::get('/{workshopId}/delete', 'ScheduleController@delete')->name('delete');    
            

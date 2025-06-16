@@ -14,14 +14,7 @@ class AddRegistrationNoToApplications extends Migration
      */
     public function up()
     {
-        Schema::table('applications', function (Blueprint $table) {
-            $table->string('registration_no')->nullable();
-            $table->dropColumn('schedule_id');
-        });
-
-        Schema::table('certificates', function (Blueprint $table) {
-            $table->foreignId('application_id')->nullable();
-        });
+        
 
     }
 

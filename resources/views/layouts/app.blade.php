@@ -16,7 +16,27 @@
             padding-top: 70px;
         }
 
-     
+        .navbar-logo {
+            width: 100px;
+            height: auto;
+        }
+
+        /* Medium screens (tablets, 768px and below) */
+        @media (max-width: 768px) {
+            .navbar-logo {
+                width: 120px;
+                height: auto;
+            }
+        }
+
+        /* Small screens (phones, 480px and below) */
+        @media (max-width: 480px) {
+            .navbar-logo {
+                width: 80px;
+                height: auto;
+            }
+        }
+
         input[type="checkbox"], input[type="radio"]{
             width: 20px;
             height: 20px;
@@ -34,7 +54,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: rgb(45,56,255) !important; ">
-        <a class="navbar-brand" href="{{route('dashboard')}}"><img src="{{asset('images/app_logo.png')}}" height="100" width="80"  alt=""></a>
+        <a class="navbar-brand" href="{{route('dashboard')}}"><img src="{{asset('images/app_logo.png')}}" class="navbar-logo"  alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" style="color: rgb(0, 150, 215) !important;" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

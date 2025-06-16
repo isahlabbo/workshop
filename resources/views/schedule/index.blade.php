@@ -35,7 +35,7 @@
                     <td>{{date('d M, Y', strtotime($schedule->certificate_distribution_date))}}</td>
                     <td>{{count($schedule->applications)}}</td>
                     <td>
-                        <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit_{{$schedule->id}}"><i class="fas fa-eye"></i> Edit</button>
+                       <a href="{{route('schedule.edit',$schedule->id)}}"><button class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i> Edit</button></a> 
                         <a href="{{route('schedule.allocation.index',[$schedule->id])}}">
                         <button class="btn btn-primary btn-sm" ><i class="fas fa-share"></i> Facilitators Allocation</button>
                         </a>

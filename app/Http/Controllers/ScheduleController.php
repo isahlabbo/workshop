@@ -20,6 +20,11 @@ class ScheduleController extends Controller
         return view('schedule.create');
     }
 
+    public function edit($scheduleId)
+    {
+        return view('schedule.edit',['schedule'=>Schedule::find($scheduleId)]);
+    }
+
     public function view($scheduleId)
     {
         return view('schedule.view',['schedule'=>Schedule::find($scheduleId)]);
@@ -53,5 +58,21 @@ class ScheduleController extends Controller
         ]);
         
         return redirect()->route('schedule.index')->withToastSuccess(' Schedule Registered');
+    }
+
+    public function update(Request $request, $scheduleId)
+    {
+        $schedule = Schedule::find($scheduleId);
+       
+        $schedule->update([
+            'workshop_id'=>$request->workshop,
+            'time'=>$request->time,
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+            'assessment_date'=>$request->assessment_date,
+            'certificate_distribution_date'=>$request->certificate_distribution_date,
+        ]);
+        
+        return redirect()->route('schedule.index')->withToastSuccess(' Schedule Updated');
     }
 }

@@ -314,9 +314,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    
-                        <img src="{{asset('images/workshop.png')}}" alt="" >
-                    
+                    <img src="{{asset('images/workshop.png')}}" alt="" >
                 </div>
             </div>
         </div>
