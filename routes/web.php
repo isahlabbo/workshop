@@ -16,8 +16,7 @@ use App\Mail\WelcomeMail;
 use App\Models\Certificate;
 
 Route::get('/', function () {
-    $user = User::find(1);
-    Mail::to('isahlabbo22@gmail.com')->queue(new WelcomeMail($user));
+
     return view('welcome');
 });
 
